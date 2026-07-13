@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#0b0a09"/>
+  <rect x="90" y="130" width="720" height="520" fill="#1d1814" stroke="#f04a24" stroke-width="18"/>
+  <circle cx="450" cy="390" r="145" fill="#f4eadb"/>
+  <circle cx="450" cy="390" r="88" fill="#0b0a09"/>
+  <circle cx="450" cy="390" r="38" fill="#f04a24"/>
+  <path d="M145 720h610v60H145z" fill="#f04a24"/>
+  <text x="120" y="110" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="70">LE SNIPE VFX</text>
+  <text x="175" y="766" fill="#0b0a09" font-family="Arial Black, Impact, sans-serif" font-size="42">IMAGE / EDIT / VFX</text>
+</svg>

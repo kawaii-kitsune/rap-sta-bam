@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#0b0a09"/>
+  <rect x="100" y="100" width="1000" height="700" fill="#17110e" stroke="#40352c" stroke-width="12"/>
+  <text x="150" y="450" fill="#f04a24" font-family="Arial Black, Impact, sans-serif" font-size="96">ΡΑΠ ΣΤΑ ΜΠΑΜ</text>
+  <text x="154" y="540" fill="#f4eadb" font-family="Arial, sans-serif" font-size="42">thumbnail placeholder</text>
+</svg>

@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "tzimos",
+    "name": "Τζίμος",
+    "image": "/assets/artists/tzimos.jpg",
+    "location": "Κρήτη",
+    "shortBio": "Rapper από το Ηράκλειο Κρήτης και συνιδρυτής των Maskes, με επιστροφή μετά από 8 χρόνια μέσα από το Reboot σε παραγωγή Phone Memo.",
+    "bio": [
+      "Ο Τζίμος είναι rapper από το Ηράκλειο Κρήτης και συνιδρυτής του hip hop crew Maskes μαζί με τους Ace Beats, Abyss, Doc και Rade.",
+      "Μετά από αρκετές κυκλοφορίες μέσα στα 2010s, επιστρέφει ύστερα από 8 χρόνια με το Reboot, ένα comeback EP σε πλήρη παραγωγή Phone Memo.",
+      "Το Reboot σηματοδοτεί ένα νέο ξεκίνημα και μια επανασύσταση του Τζίμου στην hip hop κοινότητα."
+    ],
+    "instagramUrl": "https://www.instagram.com/tzimos_msk",
+    "tiktokUrl": "https://www.tiktok.com/@tzimos_msk",
+    "spotifyUrl": "https://open.spotify.com/artist/3jpMSsecieLfKc5oOTfYIQ",
+    "featured": true
+  },
+  {
+    "slug": "phone-memo",
+    "name": "Phone Memo",
+    "image": "/assets/artists/phone-memo-frame.jpg",
+    "location": "Ηράκλειο",
+    "shortBio": "Παραγωγή, παρουσίαση και οργάνωση της session από την πρώτη ιδέα μέχρι το bounce.",
+    "bio": [
+      "Ο Phone Memo κρατάει τον παραγωγικό πυρήνα της σειράς: στήσιμο beat, studio κατεύθυνση, παρουσίαση και τελικό δέσιμο του επεισοδίου.",
+      "Ο ρόλος του είναι να αφήνει τον καλλιτέχνη να κινηθεί ελεύθερα, αλλά να κρατάει τη session αρκετά συγκεντρωμένη ώστε η ιδέα να γίνει κομμάτι στα μπαμ."
+    ],
+    "tiktokUrl": "https://www.tiktok.com/@phonememo",
+    "featured": true,
+    "spotifyUrl": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+    "instagramUrl": "https://www.instagram.com/phone_memo_the.anartist/",
+    "youtubeUrl": "https://www.youtube.com/@phonememo_the.anartist"
+  },
+  {
+    "slug": "le-snipe-vfx",
+    "name": "Le Snipe VFX",
+    "image": "/assets/artists/le-snipe-vfx-instagram.png",
+    "location": "Εικόνα / Μοντάζ / VFX",
+    "shortBio": "Οπτική ταυτότητα, μοντάζ, VFX και σκληρή εικόνα για το project.",
+    "bio": [
+      "Ο Le Snipe VFX / Μύρωνας Σφυράκης φέρνει την οπτική πλευρά της σειράς: κάμερα, μοντάζ, VFX, textures και ρυθμό στην τελική παρουσίαση.",
+      "Η εικόνα αντιμετωπίζεται σαν μέρος του κομματιού, όχι σαν απλή τεκμηρίωση πίσω από τη μουσική."
+    ],
+    "instagramUrl": "https://www.instagram.com/lesnipe.vfx",
+    "tiktokUrl": "https://www.tiktok.com/@lesnipe_vfx",
+    "youtubeUrl": "https://www.lesnipevfx.com/",
+    "featured": true
+  },
+  {
+    "slug": "redemption-studio",
+    "name": "Redemption Studio / Δημήτρης Τσεκέρης",
+    "image": "/assets/artists/redemption-studio-dj.png",
+    "location": "Mix / Master",
+    "shortBio": "Mix, master και τεχνική φροντίδα του τελικού ήχου για το πρώτο επεισόδιο.",
+    "bio": [
+      "Ο Redemption Studio / Δημήτρης Τσεκέρης αναλαμβάνει το mix και το master του πρώτου επεισοδίου, κρατώντας το τελικό αποτέλεσμα δεμένο και καθαρό.",
+      "Η συμβολή του βρίσκεται στο τελευταίο αλλά κρίσιμο στάδιο: εκεί που τα takes, το beat και η ενέργεια της session γίνονται ολοκληρωμένο άκουσμα."
+    ],
+    "instagramUrl": "https://www.instagram.com/dimitristsekeris",
+    "featured": true
+  }
+]

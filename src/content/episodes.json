@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "001-tzimos",
+    "number": 1,
+    "title": "Ραπ Στα Μπαμ #001 — Τζίμος",
+    "artistSlug": "tzimos",
+    "artistName": "Τζίμος",
+    "excerpt": "Στο πρώτο επεισόδιο ο Τζίμος μπαίνει στη session χωρίς έτοιμο κομμάτι και χτίζει μαζί μας beat, στίχους, ηχογράφηση και τελικό performance.",
+    "description": [
+      "Σε κάθε επεισόδιο του Ραπ Στα Μπαμ ένας καλεσμένος rapper έρχεται μαζί μας χωρίς έτοιμο κομμάτι.",
+      "Ξεκινάμε από το μηδέν. Φτιάχνουμε ένα beat μαζί, ο rapper γράφει τους στίχους του, δοκιμάζουμε ιδέες και αλληλεπιδρούμε, κάνουμε λάθη — προφανώς — κρατάμε τις στιγμές μας στο ψηφιακό φιλμ και καταγράφουμε όλη τη διαδρομή μέχρι να βγει το τελικό αποτέλεσμα.",
+      "Στο πρώτο επεισόδιο έχουμε μαζί μας τον Τζίμο, από την πόλη του Ηρακλείου, στην Κρήτη.",
+      "Μιλάμε για τη μουσική του, τις επιρροές του, τη δημιουργική του διαδικασία και γενικά για όλα αυτά που συμβαίνουν πίσω από ένα κομμάτι, πριν φτάσει να ακουστεί ολοκληρωμένο, αλλά και για ό,τι κάνει τον Τζίμο, Τζίμο.",
+      "Αν θα ήθελες να δεις πώς γεννιέται ένα τραγούδι από την αρχή, ακολούθησε το Ραπ Στα Μπαμ και έλα μαζί μας στα επόμενα sessions.",
+      "Κάθε επεισόδιο, ένας διαφορετικός καλλιτέχνης. Μια νέα ιδέα. Ένα νέο κομμάτι.",
+      "Τα λέμε κάθε τρίτη Τρίτη του μήνα."
+    ],
+    "publishedAt": "2026-07-21",
+    "thumbnail": "/assets/episodes/001-tzimos-thumbnail-real.jpg",
+    "status": "upcoming",
+    "audio": {
+      "file": "private/audio/001-tzimos.mp3",
+      "availableAt": "2026-07-21",
+      "label": "Ολόκληρο επεισόδιο σε mp3",
+      "mimeType": "audio/mpeg",
+      "captions": "/assets/captions/001-tzimos.json"
+    },
+    "youtubeVideoId": "xOLHcVl9exI",
+    "youtubeUrl": "https://www.youtube.com/watch?v=xOLHcVl9exI",
+    "instagramUrl": "https://www.instagram.com/tzimos_msk",
+    "tiktokUrl": "https://www.tiktok.com/@tzimos_msk",
+    "spotifyUrl": "https://open.spotify.com/artist/3jpMSsecieLfKc5oOTfYIQ",
+    "shortClips": [
+      {
+        "title": "Τι είναι το ΡΑΠ ΣΤΑ ΜΠΑΜ;",
+        "url": "https://www.youtube.com/watch?v=xOLHcVl9exI"
+      },
+      {
+        "title": "Από ένα απλό sample ξεκινάει το beat",
+        "url": "https://www.youtube.com/watch?v=xOLHcVl9exI"
+      },
+      {
+        "title": "Το πρώτο verse του ΡΑΠ ΣΤΑ ΜΠΑΜ",
+        "url": "https://www.youtube.com/watch?v=xOLHcVl9exI"
+      }
+    ],
+    "gallery": [
+      "/assets/episodes/001-tzimos/tzimos-conversation.jpg",
+      "/assets/episodes/001-tzimos/tzimos-closeup.jpg",
+      "/assets/episodes/001-tzimos/tzimos-performance.jpg",
+      "/assets/episodes/001-moments/01-concept.jpg",
+      "/assets/episodes/001-moments/03-beatmaking.jpg",
+      "/assets/episodes/001-moments/05-performance.jpg"
+    ],
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Ενέργεια / Εμπιστοσύνη",
+        "name": "Τζίμος",
+        "url": "https://www.instagram.com/tzimos_msk",
+        "note": "Για τα rap, την ενέργεια και την εμπιστοσύνη.",
+        "artistSlug": "tzimos"
+      },
+      {
+        "role": "Εικόνα / Μοντάζ / VFX",
+        "name": "Le Snipe VFX / Μύρωνας Σφυράκης",
+        "url": "https://www.lesnipevfx.com/",
+        "note": "Για την εικόνα, το μοντάζ και τα απίστευτα memes που εγκλώβισε για να τα απολαύσετε.",
+        "artistSlug": "le-snipe-vfx"
+      },
+      {
+        "role": "Mix / Master",
+        "name": "Redemption Studio / Δημήτρης Τσεκέρης",
+        "url": "https://www.instagram.com/dimitristsekeris",
+        "note": "Για το mix, το master και την υπομονή που έχει απέναντι στα exports που του παρουσιάζονται.",
+        "artistSlug": "redemption-studio"
+      },
+      {
+        "role": "Logo / Ταυτότητα project",
+        "name": "Ego Designs / Αντώνης Ντοβίνος",
+        "url": "https://www.behance.net/dovi_made_this",
+        "note": "Για το logo του Ραπ Στα Μπαμ και τη σημαντική προσφορά του στη μοναδική ταυτότητα του project."
+      },
+      {
+        "role": "Behind the scenes / Βοήθεια",
+        "name": "Φίλιππος Σφυράκης",
+        "url": "https://www.instagram.com/philip_sfyrakis",
+        "note": "Για τη βοήθεια, τις στιγμές πίσω από τις κάμερες και τη συμβολή του στη διατήρηση ζυθοποιών, τοπικών και μη."
+      },
+      {
+        "role": "Στήριξη",
+        "name": "Όσοι αφιερώνετε χρόνο για να δείτε αυτό που φτιάχνουμε",
+        "note": "Η στήριξή σας σημαίνει πολλά και μας δίνει λόγο να συνεχίσουμε."
+      },
+      {
+        "role": "Παραγωγή / Παρουσίαση",
+        "name": "Phone Memo",
+        "url": "https://www.tiktok.com/@dov1nos",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "instagramEmbeds": [
+      {
+        "title": "Phone Memo Instagram reel",
+        "url": "https://www.instagram.com/reel/DakfDGIs6Lb/"
+      }
+    ],
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "One-day session",
+        "note": "Beat, writing, recording και performance μέσα στην ίδια διαδικασία."
+      },
+      {
+        "label": "Artist",
+        "value": "Τζίμος",
+        "note": "Το πρώτο πρόσωπο μπροστά στο μικρόφωνο του Ραπ Στα Μπαμ."
+      },
+      {
+        "label": "Base",
+        "value": "Ηράκλειο Κρήτης",
+        "note": "Ανεξάρτητη παραγωγή από local studio setup."
+      },
+      {
+        "label": "Release",
+        "value": "21/07/2026",
+        "note": "Πρεμιέρα του πρώτου επεισοδίου."
+      }
+    ],
+    "bestMoments": [
+      {
+        "title": "Η ιδέα μπαίνει στο δωμάτιο",
+        "copy": "Το επεισόδιο ανοίγει με το concept της σειράς: χωρίς έτοιμο κομμάτι, με την πίεση της ίδιας session.",
+        "image": "/assets/episodes/001-moments/01-concept.jpg"
+      },
+      {
+        "title": "Το sample γίνεται beat",
+        "copy": "Η παραγωγή χτίζεται μπροστά στην κάμερα, από την πρώτη επιλογή ήχου μέχρι το groove που κρατάει το verse.",
+        "image": "/assets/episodes/001-moments/03-beatmaking.jpg"
+      },
+      {
+        "title": "Το final verse παίρνει θέση",
+        "copy": "Το take δένει τη διαδικασία με το τελικό performance και δείχνει γιατί η στιγμή μετράει όσο και το κομμάτι.",
+        "image": "/assets/episodes/001-moments/05-performance.jpg"
+      }
+    ]
+  }
+]

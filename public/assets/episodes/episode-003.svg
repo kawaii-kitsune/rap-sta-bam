@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#0b0a09"/>
+  <path d="M120 90h960v720H120z" fill="#f4eadb"/>
+  <path d="M155 130h890v650H155z" fill="#11100e"/>
+  <path d="M155 130l890 650M1045 130L155 780" stroke="#f04a24" stroke-width="24"/>
+  <text x="205" y="280" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="112">003</text>
+  <text x="205" y="615" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="120">DRAFT</text>
+</svg>

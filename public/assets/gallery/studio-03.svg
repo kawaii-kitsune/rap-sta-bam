@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650">
+  <rect width="900" height="650" fill="#0b0a09"/>
+  <path d="M0 110h900v85H0zM0 455h900v85H0z" fill="#f04a24"/>
+  <circle cx="450" cy="325" r="170" fill="#f4eadb"/>
+  <circle cx="450" cy="325" r="95" fill="#11100e"/>
+  <text x="95" y="590" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="48">BEHIND THE SESSION</text>
+</svg>

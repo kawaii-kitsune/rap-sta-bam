@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#0b0a09"/>
+  <rect x="80" y="80" width="740" height="740" fill="#f04a24"/>
+  <circle cx="450" cy="330" r="155" fill="#11100e"/>
+  <path d="M220 790c25-170 135-260 230-260s205 90 230 260z" fill="#11100e"/>
+  <text x="80" y="150" fill="#0b0a09" font-family="Arial Black, Impact, sans-serif" font-size="92">ΤΖΙΜΟΣ</text>
+  <path d="M100 690h700v50H100z" fill="#f4eadb"/>
+</svg>

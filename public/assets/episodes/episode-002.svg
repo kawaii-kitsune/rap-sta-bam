@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#11100e"/>
+  <rect x="70" y="70" width="1060" height="760" fill="#1d1814" stroke="#f04a24" stroke-width="14"/>
+  <path d="M0 730h1200v70H0z" fill="#f04a24"/>
+  <text x="95" y="220" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="120">002</text>
+  <text x="95" y="520" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="118">COMING</text>
+  <text x="95" y="635" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="118">SOON</text>
+  <text x="95" y="778" fill="#0b0a09" font-family="Arial Black, Impact, sans-serif" font-size="56">ΡΑΠ ΣΤΑ ΜΠΑΜ</text>
+</svg>

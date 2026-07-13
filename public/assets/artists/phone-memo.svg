@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#11100e"/>
+  <rect x="150" y="90" width="600" height="720" rx="0" fill="#f4eadb"/>
+  <rect x="190" y="150" width="520" height="540" fill="#0b0a09"/>
+  <circle cx="450" cy="750" r="28" fill="#0b0a09"/>
+  <path d="M240 260h420v44H240zM240 340h340v44H240zM240 420h390v44H240z" fill="#f04a24"/>
+  <text x="198" y="610" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="70">PHONE</text>
+  <text x="198" y="674" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="70">MEMO</text>
+</svg>

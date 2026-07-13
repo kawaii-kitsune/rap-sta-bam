@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ραπ Στα Μπαμ episode 001 placeholder</title>
+  <desc id="desc">Poster-like thumbnail for episode 001 with gritty geometric studio treatment.</desc>
+  <rect width="1200" height="900" fill="#0b0a09"/>
+  <path d="M0 140h1200v90H0zM0 670h1200v80H0z" fill="#f04a24"/>
+  <path d="M760 0h260v900H760z" fill="#17110e"/>
+  <circle cx="835" cy="405" r="210" fill="#f4eadb"/>
+  <circle cx="835" cy="405" r="165" fill="#0b0a09"/>
+  <rect x="92" y="270" width="550" height="240" fill="#f4eadb"/>
+  <rect x="120" y="296" width="495" height="46" fill="#0b0a09"/>
+  <rect x="120" y="370" width="420" height="34" fill="#0b0a09"/>
+  <rect x="120" y="430" width="475" height="38" fill="#0b0a09"/>
+  <g fill="#f04a24">
+    <rect x="780" y="230" width="420" height="48"/>
+    <rect x="820" y="560" width="330" height="34"/>
+    <rect x="850" y="622" width="210" height="34"/>
+  </g>
+  <g opacity=".18" stroke="#f4eadb">
+    <path d="M0 40h1200M0 86h1200M0 812h1200M0 858h1200"/>
+    <path d="M60 0v900M140 0v900M1100 0v900"/>
+  </g>
+  <text x="85" y="170" fill="#0b0a09" font-family="Arial Black, Impact, sans-serif" font-size="88">001</text>
+  <text x="85" y="632" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="126">ΤΖΙΜΟΣ</text>
+  <text x="84" y="814" fill="#f4eadb" font-family="Arial Black, Impact, sans-serif" font-size="74">ΡΑΠ ΣΤΑ ΜΠΑΜ</text>
+</svg>
