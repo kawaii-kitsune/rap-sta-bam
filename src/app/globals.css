@@ -22,24 +22,8 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(214, 31, 23, 0.14), transparent 34rem),
-    linear-gradient(180deg, #0b0a09 0%, #120f0d 55%, #0b0a09 100%);
+  background: var(--background);
   color: var(--foreground);
-}
-
-body::before {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  pointer-events: none;
-  content: "";
-  opacity: 0.1;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 5px 5px, 7px 7px;
-  mix-blend-mode: screen;
 }
 
 a {
@@ -70,21 +54,6 @@ img {
   box-shadow: 10px 10px 0 #000;
 }
 
-.texture-panel {
-  position: relative;
-  overflow: hidden;
-}
-
-.texture-panel::after {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  opacity: 0.16;
-  background:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 4px),
-    radial-gradient(circle at 30% 20%, rgba(214, 31, 23, 0.26), transparent 18rem);
-}
 
 .clip-corner {
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
