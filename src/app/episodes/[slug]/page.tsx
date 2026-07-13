@@ -73,7 +73,7 @@ export default async function EpisodePage({ params }: Props) {
             <h1 className="display-font poster-title mt-3 text-[clamp(4rem,11vw,9rem)]">{episode.title}</h1>
             <p className="mt-4 text-xl font-bold">{episode.artistName}</p>
           </div>
-          <div className="relative aspect-video overflow-hidden border border-[var(--line)] bg-black hard-shadow">
+          <div className="relative aspect-video overflow-hidden border border-[var(--line)] bg-black shadow-[10px_10px_0_#000]">
             <Image src={episode.thumbnail} alt={`Thumbnail για ${episode.title}`} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
         </header>
@@ -83,16 +83,16 @@ export default async function EpisodePage({ params }: Props) {
             {live ? <VideoEmbed videoId={episode.youtubeVideoId} title={episode.title} /> : (
               <div className="grid gap-5 md:grid-cols-[minmax(220px,320px)_1fr] md:items-center">
                 <PromoTeaser compact />
-                <div className="border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Premiere locked</p>
+                <div className="border-y border-[var(--line)] py-5 sm:py-6">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Κλειδωμένο μέχρι την πρεμιέρα</p>
                   <h2 className="display-font mt-3 text-4xl leading-none">Το επεισόδιο ανοίγει στις {formatGreekDate(episode.publishedAt)}</h2>
-                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μπορείς να δεις το teaser και να κρατήσεις τη σελίδα για το πλήρες video, audio, clips και links της πρεμιέρας.</p>
+                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει το teaser. Το πλήρες video, το audio και τα links ανοίγουν μαζί με την πρεμιέρα.</p>
                 </div>
               </div>
             )}
 
             <section>
-              <SectionHeading title="Περιγραφή" />
+              <SectionHeading title="Η ιστορία" />
               <div className="prose-rsb max-w-3xl text-lg leading-8 text-[var(--muted)]">
                 {episode.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
@@ -100,7 +100,7 @@ export default async function EpisodePage({ params }: Props) {
 
             {episode.sessionFacts?.length ? (
               <section>
-                <SectionHeading eyebrow="Session" title="Facts από τη δημιουργία" copy="Τα βασικά στοιχεία της πρώτης session, από το format μέχρι την πρεμιέρα." />
+                <SectionHeading eyebrow="Σημειώσεις" title="Από το session" copy="Τα βασικά στοιχεία όπως τα κρατάμε στο αρχείο του επεισοδίου." />
                 <SessionFacts facts={episode.sessionFacts} />
               </section>
             ) : null}
@@ -108,17 +108,17 @@ export default async function EpisodePage({ params }: Props) {
 
             {live && (episode.youtubeUrl || episode.spotifyUrl) ? (
               <section>
-                <SectionHeading title="Τελικό κομμάτι" />
+                <SectionHeading title="Το κομμάτι" />
                 <SocialLinks links={socialLinks} />
               </section>
             ) : null}
 
             {episode.audio ? (
               <section>
-                <SectionHeading title="Ολόκληρο επεισόδιο" />
+                <SectionHeading title="Audio επεισοδίου" />
                 <div className="grid gap-3">
                   <Link href={`/episodes/${episode.slug}/listen`} className="inline-flex min-h-11 w-fit items-center border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
-                    Άνοιγμα dedicated audio page
+                    Άνοιγμα audio σελίδας
                   </Link>
                   <EpisodeAudioPlayer
                     src={audioHref}
@@ -133,7 +133,7 @@ export default async function EpisodePage({ params }: Props) {
 
             {live && episode.shortClips?.length ? (
               <section>
-                <SectionHeading title="Short clips" />
+                <SectionHeading title="Μικρά clips" />
                 <div className="grid gap-3 sm:grid-cols-2">
                   {episode.shortClips.map((clip) => (
                     isValidHttpUrl(clip.url) ? (
@@ -148,7 +148,7 @@ export default async function EpisodePage({ params }: Props) {
 
             {live && episode.instagramEmbeds?.length ? (
               <section>
-                <SectionHeading title="Instagram reels" />
+                <SectionHeading title="Reels" />
                 <div className="grid gap-5">
                   {episode.instagramEmbeds.map((embed) => (
                     isValidHttpUrl(embed.url) ? <InstagramEmbed key={embed.url} url={embed.url} /> : null
@@ -159,30 +159,30 @@ export default async function EpisodePage({ params }: Props) {
 
             {episode.gallery?.length ? (
               <section>
-                <SectionHeading eyebrow="Gallery" title="Μέσα στη session" copy="Στιγμές από το δωμάτιο, τη συζήτηση, το beatmaking και το performance." />
+                <SectionHeading eyebrow="Φωτογραφίες" title="Μέσα στο δωμάτιο" copy="Στιγμές από τη συζήτηση, το beatmaking και το performance χωρίς να χρειάζεται να μοιάζουν όλες ίδιες." />
                 <EpisodeGallery images={episode.gallery} title={episode.title} />
               </section>
             ) : null}
           </div>
 
-          <aside className="grid content-start gap-6">
+          <aside className="grid content-start gap-8 border-t border-[var(--line)] pt-6 lg:border-t-0 lg:pt-0">
             <section>
-              <h2 className="display-font mb-3 text-3xl">Credits</h2>
+              <h2 className="display-font mb-3 text-3xl">Συντελεστές</h2>
               <CreditsList credits={episode.credits} />
             </section>
             {episode.gear?.length ? (
               <section>
-                <h2 className="display-font mb-3 text-3xl">Equipment</h2>
+                <h2 className="display-font mb-3 text-3xl">Εξοπλισμός</h2>
                 <GearList gear={episode.gear} />
               </section>
             ) : null}
             <section>
-              <h2 className="display-font mb-3 text-3xl">Links</h2>
+              <h2 className="display-font mb-3 text-3xl">Links επεισοδίου</h2>
               <SocialLinks links={socialLinks} />
             </section>
             {artist ? (
               <section>
-                <h2 className="display-font mb-3 text-3xl">Related artist</h2>
+                <h2 className="display-font mb-3 text-3xl">Ο καλεσμένος</h2>
                 <ArtistCard artist={artist} />
               </section>
             ) : null}

@@ -58,7 +58,7 @@ export default async function ArtistPage({ params }: Props) {
           <Image src={artist.image} alt={`Πορτρέτο / placeholder για ${artist.name}`} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
         </div>
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">{artist.location ?? "Artist"}</p>
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">{artist.location ?? "Καλλιτέχνης"}</p>
           <h1 className="display-font poster-title mt-3 text-[clamp(4rem,12vw,10rem)]">{artist.name}</h1>
           <p className="mt-4 max-w-2xl text-xl font-bold leading-8">{artist.shortBio}</p>
           <div className="mt-6">

@@ -9,7 +9,7 @@ export function EpisodeGallery({ images, title }: { images?: string[]; title: st
 
   return (
     <div className="grid gap-4">
-      <div className="relative aspect-[16/10] overflow-hidden border border-[var(--line)] bg-black hard-shadow">
+      <div className="relative aspect-[16/10] overflow-hidden border border-[var(--line)] bg-black shadow-[10px_10px_0_#000]">
         <Image
           src={lead}
           alt={`Κεντρική behind the scenes εικόνα για ${title}`}
@@ -18,7 +18,7 @@ export function EpisodeGallery({ images, title }: { images?: string[]; title: st
           className="object-cover"
         />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--accent)]">Behind the scenes</p>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--accent)]">Μέσα στο δωμάτιο</p>
         </div>
       </div>
 
@@ -31,10 +31,10 @@ export function EpisodeGallery({ images, title }: { images?: string[]; title: st
               <div key={image} className={`relative overflow-hidden border border-[var(--line)] bg-black ${wide ? "sm:col-span-2" : ""}`}>
                 <Image
                   src={image}
-                  alt={`Behind the scenes εικόνα ${index + 2} για ${title}`}
+                  alt={`Μέσα στο δωμάτιο εικόνα ${index + 2} για ${title}`}
                   fill
                   sizes={wide ? "(min-width: 1024px) 40vw, 100vw" : "(min-width: 1024px) 20vw, 50vw"}
-                  className="object-cover grayscale transition duration-300 hover:scale-105 hover:grayscale-0"
+                  className="object-cover transition duration-300 hover:scale-105"
                 />
               </div>
             );

@@ -4,9 +4,9 @@ export function GearList({ gear }: { gear?: string[] }) {
   }
 
   return (
-    <ul className="flex flex-wrap gap-2">
+    <ul className="grid border-y border-[var(--line)]">
       {gear.map((item) => (
-        <li key={item} className="border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-sm font-bold text-[var(--muted)]">
+        <li key={item} className="border-b border-[var(--line)] py-3 text-sm font-bold text-[var(--muted)] last:border-b-0">
           {item}
         </li>
       ))}

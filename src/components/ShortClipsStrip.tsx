@@ -23,10 +23,10 @@ export function ShortClipsStrip() {
   return (
     <section className="border-b border-[var(--line)] py-14">
       <Container>
-        <SectionHeading eyebrow="Shorts" title="Κάθετα clips από τη session" copy="Τρία σύντομα αποσπάσματα από το πρώτο επεισόδιο, έτοιμα για γρήγορο preview πριν την πρεμιέρα." />
-        <div className="grid gap-5 sm:grid-cols-3">
+        <SectionHeading eyebrow="Αποσπάσματα" title="Κομμάτια από το δωμάτιο" copy="Μικρά clips από το πρώτο επεισόδιο: concept, sample, verse. Όχι trailer λογική, απλά στιγμές από τη διαδικασία." />
+        <div className="grid gap-4 sm:grid-cols-3">
           {clips.map((clip) => (
-            <article key={clip.src} className="border border-[var(--line)] bg-[var(--panel)]">
+            <article key={clip.src} className="border-y border-[var(--line)] bg-transparent">
               <video
                 className="aspect-[9/16] w-full bg-black object-cover"
                 src={clip.src}
@@ -35,8 +35,8 @@ export function ShortClipsStrip() {
                 playsInline
                 preload="metadata"
               />
-              <div className="border-t border-[var(--line)] p-4">
-                <h3 className="text-sm font-black uppercase tracking-[0.14em] text-[var(--foreground)]">{clip.title}</h3>
+              <div className="border-t border-[var(--line)] py-4">
+                <h3 className="text-base font-black text-[var(--foreground)]">{clip.title}</h3>
               </div>
             </article>
           ))}

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { ArtistCard } from "@/components/ArtistCard";
@@ -44,21 +43,21 @@ export default function HomePage() {
 
       <section className="border-b border-[var(--line)] py-14">
         <Container>
-          <SectionHeading eyebrow={latestIsLive ? "Τελευταίο επεισόδιο" : "Πρώτη πρεμιέρα"} title={latestIsLive ? "Η session που τρέχει τώρα" : "Το πρώτο επεισόδιο έρχεται"} copy={latestIsLive ? "Το πρώτο επεισόδιο συγκεντρώνει τη διαδικασία, το τελικό performance και τα βασικά links σε ένα σημείο." : "Η σελίδα είναι έτοιμη για την πρεμιέρα με video, audio, credits και υλικό από τη session μόλις ανοίξει η δημοσίευση."} />
-          <div className="grid gap-6 lg:grid-cols-[1.05fr_.95fr]">
-            <div>
+          <SectionHeading eyebrow={latestIsLive ? "Τώρα" : "Πρώτο επεισόδιο"} title={latestIsLive ? "Το session που ακούγεται τώρα" : "Το πρώτο session ανοίγει σύντομα"} copy={latestIsLive ? "Η ιστορία, η κουβέντα, το beatmaking και το τελικό performance μαζεμένα σε ένα επεισόδιο." : "Μέχρι την πρεμιέρα κρατάμε ανοιχτό το teaser και τη σελίδα του επεισοδίου. Το πλήρες audio και video ανοίγουν στην ημερομηνία τους."} />
+          <div className="grid gap-7 lg:grid-cols-[1.12fr_.88fr] lg:items-start">
+            <div className="-rotate-[.35deg]">
               <VideoEmbed videoId={latestEpisode.youtubeVideoId} title={latestEpisode.title} />
             </div>
-            <div className="border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6">
+            <div className="border-y border-[var(--line)] py-6 lg:py-8">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">#{String(latestEpisode.number).padStart(3, "0")} / {latestIsLive ? formatGreekDate(latestEpisode.publishedAt) : `Πρεμιέρα ${formatGreekDate(latestEpisode.publishedAt)}`}</p>
-              <h2 className="display-font mt-3 text-5xl leading-none">{latestEpisode.title}</h2>
+              <h2 className="display-font mt-3 text-5xl leading-none sm:text-6xl">{latestEpisode.title}</h2>
               <p className="mt-2 text-lg font-bold text-[var(--foreground)]">{latestEpisode.artistName}</p>
-              <p className="mt-4 leading-7 text-[var(--muted)]">{latestEpisode.excerpt}</p>
-              <div className="mt-5">
+              <p className="mt-5 max-w-xl leading-7 text-[var(--muted)]">{latestEpisode.excerpt}</p>
+              <div className="mt-6">
                 <SocialLinks links={latestLinks} />
               </div>
-              <Link href={`/episodes/${latestEpisode.slug}`} className="mt-6 inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black">
-                {latestIsLive ? "Πλήρες επεισόδιο" : "Σελίδα επεισοδίου"} <ArrowRight className="h-4 w-4" />
+              <Link href={`/episodes/${latestEpisode.slug}`} className="mt-7 inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black">
+                {latestIsLive ? "Άνοιξε το επεισόδιο" : "Πήγαινε στη σελίδα"} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -69,7 +68,7 @@ export default function HomePage() {
         <Container>
           <div className="grid gap-5 lg:grid-cols-[360px_1fr]">
             <div className="border border-[var(--accent)] bg-[var(--accent)] p-5 text-black">
-              <p className="text-xs font-black uppercase tracking-[0.18em]">Next release</p>
+              <p className="text-xs font-black uppercase tracking-[0.18em]">Πότε ανοίγει</p>
               {nextRelease ? (
                 <>
                   <p className="display-font mt-4 text-7xl leading-none">{nextRelease.label}</p>
@@ -96,42 +95,20 @@ export default function HomePage() {
 
       <section className="border-b border-[var(--line)] py-14">
         <Container>
-          <SectionHeading eyebrow="People" title="Συμμετέχοντες & συνεργάτες" copy="Οι άνθρωποι μπροστά και πίσω από τη session: rap, παραγωγή, εικόνα, ήχος και ταυτότητα." />
+          <SectionHeading eyebrow="Στο δωμάτιο" title="Ποιοι μπήκαν στο πρώτο session" copy="Ο καλεσμένος και οι άνθρωποι που κρατούν τον ήχο, την εικόνα, την παραγωγή και την ταυτότητα του project." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {featuredArtists.map((artist) => <ArtistCard key={artist.slug} artist={artist} />)}
           </div>
         </Container>
       </section>
 
-      <section className="border-b border-[var(--line)] py-14">
-        <Container>
-          <div className="grid gap-6 border border-[var(--line)] bg-[var(--panel)] p-6 md:grid-cols-[360px_1fr] md:items-center">
-            <div className="flex min-h-64 items-center justify-center bg-black p-8">
-              <Image src="/assets/logo/logo-white-red.png" alt="Λογότυπο Ραπ Στα Μπαμ" width={420} height={390} className="h-auto w-full max-w-72" />
-            </div>
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Logo appreciation</p>
-              <h2 className="display-font mt-2 text-5xl leading-none sm:text-6xl">Η ταυτότητα του Ραπ Στα Μπαμ</h2>
-              <p className="mt-4 max-w-3xl text-lg leading-8 text-[var(--muted)]">
-                Το logo του Ραπ Στα Μπαμ δίνει στο project την πρώτη του σφραγίδα: άμεσο, σκληρό, αναγνωρίσιμο και φτιαγμένο για να στέκεται δίπλα στη μουσική.
-              </p>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-[var(--muted)]">
-                Ευχαριστούμε το Ego Designs / Αντώνης Ντοβίνος για τη σημαντική προσφορά του στη μοναδική ταυτότητα του project.
-              </p>
-              <a href="https://www.behance.net/dovi_made_this" target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center border border-[var(--accent)] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
-                Ego Designs Behance
-              </a>
-            </div>
-          </div>
-        </Container>
-      </section>
 
       <ContactSection />
 
       <section className="bg-[var(--accent)] py-14 text-black">
         <Container>
           <p className="display-font max-w-6xl text-[clamp(2.7rem,8vw,7rem)] leading-[0.9]">
-            Δεν μας ενδιαφέρει μόνο το τελικό κομμάτι. Μας ενδιαφέρει η ιστορία του rapper και η DIY διαδικασία: οι ιδέες, οι γνώμες στο δωμάτιο, τα λάθη, η ενέργεια και όλα όσα συμβαίνουν μέχρι ένα beat να γίνει κουπλέ.
+            Δεν κυνηγάμε μόνο το τελικό κομμάτι. Καλούμε rappers να μας αφηγηθούν την ιστορία τους και κρατάμε τη DIY διαδικασία όπως συμβαίνει: ιδέες, γνώμες στο δωμάτιο, λάθη, ενέργεια και όλα όσα χρειάζονται μέχρι ένα beat να γίνει κουπλέ.
           </p>
         </Container>
       </section>

@@ -45,7 +45,7 @@ export function Hero({ latestEpisode, isLive }: { latestEpisode: Episode; isLive
               ΡΑΠ ΣΤΑ ΜΠΑΜ
             </h1>
             <p className="mt-5 max-w-2xl text-xl font-semibold leading-8 text-[var(--foreground)] sm:text-2xl">
-              Καλούμε rappers να πουν την ιστορία τους και να χτίσουμε μαζί beat, κουπλέ και recording σε μία session.
+              Καλούμε rappers να πουν την ιστορία τους και να χτίσουμε μαζί beat, κουπλέ και recording σε ένα session.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={`/episodes/${latestEpisode.slug}`} className="inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black transition hover:bg-[var(--foreground)]">

@@ -150,7 +150,7 @@ export function ParticipationForm() {
 
       {state === "success" ? (
         <div role="status" className="border border-[var(--accent)] bg-black p-4 text-sm font-bold text-[var(--foreground)]">
-          {formConfigured ? "Η φόρμα στάλθηκε. Θα επικοινωνήσουμε αν υπάρχει κατάλληλη session." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή αίτησης</a>}
+          {formConfigured ? "Η φόρμα στάλθηκε. Θα επικοινωνήσουμε αν υπάρχει κατάλληλο session." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή αίτησης</a>}
         </div>
       ) : null}
       {state === "error" ? <div role="alert" className="border border-red-500 bg-black p-4 text-sm font-bold text-red-200">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}

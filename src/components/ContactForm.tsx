@@ -129,7 +129,7 @@ export function ContactForm() {
 
       {state === "success" ? (
         <div role="status" className="border border-[var(--accent)] bg-black p-4 text-sm font-bold text-[var(--foreground)]">
-          {formConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email draft για αποστολή μηνύματος</a>}
+          {formConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή μηνύματος</a>}
         </div>
       ) : null}
       {state === "error" ? <div role="alert" className="border border-red-500 bg-black p-4 text-sm font-bold text-red-200">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}

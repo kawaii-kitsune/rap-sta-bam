@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Ραπ Στα Μπαμ",
   shortName: "ΡΣΜ",
   description:
-    "Ανεξάρτητη DIY μουσική σειρά από το Ηράκλειο Κρήτης όπου rappers αφηγούνται την ιστορία τους και χτίζουν beat, κουπλέ και recording σε μία session.",
+    "Ανεξάρτητη DIY μουσική σειρά από το Ηράκλειο Κρήτης όπου rappers αφηγούνται την ιστορία τους και χτίζουν beat, κουπλέ και recording σε ένα session.",
   baseUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://rap-sta-bam.vercel.app").replace(/\/$/, ""),
   defaultOgImage: "/assets/logo/logo-black-red.png",
   location: "Ηράκλειο Κρήτης",

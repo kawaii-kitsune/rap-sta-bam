@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
   title: "Επεισόδια",
-  description: "Το archive όλων των επεισοδίων του Ραπ Στα Μπαμ.",
+  description: "Το αρχείο όλων των επεισοδίων του Ραπ Στα Μπαμ.",
   path: "/episodes"
 });
 
@@ -18,7 +18,7 @@ export default function EpisodesPage() {
   return (
     <Container className="py-10">
       <Breadcrumbs items={[{ label: "Επεισόδια" }]} />
-      <SectionHeading eyebrow="Archive" title="Όλα τα επεισόδια" copy="Δημοσιευμένες sessions και upcoming καταχωρήσεις με υλικό, credits και links σε ένα σημείο." />
+      <SectionHeading eyebrow="Αρχείο" title="Όλα τα επεισόδια" copy="Όσα έχουν ανοίξει και όσα έρχονται, με υλικό, συντελεστές και links σε ένα σημείο." />
       <EpisodeFilter episodes={episodes} />
     </Container>
   );
