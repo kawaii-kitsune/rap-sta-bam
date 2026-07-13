@@ -7,7 +7,6 @@ import { CountdownTimer } from "@/components/CountdownTimer";
 import { Hero } from "@/components/Hero";
 import { PromoTeaser } from "@/components/PromoTeaser";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ShortClipsStrip } from "@/components/ShortClipsStrip";
 import { SocialLinks } from "@/components/SocialLinks";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { releaseCadence, releaseSchedule } from "@/config/site";
@@ -38,8 +37,6 @@ export default function HomePage() {
       <Hero latestEpisode={latestEpisode} isLive={latestIsLive} />
 
       <PromoTeaser />
-
-      <ShortClipsStrip />
 
       <section className="border-b border-[var(--line)] py-14">
         <Container>
