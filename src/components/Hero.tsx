@@ -41,10 +41,8 @@ export function Hero({ latestEpisode, isLive }: { latestEpisode: Episode; isLive
 
         <div className="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-end">
           <div>
-            <h1 className="display-font poster-title max-w-5xl text-[clamp(5rem,18vw,15rem)] text-[var(--foreground)] drop-shadow-[8px_8px_0_#000]">
-              ΡΑΠ ΣΤΑ ΜΠΑΜ
-            </h1>
-            <p className="mt-5 max-w-2xl text-xl font-semibold leading-8 text-[var(--foreground)] sm:text-2xl">
+            <h1 className="sr-only">Ραπ Στα Μπαμ</h1>
+            <p className="max-w-2xl text-2xl font-semibold leading-9 text-[var(--foreground)] sm:text-3xl">
               Καλούμε rappers να πουν την ιστορία τους και να χτίσουμε μαζί beat, κουπλέ και recording σε ένα session.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
