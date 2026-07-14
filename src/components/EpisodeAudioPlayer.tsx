@@ -193,7 +193,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
           <Lock className="mt-1 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
           <div>
             <p className="font-bold text-[var(--foreground)]">Το πλήρες audio είναι κλειδωμένο</p>
-            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Το αρχείο υπάρχει ήδη, αλλά δεν είναι ακόμη προσβάσιμο.</p>
+            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Τότε θα είναι διαθέσιμα ο player, τα synced captions και η ξεχωριστή listen page.</p>
           </div>
         </div>
       </div>

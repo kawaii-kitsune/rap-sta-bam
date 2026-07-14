@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarClock, Captions, Headphones, PlaySquare } from "lucide-react";
 import { ArtistCard } from "@/components/ArtistCard";
 import { EpisodeAudioPlayer } from "@/components/EpisodeAudioPlayer";
 import { EpisodeGallery } from "@/components/EpisodeGallery";
@@ -86,7 +87,13 @@ export default async function EpisodePage({ params }: Props) {
                 <div className="border-y border-[var(--line)] py-5 sm:py-6">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Κλειδωμένο μέχρι την πρεμιέρα</p>
                   <h2 className="display-font mt-3 text-4xl leading-none">Το επεισόδιο ανοίγει στις {formatGreekDate(episode.publishedAt)}</h2>
-                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει το teaser. Το πλήρες video, το audio και τα links ανοίγουν μαζί με την πρεμιέρα.</p>
+                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει διαθέσιμο μόνο το teaser. Στην πρεμιέρα ανοίγουν όλα τα βασικά κομμάτια του επεισοδίου.</p>
+                  <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                    <UnlockItem icon={<PlaySquare className="h-4 w-4" />} label="Full YouTube episode" />
+                    <UnlockItem icon={<Headphones className="h-4 w-4" />} label="Audio player" />
+                    <UnlockItem icon={<Captions className="h-4 w-4" />} label="Captions / listen page" />
+                    <UnlockItem icon={<CalendarClock className="h-4 w-4" />} label={`Πρεμιέρα ${formatGreekDate(episode.publishedAt)}`} />
+                  </div>
                 </div>
               </div>
             )}
@@ -203,5 +210,15 @@ export default async function EpisodePage({ params }: Props) {
         </nav>
       </article>
     </Container>
+  );
+}
+
+
+function UnlockItem({ icon, label }: { icon: ReactNode; label: string }) {
+  return (
+    <div className="flex min-h-11 items-center gap-2 border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-sm font-bold text-[var(--foreground)]">
+      <span className="text-[var(--accent)]" aria-hidden="true">{icon}</span>
+      <span>{label}</span>
+    </div>
   );
 }
