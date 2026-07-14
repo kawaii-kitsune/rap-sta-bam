@@ -1,6 +1,7 @@
 "use client";
 
-import { type ChangeEvent, type FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { type ChangeEvent, type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 import { Loader2, Lock, Pause, Play, Music2 } from "lucide-react";
 import { formatGreekDate, isReleased } from "@/lib/content";
 
@@ -22,6 +23,10 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const seekingRef = useRef(false);
+  const playTrackedRef = useRef(false);
+  const thirtySecondsTrackedRef = useRef(false);
+  const halfwayTrackedRef = useRef(false);
+  const completeTrackedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
@@ -34,6 +39,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
   const timeLabel = useMemo(() => `${formatTime(currentTime)} / ${formatTime(duration)}`, [currentTime, duration]);
   const activeCaption = useMemo(() => findActiveCaption(captions, currentTime), [captions, currentTime]);
+  const analyticsProperties = useMemo(() => ({ audio: label, source: src }), [label, src]);
 
   useEffect(() => {
     if (!released || !captionsSrc) {
@@ -68,13 +74,33 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     };
   }, [captionsSrc, released]);
 
+  const trackProgressMilestones = useCallback((nextTime: number, nextDuration: number) => {
+    if (!Number.isFinite(nextTime)) {
+      return;
+    }
+
+    if (nextTime >= 30 && !thirtySecondsTrackedRef.current) {
+      track("audio_30_seconds", analyticsProperties);
+      thirtySecondsTrackedRef.current = true;
+    }
+
+    if (Number.isFinite(nextDuration) && nextDuration > 0 && nextTime >= nextDuration * 0.5 && !halfwayTrackedRef.current) {
+      track("audio_50_percent", analyticsProperties);
+      halfwayTrackedRef.current = true;
+    }
+  }, [analyticsProperties]);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !released) {
       return;
     }
 
-    const syncTime = () => setCurrentTime(audio.currentTime || 0);
+    const syncTime = () => {
+      const nextTime = audio.currentTime || 0;
+      setCurrentTime(nextTime);
+      trackProgressMilestones(nextTime, audio.duration || 0);
+    };
     const stopAnimation = () => {
       if (animationRef.current !== null) {
         window.cancelAnimationFrame(animationRef.current);
@@ -99,6 +125,10 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
       syncTime();
     };
     const onPlay = () => {
+      if (!playTrackedRef.current) {
+        track("audio_play", analyticsProperties);
+        playTrackedRef.current = true;
+      }
       setIsPlaying(true);
       startAnimation();
     };
@@ -114,6 +144,10 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     };
     const onEnded = () => {
       stopAnimation();
+      if (!completeTrackedRef.current) {
+        track("audio_complete", analyticsProperties);
+        completeTrackedRef.current = true;
+      }
       setIsPlaying(false);
       setCurrentTime(audio.duration || 0);
     };
@@ -146,7 +180,8 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
       audio.removeEventListener("playing", onPlaying);
       audio.removeEventListener("ended", onEnded);
     };
-  }, [released]);
+  }, [analyticsProperties, released, trackProgressMilestones]);
+
 
   function togglePlay() {
     const audio = audioRef.current;

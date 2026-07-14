@@ -10,6 +10,7 @@
     "check:content": "node scripts/check-content.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
