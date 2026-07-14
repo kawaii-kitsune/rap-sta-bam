@@ -62,9 +62,12 @@ export type Episode = {
   featured?: boolean;
 };
 
+export type ArtistKind = "guest" | "team";
+
 export type Artist = {
   slug: string;
   name: string;
+  kind?: ArtistKind;
   image: string;
   location?: string;
   shortBio: string;

@@ -47,12 +47,20 @@ export function getFeaturedArtists(): Artist[] {
   return getAllArtists().filter((artist) => artist.featured);
 }
 
+export function getGuestArtists(): Artist[] {
+  return getAllArtists().filter((artist) => (artist.kind ?? "guest") === "guest");
+}
+
+export function getTeamArtists(): Artist[] {
+  return getAllArtists().filter((artist) => artist.kind === "team");
+}
+
 export function getArtistBySlug(slug: string): Artist | undefined {
   return artists.find((artist) => artist.slug === slug);
 }
 
 export function getEpisodesByArtist(artistSlug: string): Episode[] {
-  return getVisibleEpisodes().filter((episode) => episode.artistSlug === artistSlug);
+  return getVisibleEpisodes().filter((episode) => episode.artistSlug === artistSlug || episode.credits.some((credit) => credit.artistSlug === artistSlug));
 }
 
 export function formatGreekDate(date: string): string {

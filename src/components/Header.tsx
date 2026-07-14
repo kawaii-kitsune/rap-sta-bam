@@ -9,7 +9,7 @@ import { MobileMenu } from "@/components/MobileMenu";
 const navItems = [
   { href: "/", label: "Αρχική" },
   { href: "/episodes", label: "Επεισόδια" },
-  { href: "/artists", label: "Καλλιτέχνες" },
+  { href: "/artists", label: "Πρόσωπα" },
   { href: "/about", label: "Σχετικά" },
   { href: "/#contact", label: "Επικοινωνία" }
 ];

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const artist = getArtistBySlug(slug);
 
   if (!artist) {
-    return createMetadata({ title: "Δεν βρέθηκε καλλιτέχνης" });
+    return createMetadata({ title: "Δεν βρέθηκε πρόσωπο" });
   }
 
   return createMetadata({
@@ -52,13 +52,14 @@ export default async function ArtistPage({ params }: Props) {
 
   return (
     <Container className="py-10">
-      <Breadcrumbs items={[{ href: "/artists", label: "Καλλιτέχνες" }, { label: artist.name }]} />
+      <Breadcrumbs items={[{ href: "/artists", label: "Πρόσωπα" }, { label: artist.name }]} />
       <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
-        <div className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-black hard-shadow">
+        <div className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-black">
           <Image src={artist.image} alt={`Πορτρέτο / placeholder για ${artist.name}`} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
         </div>
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">{artist.location ?? "Καλλιτέχνης"}</p>
+          <p className="meta-font text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">{artist.kind === "team" ? "Team / συντελεστής" : "Καλεσμένος / artist"}</p>
+          {artist.location ? <p className="mt-2 text-sm text-[var(--dim)]">{artist.location}</p> : null}
           <h1 className="display-font poster-title mt-3 text-[clamp(4rem,12vw,10rem)]">{artist.name}</h1>
           <p className="mt-4 max-w-2xl text-xl font-bold leading-8">{artist.shortBio}</p>
           <div className="mt-6">
@@ -68,18 +69,20 @@ export default async function ArtistPage({ params }: Props) {
       </div>
 
       <section className="mt-14">
-        <SectionHeading title="Bio" />
+        <SectionHeading title={artist.kind === "team" ? "Ρόλος" : "Bio"} />
         <div className="prose-rsb max-w-3xl text-lg leading-8 text-[var(--muted)]">
           {artist.bio.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </section>
 
-      <section className="mt-14">
-        <SectionHeading title="Σχετικά επεισόδια" />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {episodes.map((episode) => <EpisodeCard key={episode.slug} episode={episode} />)}
-        </div>
-      </section>
+      {episodes.length ? (
+        <section className="mt-14">
+          <SectionHeading title={artist.kind === "team" ? "Συμμετοχές / credits" : "Σχετικά επεισόδια"} />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {episodes.map((episode) => <EpisodeCard key={episode.slug} episode={episode} />)}
+          </div>
+        </section>
+      ) : null}
     </Container>
   );
 }

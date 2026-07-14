@@ -90,7 +90,7 @@ export default function HomePage() {
 
       <section className="border-b border-[var(--line)] py-16">
         <Container>
-          <SectionHeading eyebrow="Στο δωμάτιο" title="Οι άνθρωποι του πρώτου session" copy="Όχι cast list για να γεμίσει η σελίδα. Οι βασικοί άνθρωποι που ακούγονται ή φαίνονται στο πρώτο επεισόδιο." />
+          <SectionHeading eyebrow="Στο δωμάτιο" title="Καλεσμένος και team" copy="Ο Τζίμος είναι ο καλεσμένος artist του #001. Οι υπόλοιποι είναι οι άνθρωποι της παραγωγής, της εικόνας, του ήχου και της ταυτότητας." />
           <div className="border-y border-[var(--line)]">
             {featuredArtists.map((artist) => (
               <Link key={artist.slug} href={`/artists/${artist.slug}`} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[96px_1fr] sm:items-center">
@@ -98,7 +98,7 @@ export default function HomePage() {
                   <Image src={artist.image} alt={artist.name} fill sizes="96px" className="object-cover grayscale" />
                 </div>
                 <div>
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--accent)]">{artist.location ?? "Καλλιτέχνης"}</p>
+                  <p className="meta-font text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--accent)]">{artist.kind === "team" ? "Team" : "Καλεσμένος"}</p>
                   <h3 className="display-font mt-1 text-3xl leading-none">{artist.name}</h3>
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]">{artist.shortBio}</p>
                 </div>

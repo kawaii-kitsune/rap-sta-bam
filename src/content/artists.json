@@ -13,7 +13,8 @@
     "instagramUrl": "https://www.instagram.com/tzimos_msk",
     "tiktokUrl": "https://www.tiktok.com/@tzimos_msk",
     "spotifyUrl": "https://open.spotify.com/artist/3jpMSsecieLfKc5oOTfYIQ",
-    "featured": true
+    "featured": true,
+    "kind": "guest"
   },
   {
     "slug": "phone-memo",
@@ -29,7 +30,8 @@
     "featured": true,
     "spotifyUrl": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
     "instagramUrl": "https://www.instagram.com/phone_memo_the.anartist/",
-    "youtubeUrl": "https://www.youtube.com/@phonememo_the.anartist"
+    "youtubeUrl": "https://www.youtube.com/@phonememo_the.anartist",
+    "kind": "team"
   },
   {
     "slug": "le-snipe-vfx",
@@ -44,7 +46,8 @@
     "instagramUrl": "https://www.instagram.com/lesnipe.vfx",
     "tiktokUrl": "https://www.tiktok.com/@lesnipe_vfx",
     "youtubeUrl": "https://www.lesnipevfx.com/",
-    "featured": true
+    "featured": true,
+    "kind": "team"
   },
   {
     "slug": "redemption-studio",
@@ -57,6 +60,7 @@
       "Η συμβολή του βρίσκεται στο τελευταίο αλλά κρίσιμο στάδιο: εκεί που τα takes, το beat και η ενέργεια του session γίνονται ολοκληρωμένο άκουσμα."
     ],
     "instagramUrl": "https://www.instagram.com/dimitristsekeris",
-    "featured": true
+    "featured": true,
+    "kind": "team"
   }
 ]

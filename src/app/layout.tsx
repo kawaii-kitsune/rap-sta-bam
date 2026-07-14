@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, Roboto_Condensed } from "next/font/google";
+import { IBM_Plex_Sans, JetBrains_Mono, Roboto_Condensed } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -16,6 +16,12 @@ const body = IBM_Plex_Sans({
   subsets: ["latin", "greek"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body"
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin", "greek"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono"
 });
 
 export const metadata: Metadata = {
@@ -53,7 +59,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="el" className={`${display.variable} ${body.variable}`}>
+    <html lang="el" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="font-[var(--font-body)] antialiased">
         <Script
           id="project-json-ld"
