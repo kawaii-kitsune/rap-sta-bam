@@ -32,9 +32,9 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero latestEpisode={latestEpisode} isLive={latestIsLive} />
+      <Hero latestEpisode={latestEpisode} />
 
-      <section className="border-b border-[var(--line)] py-16">
+      <section id="first-episode" className="scroll-mt-24 border-b border-[var(--line)] py-16">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
             <div>
