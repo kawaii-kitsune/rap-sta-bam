@@ -1,5 +1,7 @@
-import { readFile, stat } from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { stat } from "node:fs/promises";
 import path from "node:path";
+import { Readable } from "node:stream";
 import { NextResponse } from "next/server";
 import { getEpisodeBySlug, isReleased } from "@/lib/content";
 
@@ -28,6 +30,7 @@ export async function GET(request: Request, { params }: RouteContext) {
     const fileStat = await stat(audioPath);
     const range = request.headers.get("range");
     const contentType = episode.audio.mimeType ?? "audio/mpeg";
+    const filename = path.basename(episode.audio.file);
 
     if (range) {
       const match = /^bytes=(\d*)-(\d*)$/.exec(range);
@@ -46,30 +49,29 @@ export async function GET(request: Request, { params }: RouteContext) {
         });
       }
 
-      const buffer = await readFile(audioPath);
-      const chunk = buffer.subarray(start, end + 1);
+      const stream = Readable.toWeb(createReadStream(audioPath, { start, end })) as ReadableStream;
 
-      return new NextResponse(chunk, {
+      return new NextResponse(stream, {
         status: 206,
         headers: {
           "Content-Type": contentType,
-          "Content-Length": String(chunk.byteLength),
+          "Content-Length": String(end - start + 1),
           "Content-Range": `bytes ${start}-${end}/${fileStat.size}`,
           "Accept-Ranges": "bytes",
-          "Content-Disposition": `inline; filename="${episode.slug}.mp3"`,
+          "Content-Disposition": `inline; filename="${filename}"`,
           "Cache-Control": "public, max-age=3600, must-revalidate"
         }
       });
     }
 
-    const buffer = await readFile(audioPath);
+    const stream = Readable.toWeb(createReadStream(audioPath)) as ReadableStream;
 
-    return new NextResponse(buffer, {
+    return new NextResponse(stream, {
       headers: {
         "Content-Type": contentType,
-        "Content-Length": String(buffer.byteLength),
+        "Content-Length": String(fileStat.size),
         "Accept-Ranges": "bytes",
-        "Content-Disposition": `inline; filename="${episode.slug}.mp3"`,
+        "Content-Disposition": `inline; filename="${filename}"`,
         "Cache-Control": "public, max-age=3600, must-revalidate"
       }
     });
