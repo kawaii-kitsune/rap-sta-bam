@@ -19,7 +19,6 @@ export function Footer() {
         <div>
           <Image src="/assets/logo/logo-white-red.png" alt={siteConfig.name} width={160} height={149} className="h-20 w-auto" />
           <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--muted)]">{siteConfig.description}</p>
-          <p className="mt-4 text-sm font-bold text-[var(--accent)]">{siteConfig.credits}</p>
         </div>
         <nav aria-label="Πλοήγηση footer" className="grid gap-2 text-sm font-bold text-[var(--muted)]">
           {footerLinks.map((link) => (
@@ -30,7 +29,7 @@ export function Footer() {
         </nav>
         <div>
           <SocialLinks links={projectSocialLinks} iconOnly />
-          <p className="mt-5 text-xs text-[var(--dim)]">© {new Date().getFullYear()} {siteConfig.name}</p>
+          <p className="mt-5 text-xs text-[var(--dim)]">© 2026 {siteConfig.name}</p>
         </div>
       </Container>
     </footer>

@@ -10,7 +10,6 @@ export const siteConfig = {
   location: "Ηράκλειο Κρήτης",
   owner: "Phone Memo",
   contactEmail: "straightjacker01@gmail.com",
-  credits: "Made independently in Heraklion, Crete",
   socials: {
     youtube: "https://www.youtube.com/@phonememo_the.anartist",
     tiktok: "https://www.tiktok.com/@phonememo",
