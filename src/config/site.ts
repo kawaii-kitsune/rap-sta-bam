@@ -10,6 +10,16 @@ export const siteConfig = {
   location: "Ηράκλειο Κρήτης",
   owner: "Phone Memo",
   contactEmail: "straightjacker01@gmail.com",
+  googleContactForm: {
+    viewUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd6RH3wrJZWgAjx0exMyOYN7_qpCnKKfHAGiTEpjJ9YP3hasw/viewform?usp=publish-editor",
+    actionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSd6RH3wrJZWgAjx0exMyOYN7_qpCnKKfHAGiTEpjJ9YP3hasw/formResponse",
+    fields: {
+      email: "emailAddress",
+      name: "entry.851724991",
+      topic: "entry.860859353",
+      message: "entry.1183695994"
+    }
+  },
   socials: {
     youtube: "https://www.youtube.com/@phonememo_the.anartist",
     tiktok: "https://www.tiktok.com/@phonememo",

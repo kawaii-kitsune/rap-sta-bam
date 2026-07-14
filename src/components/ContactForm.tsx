@@ -23,6 +23,8 @@ export function ContactForm() {
   const [mailto, setMailto] = useState("");
 
   const formConfigured = Boolean(endpoint);
+  const googleForm = siteConfig.googleContactForm;
+  const googleFormConfigured = Boolean(googleForm.actionUrl);
   const contactEmail = siteConfig.contactEmail.trim();
   const canUseMailto = Boolean(contactEmail);
 
@@ -51,6 +53,33 @@ export function ContactForm() {
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
+      return;
+    }
+
+    if (!formConfigured && googleFormConfigured) {
+      setState("submitting");
+
+      try {
+        const payload = new URLSearchParams();
+        payload.set(googleForm.fields.email, String(data.get("email") ?? ""));
+        payload.set(googleForm.fields.name, String(data.get("name") ?? ""));
+        payload.set(googleForm.fields.topic, String(data.get("topic") || "Γενική ερώτηση"));
+        payload.set(googleForm.fields.message, String(data.get("message") ?? ""));
+        payload.set("fvv", "1");
+        payload.set("pageHistory", "0");
+
+        await fetch(googleForm.actionUrl, {
+          method: "POST",
+          mode: "no-cors",
+          body: payload
+        });
+
+        form.reset();
+        setState("success");
+      } catch {
+        setState("error");
+      }
+
       return;
     }
 
@@ -129,7 +158,7 @@ export function ContactForm() {
 
       {state === "success" ? (
         <div role="status" className="border border-[var(--accent)] bg-black p-4 text-sm font-bold text-[var(--foreground)]">
-          {formConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή μηνύματος</a>}
+          {formConfigured || googleFormConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή μηνύματος</a>}
         </div>
       ) : null}
       {state === "error" ? <div role="alert" className="border border-red-500 bg-black p-4 text-sm font-bold text-red-200">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}
