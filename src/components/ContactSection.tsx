@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ExternalLink, Mail } from "lucide-react";
 import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
@@ -31,7 +30,7 @@ export function ContactSection() {
                 </a>
               ) : (
                 <p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
-                  Δημόσιο inbox δεν έχει οριστεί ακόμα. Αν χρειάζεται άμεση επαφή, στείλε DM στα social links ή χρησιμοποίησε τη φόρμα συμμετοχής.
+                  Δημόσιο inbox δεν έχει οριστεί ακόμα. Αν χρειάζεται άμεση επαφή, στείλε DM στα social links ή χρησιμοποίησε τη φόρμα επικοινωνίας.
                 </p>
               )}
             </div>
@@ -56,10 +55,7 @@ export function ContactSection() {
 
             <div className="py-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Συμμετοχή</p>
-              <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Αν θέλεις να μπεις σε επεισόδιο, η φόρμα συμμετοχής είναι το πιο γρήγορο σημείο εκκίνησης.</p>
-              <Link href="/participate" className="mt-4 inline-flex min-h-11 items-center border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
-                Δήλωσε συμμετοχή
-              </Link>
+              <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Οι δηλώσεις συμμετοχής δεν είναι ανοιχτές ακόμα. Προς το παρόν δεχόμαστε μόνο γενικά μηνύματα και συνεργασίες από τη φόρμα επικοινωνίας.</p>
             </div>
           </div>
 

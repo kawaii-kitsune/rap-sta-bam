@@ -40,9 +40,9 @@ export function PromoTeaser({ compact = false }: { compact?: boolean }) {
               <Link href="/episodes/001-tzimos" className="inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black transition hover:bg-[var(--foreground)]">
                 Άνοιξε το επεισόδιο <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link href="/participate" className="inline-flex min-h-12 items-center border border-[var(--line)] px-5 py-3 font-black text-[var(--foreground)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]">
-                Έλα σε επόμενο session
-              </Link>
+              <span className="inline-flex min-h-12 items-center border border-[var(--line)] px-5 py-3 font-black text-[var(--dim)]">
+                Δηλώσεις σύντομα
+              </span>
             </div>
           </div>
         </div>
