@@ -156,6 +156,10 @@ export function ContactForm() {
         {state === "submitting" ? "Αποστολή..." : "Αποστολή μηνύματος"}
       </button>
 
+      <p className="text-xs leading-5 text-[var(--dim)]">
+        Τα στοιχεία χρησιμοποιούνται μόνο για επικοινωνία σχετικά με το μήνυμά σου και αποθηκεύονται στις απαντήσεις του Google Form.
+      </p>
+
       {state === "success" ? (
         <div role="status" className="border border-[var(--accent)] bg-black p-4 text-sm font-bold text-[var(--foreground)]">
           {formConfigured || googleFormConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή μηνύματος</a>}
