@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowUpRight, Disc3, ExternalLink, Music2, ShoppingBag } from "lucide-react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
@@ -35,9 +36,14 @@ export default function ProductsPage() {
 
           {featured ? (
             <section className="mt-8 border-y border-[var(--line)] px-4 py-6 sm:px-5">
-              <div className="grid gap-6 md:grid-cols-[1fr_220px] md:items-end">
+              <div className="grid gap-6 md:grid-cols-[180px_1fr_220px] md:items-end">
+                {featured.image ? (
+                  <div className="relative aspect-square overflow-hidden border border-[var(--line)] bg-black md:self-start">
+                    <Image src={featured.image} alt={`${featured.title} cover`} fill sizes="180px" className="object-cover" priority />
+                  </div>
+                ) : null}
                 <div>
-                  <span className={`inline-flex min-h-8 items-center px-3 text-xs font-black uppercase tracking-[0.16em] ${platformTone(featured.platform)}`}>
+                  <span className={`${platformTone(featured.platform)}`}>
                     {featured.platform}
                   </span>
                   <h2 className="display-font mt-5 text-5xl leading-none sm:text-7xl">{featured.title}</h2>
@@ -60,8 +66,16 @@ export default function ProductsPage() {
             <SectionHeading eyebrow="Buy / support" title="Bandcamp / ElasticStage" copy="Direct product and support links for people who want to buy or support the releases." />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {otherProducts.map((product, index) => (
-                <article key={product.slug} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
-                  <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
+                <article key={product.slug} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[4.5rem_1fr_auto] sm:items-center">
+                  <div className="grid grid-cols-[4rem_1fr] gap-4 sm:contents">
+                    {product.image ? (
+                      <div className="relative aspect-square overflow-hidden border border-[var(--line)] bg-black sm:w-16">
+                        <Image src={product.image} alt={`${product.title} cover`} fill sizes="64px" className="object-cover" />
+                      </div>
+                    ) : (
+                      <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
+                    )}
+                  </div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className={`inline-flex min-h-7 items-center px-2 text-[0.68rem] font-black uppercase tracking-[0.14em] ${platformTone(product.platform)}`}>
@@ -90,8 +104,16 @@ export default function ProductsPage() {
             <SectionHeading eyebrow="Listen" title="Spotify releases" copy="Current releases listed on the Phone Memo Spotify artist page." />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {spotifyReleases.map((release, index) => (
-                <article key={release.url} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
-                  <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
+                <article key={release.url} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[4.5rem_1fr_auto] sm:items-center">
+                  <div className="grid grid-cols-[4rem_1fr] gap-4 sm:contents">
+                    {release.image ? (
+                      <div className="relative aspect-square overflow-hidden border border-[var(--line)] bg-black sm:w-16">
+                        <Image src={release.image} alt={`${release.title} cover`} fill sizes="64px" className="object-cover" />
+                      </div>
+                    ) : (
+                      <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
+                    )}
+                  </div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="rsb-chip rsb-chip-spotify">Spotify</span>

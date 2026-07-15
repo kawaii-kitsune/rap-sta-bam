@@ -7,6 +7,7 @@ export const products: Product[] = [
     artist: "Phone Memo",
     platform: "ElasticStage",
     url: "https://elasticstage.com/soundcloud/releases/phone-memo-97-album",
+    image: "/assets/products/97-album.jpg",
     format: "Physical / on-demand release",
     description: "A dedicated product release page for Phone Memo's 97 Album through ElasticStage.",
     featured: true
@@ -17,6 +18,7 @@ export const products: Product[] = [
     artist: "Phone Memo",
     platform: "Bandcamp",
     url: "https://deectivamusic.bandcamp.com/album/phone-memo-two-sides-of-a-coin",
+    image: "/assets/products/two-sides-of-a-coin.png",
     format: "Digital album",
     description: "A Deectiva Music Bandcamp release from Phone Memo, linked as an external album product."
   },
@@ -26,6 +28,7 @@ export const products: Product[] = [
     artist: "Phone Memo",
     platform: "Bandcamp",
     url: "https://phonememo.bandcamp.com/album/beats-from-scratch",
+    image: "/assets/products/beats-from-scratch.jpg",
     releaseDate: "Aug 2024",
     format: "Digital album",
     description: "A Phone Memo beat release hosted on Bandcamp."
@@ -36,6 +39,7 @@ export const products: Product[] = [
     artist: "Phone Memo",
     platform: "Bandcamp",
     url: "https://phonememo.bandcamp.com/album/the-anartist-vol-2",
+    image: "/assets/products/the-anartist-vol-2.jpg",
     releaseDate: "Dec 2020",
     format: "Digital album",
     description: "A Phone Memo Bandcamp release from the Anartist series."
@@ -46,6 +50,7 @@ export const products: Product[] = [
     artist: "Mosek and Phone Memo",
     platform: "Bandcamp",
     url: "https://phonememo.bandcamp.com/album/mosek-phone-memo-analog",
+    image: "/assets/products/analog.png",
     releaseDate: "Dec 2020",
     format: "Digital album",
     description: "A collaborative instrumental release by Mosek and Phone Memo, available on Bandcamp."
@@ -64,31 +69,36 @@ export const spotifyReleases: SpotifyRelease[] = [
     title: "Forgotten In Time",
     kind: "Album",
     year: "2022",
-    url: "https://open.spotify.com/album/6tpw0OAlkWAJAir9bXtDdN"
+    url: "https://open.spotify.com/album/6tpw0OAlkWAJAir9bXtDdN",
+    image: "/assets/products/forgotten-in-time.png"
   },
   {
     title: "Two Sides Of A Coin",
     kind: "Album",
     year: "2021",
-    url: "https://open.spotify.com/album/1AkGwy3nrkVToejAPn7DT1"
+    url: "https://open.spotify.com/album/1AkGwy3nrkVToejAPn7DT1",
+    image: "/assets/products/two-sides-of-a-coin.png"
   },
   {
     title: "Hermanos",
     kind: "Single",
     year: "2025",
-    url: "https://open.spotify.com/album/6KwLFoVfnG0VNKCcs7lIqW"
+    url: "https://open.spotify.com/album/6KwLFoVfnG0VNKCcs7lIqW",
+    image: "/assets/products/hermanos.png"
   },
   {
     title: "Reboot",
     kind: "EP",
     year: "2025",
-    url: "https://open.spotify.com/album/7hjpVT0dH1PhvbvOUlPLmV"
+    url: "https://open.spotify.com/album/7hjpVT0dH1PhvbvOUlPLmV",
+    image: "/assets/products/reboot.png"
   },
   {
     title: "Analog",
     kind: "EP",
     year: "2020",
-    url: "https://open.spotify.com/album/4iVyTtxNBpqgpKGeEQpQRz"
+    url: "https://open.spotify.com/album/4iVyTtxNBpqgpKGeEQpQRz",
+    image: "/assets/products/analog.png"
   }
 ];
 

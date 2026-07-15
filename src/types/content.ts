@@ -93,6 +93,7 @@ export type Product = {
   artist: string;
   platform: ProductPlatform;
   url: string;
+  image?: string;
   releaseDate?: string;
   format: string;
   description: string;
@@ -106,6 +107,7 @@ export type SpotifyRelease = {
   kind: SpotifyReleaseKind;
   year: string;
   url: string;
+  image?: string;
 };
 
 export type SpotifyTrack = {
