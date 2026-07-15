@@ -28,6 +28,18 @@ For a new artist:
 3. Use a unique `slug`.
 4. Use that same slug in episode `artistSlug`.
 
+
+## Product / release checklist
+
+For a new product or release:
+
+1. Edit `products.ts`.
+2. Add buy/support links to `products` for Bandcamp or ElasticStage pages.
+3. Add Spotify albums, EPs or singles to `spotifyReleases`.
+4. Add visible Spotify popular tracks to `spotifyTopTracks` only when you want them shown on `/products`.
+5. Use `under 1,000` when Spotify hides the exact play count.
+6. Update the source-date note on `/products` when you refresh Spotify data.
+
 ## Image paths
 
 All public files are referenced from the site root:

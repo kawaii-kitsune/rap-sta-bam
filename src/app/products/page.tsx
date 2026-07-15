@@ -31,6 +31,7 @@ export default function ProductsPage() {
             title="Products & releases"
             copy="Official product links, Bandcamp pages and Spotify releases for Phone Memo. Buying, streaming and payments happen on the external platforms."
           />
+          <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-[var(--dim)]">Spotify data checked on 15/07/2026.</p>
 
           {featured ? (
             <section className="mt-8 border-y border-[var(--line)] py-6">
@@ -56,7 +57,7 @@ export default function ProductsPage() {
           ) : null}
 
           <section className="mt-10">
-            <SectionHeading eyebrow="Products" title="Bandcamp / ElasticStage" />
+            <SectionHeading eyebrow="Buy / support" title="Bandcamp / ElasticStage" copy="Direct product and support links for people who want to buy or support the releases." />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {otherProducts.map((product, index) => (
                 <article key={product.slug} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
@@ -86,7 +87,7 @@ export default function ProductsPage() {
           </section>
 
           <section className="mt-12">
-            <SectionHeading eyebrow="Spotify" title="Spotify releases" copy="Current releases listed on the Phone Memo Spotify artist page." />
+            <SectionHeading eyebrow="Listen" title="Spotify releases" copy="Current releases listed on the Phone Memo Spotify artist page." />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {spotifyReleases.map((release, index) => (
                 <article key={release.url} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
@@ -112,7 +113,7 @@ export default function ProductsPage() {
           </section>
 
           <section className="mt-12">
-            <SectionHeading eyebrow="Spotify" title="Popular tracks" />
+            <SectionHeading eyebrow="Listen" title="Popular tracks" />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {spotifyTopTracks.map((track, index) => (
                 <a
@@ -144,7 +145,7 @@ export default function ProductsPage() {
               </p>
               <p className="flex gap-3">
                 <Disc3 className="mt-1 h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />
-                Spotify artist page: {spotifyArtist.monthlyListeners} monthly listeners, {spotifyArtist.followers} followers at the time this page was checked.
+                Spotify artist page: {spotifyArtist.monthlyListeners} monthly listeners, {spotifyArtist.followers} followers. Data checked on 15/07/2026.
               </p>
               <a href={spotifyArtist.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 border border-[#1db954]/60 px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[#1db954] hover:bg-[#1db954] hover:text-black">
                 Open Spotify artist <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

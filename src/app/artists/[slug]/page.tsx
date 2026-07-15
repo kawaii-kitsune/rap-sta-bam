@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
@@ -65,6 +66,11 @@ export default async function ArtistPage({ params }: Props) {
           <div className="mt-6">
             <SocialLinks links={socialLinks} />
           </div>
+          {artist.slug === "phone-memo" ? (
+            <Link href="/products" className="mt-5 inline-flex min-h-11 items-center border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
+              Products & releases
+            </Link>
+          ) : null}
         </div>
       </div>
 
