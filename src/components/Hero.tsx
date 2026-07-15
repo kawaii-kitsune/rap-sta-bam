@@ -31,7 +31,7 @@ export function Hero({ latestEpisode }: { latestEpisode: Episode }) {
             Ένας rapper. Ένα beat. Ένα session από το μηδέν.
           </p>
           <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
-            Ιστορία, γράψιμο, recording και performance όπως συμβαίνουν στο δωμάτιο.
+            Ιστορία, γράψιμο, recording και performance όπως συμβαίνουν στη ζωή... Απλά πράγματα.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="#first-episode" className="rsb-button">
