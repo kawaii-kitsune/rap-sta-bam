@@ -35,7 +35,7 @@ export function ShortClipsStrip() {
                 playsInline
                 preload="metadata"
               />
-              <div className="border-t border-[var(--line)] py-4">
+              <div className="border-t border-[var(--line)] px-4 py-4">
                 <h3 className="text-base font-black text-[var(--foreground)]">{clip.title}</h3>
               </div>
             </article>

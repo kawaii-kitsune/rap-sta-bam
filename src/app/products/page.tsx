@@ -34,7 +34,7 @@ export default function ProductsPage() {
           <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-[var(--dim)]">Spotify data checked on 15/07/2026.</p>
 
           {featured ? (
-            <section className="mt-8 border-y border-[var(--line)] py-6">
+            <section className="mt-8 border-y border-[var(--line)] px-4 py-6 sm:px-5">
               <div className="grid gap-6 md:grid-cols-[1fr_220px] md:items-end">
                 <div>
                   <span className={`inline-flex min-h-8 items-center px-3 text-xs font-black uppercase tracking-[0.16em] ${platformTone(featured.platform)}`}>
@@ -136,7 +136,7 @@ export default function ProductsPage() {
         </main>
 
         <aside>
-          <div className="sticky top-24 border-y border-[var(--line)] py-5">
+          <div className="sticky top-24 border-y border-[var(--line)] px-4 py-5 sm:px-5">
             <h2 className="display-font text-4xl leading-none">Catalog note</h2>
             <div className="mt-5 grid gap-4 text-sm leading-6 text-[var(--muted)]">
               <p className="flex gap-3">

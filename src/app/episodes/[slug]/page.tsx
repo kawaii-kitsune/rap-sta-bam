@@ -84,7 +84,7 @@ export default async function EpisodePage({ params }: Props) {
             {live ? <VideoEmbed videoId={episode.youtubeVideoId} title={episode.title} /> : (
               <div className="grid gap-5 md:grid-cols-[minmax(220px,320px)_1fr] md:items-center">
                 <PromoTeaser compact />
-                <div className="border-y border-[var(--line)] py-5 sm:py-6">
+                <div className="border-y border-[var(--line)] px-4 py-5 sm:px-5 sm:py-6">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Κλειδωμένο μέχρι την πρεμιέρα</p>
                   <h2 className="display-font mt-3 text-4xl leading-none">Το επεισόδιο ανοίγει στις {formatGreekDate(episode.publishedAt)}</h2>
                   <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει διαθέσιμο μόνο το teaser. Στην πρεμιέρα ανοίγουν όλα τα βασικά κομμάτια του επεισοδίου.</p>

@@ -48,7 +48,7 @@ export default function AboutPage() {
             <SectionHeading title="Τι συμβαίνει στο session" />
             <ol className="grid gap-0 border-y border-[var(--line)]">
               {["Στήσιμο beat", "Γράψιμο κουπλέ", "Ηχογράφηση vocals", "Performance και διαδικασία στην κάμερα"].map((item, index) => (
-                <li key={item} className="grid grid-cols-[3rem_1fr] border-b border-[var(--line)] py-4 font-bold last:border-b-0">
+                <li key={item} className="grid grid-cols-[3rem_1fr] border-b border-[var(--line)] px-4 py-4 font-bold last:border-b-0 sm:px-5">
                   <span className="text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</span>
                   <span>{item}</span>
                 </li>
@@ -58,7 +58,7 @@ export default function AboutPage() {
         </div>
 
         <aside>
-          <div className="sticky top-24 border-y border-[var(--line)] py-5">
+          <div className="sticky top-24 border-y border-[var(--line)] px-4 py-5 sm:px-5">
             <h2 className="display-font text-4xl">Ομάδα</h2>
             <div className="mt-5 grid gap-3">
               {team.map((member) => (

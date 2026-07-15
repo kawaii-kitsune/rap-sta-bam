@@ -17,7 +17,7 @@ export const metadata: Metadata = createMetadata({
 
 function PersonRow({ person, label }: { person: Artist; label: string }) {
   return (
-    <Link href={`/artists/${person.slug}`} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[96px_160px_1fr_32px] sm:items-center">
+    <Link href={`/artists/${person.slug}`} className="grid gap-4 border-b border-[var(--line)] px-4 py-5 last:border-b-0 sm:grid-cols-[96px_160px_1fr_32px] sm:items-center sm:px-5">
       <div className="relative aspect-square overflow-hidden bg-black">
         <Image src={person.image} alt={person.name} fill sizes="96px" className="object-cover grayscale" />
       </div>

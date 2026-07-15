@@ -13,6 +13,7 @@
   --spotify: #1db954;
   --line: #393331;
   --line-strong: #574b48;
+  --rsb-inset: clamp(1rem, 2vw, 1.25rem);
 }
 
 * {
@@ -193,11 +194,17 @@ img {
 .rsb-panel {
   border-block: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+  padding-inline: var(--rsb-inset);
 }
 
 .rsb-row {
   border-bottom: 1px solid var(--line);
+  padding-inline: var(--rsb-inset);
   transition: background 160ms ease, border-color 160ms ease;
+}
+
+.rsb-panel > .rsb-row {
+  margin-inline: calc(var(--rsb-inset) * -1);
 }
 
 .rsb-row:hover {

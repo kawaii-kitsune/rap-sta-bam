@@ -25,7 +25,7 @@ export function CreditsList({ credits }: { credits: Episode["credits"] }) {
         );
 
         return (
-          <div key={`${credit.role}-${credit.name}`} className="border-b border-[var(--line)] py-4 last:border-b-0">
+          <div key={`${credit.role}-${credit.name}`} className="border-b border-[var(--line)] px-4 py-4 last:border-b-0 sm:px-5">
             <dt className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--accent)]">{credit.role}</dt>
             <dd className="mt-1 text-lg font-bold">{name}</dd>
             {credit.note ? <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{credit.note}</p> : null}

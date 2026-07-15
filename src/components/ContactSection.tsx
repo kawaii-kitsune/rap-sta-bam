@@ -21,7 +21,7 @@ export function ContactSection() {
 
         <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr]">
           <div className="border-y border-[var(--line)]">
-            <div className="border-b border-[var(--line)] py-5">
+            <div className="border-b border-[var(--line)] px-4 py-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Email</p>
               {contactEmail ? (
                 <a href={`mailto:${contactEmail}`} className="mt-3 inline-flex items-center gap-2 text-lg font-black text-[var(--foreground)] hover:text-[var(--accent)]">
@@ -35,7 +35,7 @@ export function ContactSection() {
               )}
             </div>
 
-            <div className="border-b border-[var(--line)] py-5">
+            <div className="border-b border-[var(--line)] px-4 py-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Socials</p>
               {visibleSocialLinks.length ? (
                 <SocialLinks links={visibleSocialLinks} className="mt-3" />
@@ -44,7 +44,7 @@ export function ContactSection() {
               )}
             </div>
 
-            <div className="border-b border-[var(--line)] py-5">
+            <div className="border-b border-[var(--line)] px-4 py-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Google Form</p>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Η φόρμα του site στέλνει δωρεάν τις απαντήσεις στο Google Forms. Μπορείς να την ανοίξεις και απευθείας.</p>
               <a href={siteConfig.googleContactForm.viewUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
@@ -53,7 +53,7 @@ export function ContactSection() {
               </a>
             </div>
 
-            <div className="py-5">
+            <div className="px-4 py-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Συμμετοχή</p>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Οι δηλώσεις συμμετοχής δεν είναι ανοιχτές ακόμα. Προς το παρόν δεχόμαστε μόνο γενικά μηνύματα και συνεργασίες από τη φόρμα επικοινωνίας.</p>
             </div>

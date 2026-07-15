@@ -147,7 +147,7 @@ export default function PrivacyPage() {
           </div>
         </div>
 
-        <aside className="content-start border-y border-[var(--line)] py-5 lg:sticky lg:top-24">
+        <aside className="content-start border-y border-[var(--line)] px-4 py-5 sm:px-5 lg:sticky lg:top-24">
           <h2 className="display-font text-3xl">Ρυθμίσεις</h2>
           <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Άνοιξε ξανά το cookie banner για να αλλάξεις επιλογή στατιστικών.</p>
           <CookieSettingsButton />
