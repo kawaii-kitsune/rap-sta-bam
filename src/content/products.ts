@@ -114,13 +114,13 @@ export const spotifyTopTracks: SpotifyTrack[] = [
   {
     title: "Asfalis",
     album: "Reboot",
-    plays: "0",
+    plays: "under 1,000",
     url: "https://open.spotify.com/track/7tGTndC7oZtiWZTyKPlFg6"
   },
   {
     title: "Stinson Freestyle",
     album: "Reboot",
-    plays: "0",
+    plays: "under 1,000",
     url: "https://open.spotify.com/track/5xAPpxjADWyfw6X1ku1UZI"
   }
 ];
