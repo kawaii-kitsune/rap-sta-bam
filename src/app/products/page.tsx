@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Disc3, ExternalLink, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Disc3, ExternalLink, Music2, ShoppingBag } from "lucide-react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { products } from "@/content/products";
+import { products, spotifyArtist, spotifyReleases, spotifyTopTracks } from "@/content/products";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
-  title: "Products",
-  description: "Official Phone Memo release links for Bandcamp and ElasticStage products.",
+  title: "Products & Releases",
+  description: "Phone Memo product links, Bandcamp releases, ElasticStage products and Spotify catalog entries.",
   path: "/products"
 });
 
@@ -22,14 +22,14 @@ export default function ProductsPage() {
 
   return (
     <Container className="py-10">
-      <Breadcrumbs items={[{ label: "Products" }]} />
+      <Breadcrumbs items={[{ label: "Products & Releases" }]} />
 
       <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
         <main>
           <SectionHeading
-            eyebrow="Phone Memo releases"
-            title="Products / δισκογραφία"
-            copy="Μαζεμένα official links για releases του Phone Memo. Η αγορά, το streaming και τα payments γίνονται στις αντίστοιχες πλατφόρμες."
+            eyebrow="Phone Memo catalog"
+            title="Products & releases"
+            copy="Official product links, Bandcamp pages and Spotify releases for Phone Memo. Buying, streaming and payments happen on the external platforms."
           />
 
           {featured ? (
@@ -56,7 +56,8 @@ export default function ProductsPage() {
           ) : null}
 
           <section className="mt-10">
-            <div className="grid gap-0 border-y border-[var(--line)]">
+            <SectionHeading eyebrow="Products" title="Bandcamp / ElasticStage" />
+            <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {otherProducts.map((product, index) => (
                 <article key={product.slug} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
                   <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
@@ -83,20 +84,71 @@ export default function ProductsPage() {
               ))}
             </div>
           </section>
+
+          <section className="mt-12">
+            <SectionHeading eyebrow="Spotify" title="Spotify releases" copy="Current releases listed on the Phone Memo Spotify artist page." />
+            <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
+              {spotifyReleases.map((release, index) => (
+                <article key={release.url} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
+                  <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="inline-flex min-h-7 items-center border border-[#1db954]/50 px-2 text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#1db954]">Spotify</span>
+                      <span className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--dim)]">{release.kind} · {release.year}</span>
+                    </div>
+                    <h2 className="mt-3 display-font text-4xl leading-none">{release.title}</h2>
+                  </div>
+                  <a
+                    href={release.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center gap-2 border border-[var(--line)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--foreground)] transition hover:border-[#1db954] hover:text-[#1db954]"
+                  >
+                    Listen <Music2 className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-12">
+            <SectionHeading eyebrow="Spotify" title="Popular tracks" />
+            <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
+              {spotifyTopTracks.map((track, index) => (
+                <a
+                  key={track.url}
+                  href={track.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="grid gap-3 border-b border-[var(--line)] py-4 last:border-b-0 hover:text-[#1db954] sm:grid-cols-[3rem_1fr_auto] sm:items-center"
+                >
+                  <span className="font-black text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</span>
+                  <span>
+                    <span className="block font-black">{track.title}</span>
+                    <span className="mt-1 block text-sm text-[var(--muted)]">{track.album} · {track.plays} plays</span>
+                  </span>
+                  <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em]">Open <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></span>
+                </a>
+              ))}
+            </div>
+          </section>
         </main>
 
         <aside>
           <div className="sticky top-24 border-y border-[var(--line)] py-5">
-            <h2 className="display-font text-4xl leading-none">How it works</h2>
+            <h2 className="display-font text-4xl leading-none">Catalog note</h2>
             <div className="mt-5 grid gap-4 text-sm leading-6 text-[var(--muted)]">
               <p className="flex gap-3">
                 <ShoppingBag className="mt-1 h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />
-                Τα product links ανοίγουν εξωτερικά checkout ή release pages. Δεν κρατάμε πληρωμές στο site.
+                Product links open external checkout or release pages. This site does not process payments.
               </p>
               <p className="flex gap-3">
                 <Disc3 className="mt-1 h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />
-                Bandcamp και ElasticStage έχουν δικούς τους όρους, privacy και cookies όταν τα ανοίξεις.
+                Spotify artist page: {spotifyArtist.monthlyListeners} monthly listeners, {spotifyArtist.followers} followers at the time this page was checked.
               </p>
+              <a href={spotifyArtist.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 border border-[#1db954]/60 px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[#1db954] hover:bg-[#1db954] hover:text-black">
+                Open Spotify artist <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </aside>

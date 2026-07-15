@@ -1,4 +1,4 @@
-import type { Product } from "@/types/content";
+import type { Product, SpotifyRelease, SpotifyTrack } from "@/types/content";
 
 export const products: Product[] = [
   {
@@ -49,6 +49,79 @@ export const products: Product[] = [
     releaseDate: "Dec 2020",
     format: "Digital album",
     description: "A collaborative instrumental release by Mosek and Phone Memo, available on Bandcamp."
+  }
+];
+
+export const spotifyArtist = {
+  name: "Phone Memo",
+  url: "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+  monthlyListeners: "66",
+  followers: "145"
+};
+
+export const spotifyReleases: SpotifyRelease[] = [
+  {
+    title: "Forgotten In Time",
+    kind: "Album",
+    year: "2022",
+    url: "https://open.spotify.com/album/6tpw0OAlkWAJAir9bXtDdN"
+  },
+  {
+    title: "Two Sides Of A Coin",
+    kind: "Album",
+    year: "2021",
+    url: "https://open.spotify.com/album/1AkGwy3nrkVToejAPn7DT1"
+  },
+  {
+    title: "Hermanos",
+    kind: "Single",
+    year: "2025",
+    url: "https://open.spotify.com/album/6KwLFoVfnG0VNKCcs7lIqW"
+  },
+  {
+    title: "Reboot",
+    kind: "EP",
+    year: "2025",
+    url: "https://open.spotify.com/album/7hjpVT0dH1PhvbvOUlPLmV"
+  },
+  {
+    title: "Analog",
+    kind: "EP",
+    year: "2020",
+    url: "https://open.spotify.com/album/4iVyTtxNBpqgpKGeEQpQRz"
+  }
+];
+
+export const spotifyTopTracks: SpotifyTrack[] = [
+  {
+    title: "SDE",
+    album: "Reboot",
+    plays: "3,367",
+    url: "https://open.spotify.com/track/0yjeTrTpMJiZpfrySBVUVU"
+  },
+  {
+    title: "Stin teliki mono to simera metraei",
+    album: "Reboot",
+    plays: "1,298",
+    url: "https://open.spotify.com/track/4Xj0kjaK1SG2hys4IWKB5E"
+  },
+  {
+    title: "Timberland",
+    album: "Reboot",
+    plays: "1,504",
+    url: "https://open.spotify.com/track/1tpZRuG9kbk7DlYHRWlIuA"
+  },
+  {
+    title: "Asfalis",
+    album: "Reboot",
+    plays: "0",
+    url: "https://open.spotify.com/track/7tGTndC7oZtiWZTyKPlFg6"
+  },
+  {
+    title: "Stinson Freestyle",
+    album: "Reboot",
+    plays: "0",
+    url: "https://open.spotify.com/track/5xAPpxjADWyfw6X1ku1UZI"
   }
 ];
 

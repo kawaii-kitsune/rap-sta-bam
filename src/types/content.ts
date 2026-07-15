@@ -98,3 +98,19 @@ export type Product = {
   description: string;
   featured?: boolean;
 };
+
+export type SpotifyReleaseKind = "Album" | "EP" | "Single";
+
+export type SpotifyRelease = {
+  title: string;
+  kind: SpotifyReleaseKind;
+  year: string;
+  url: string;
+};
+
+export type SpotifyTrack = {
+  title: string;
+  album: string;
+  plays: string;
+  url: string;
+};
