@@ -11,16 +11,26 @@ export function ConsentManager() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const syncConsent = () => {
+    const syncInitialConsent = () => {
       const saved = getAnalyticsConsent();
       setConsent(saved);
       setOpen(saved === null);
       setReady(true);
     };
 
-    syncConsent();
-    window.addEventListener(cookieSettingsEvent, syncConsent);
-    return () => window.removeEventListener(cookieSettingsEvent, syncConsent);
+    const timer = window.setTimeout(syncInitialConsent, 0);
+
+    const openSettings = () => {
+      setConsent(getAnalyticsConsent());
+      setOpen(true);
+      setReady(true);
+    };
+
+    window.addEventListener(cookieSettingsEvent, openSettings);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener(cookieSettingsEvent, openSettings);
+    };
   }, []);
 
   function choose(value: AnalyticsConsent) {
