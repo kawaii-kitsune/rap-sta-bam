@@ -42,7 +42,7 @@ export const releaseSchedule = [
   { date: "2026-12-15", label: "15/12", title: "Session #006 — TBA" }
 ] as const;
 
-export const releaseCadence = "Κάθε τρίτη Τρίτη του μήνα";
+export const releaseCadence = "Ένα νέο session κάθε μήνα";
 
 export const projectSocialLinks: SocialLink[] = [
   { platform: "youtube", label: "YouTube", url: siteConfig.socials.youtube },

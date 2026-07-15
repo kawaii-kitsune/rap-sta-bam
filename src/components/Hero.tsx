@@ -35,7 +35,7 @@ export function Hero({ latestEpisode }: { latestEpisode: Episode }) {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="#first-episode" className="inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black transition hover:bg-[var(--foreground)]">
-              Δες το πρώτο επεισόδιο <ArrowRight className="h-4 w-4" />
+              Μπες στο πρώτο session <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

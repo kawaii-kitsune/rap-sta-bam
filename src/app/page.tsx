@@ -66,7 +66,7 @@ export default function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Πρεμιέρες</p>
-              <h2 className="display-font mt-3 text-5xl leading-none">Κάθε τρίτη Τρίτη</h2>
+              <h2 className="display-font mt-3 text-5xl leading-none">Ένα νέο session κάθε μήνα</h2>
               {nextRelease ? (
                 <p className="mt-5 flex items-center gap-2 text-sm font-bold text-[var(--muted)]">
                   <CalendarDays className="h-4 w-4 text-[var(--accent)]" aria-hidden="true" />
