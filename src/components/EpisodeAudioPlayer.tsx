@@ -4,6 +4,7 @@ import { type ChangeEvent, type FormEvent, useCallback, useEffect, useMemo, useR
 import { track } from "@vercel/analytics";
 import { Loader2, Lock, Pause, Play, Music2 } from "lucide-react";
 import { formatGreekDate, isReleased } from "@/lib/content";
+import { hasAnalyticsConsent } from "@/lib/consent";
 
 type CaptionCue = {
   start: number;
@@ -40,6 +41,11 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   const timeLabel = useMemo(() => `${formatTime(currentTime)} / ${formatTime(duration)}`, [currentTime, duration]);
   const activeCaption = useMemo(() => findActiveCaption(captions, currentTime), [captions, currentTime]);
   const analyticsProperties = useMemo(() => ({ audio: label, source: src }), [label, src]);
+  const trackAudioEvent = useCallback((eventName: string) => {
+    if (hasAnalyticsConsent()) {
+      track(eventName, analyticsProperties);
+    }
+  }, [analyticsProperties]);
 
   useEffect(() => {
     if (!released || !captionsSrc) {
@@ -80,15 +86,15 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     }
 
     if (nextTime >= 30 && !thirtySecondsTrackedRef.current) {
-      track("audio_30_seconds", analyticsProperties);
+      trackAudioEvent("audio_30_seconds");
       thirtySecondsTrackedRef.current = true;
     }
 
     if (Number.isFinite(nextDuration) && nextDuration > 0 && nextTime >= nextDuration * 0.5 && !halfwayTrackedRef.current) {
-      track("audio_50_percent", analyticsProperties);
+      trackAudioEvent("audio_50_percent");
       halfwayTrackedRef.current = true;
     }
-  }, [analyticsProperties]);
+  }, [trackAudioEvent]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -126,7 +132,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     };
     const onPlay = () => {
       if (!playTrackedRef.current) {
-        track("audio_play", analyticsProperties);
+        trackAudioEvent("audio_play");
         playTrackedRef.current = true;
       }
       setIsPlaying(true);
@@ -145,7 +151,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     const onEnded = () => {
       stopAnimation();
       if (!completeTrackedRef.current) {
-        track("audio_complete", analyticsProperties);
+        trackAudioEvent("audio_complete");
         completeTrackedRef.current = true;
       }
       setIsPlaying(false);
@@ -180,7 +186,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
       audio.removeEventListener("playing", onPlaying);
       audio.removeEventListener("ended", onEnded);
     };
-  }, [analyticsProperties, released, trackProgressMilestones]);
+  }, [released, trackAudioEvent, trackProgressMilestones]);
 
 
   function togglePlay() {

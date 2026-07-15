@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { SocialLinks } from "@/components/SocialLinks";
 import { projectSocialLinks, siteConfig } from "@/config/site";
 
@@ -30,6 +31,7 @@ export function Footer() {
         <div>
           <SocialLinks links={projectSocialLinks} iconOnly />
           <p className="mt-5 text-xs text-[var(--dim)]">© 2026 {siteConfig.name}</p>
+          <CookieSettingsButton />
         </div>
       </Container>
     </footer>

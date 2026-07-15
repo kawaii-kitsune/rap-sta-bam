@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import { IBM_Plex_Sans, JetBrains_Mono, Roboto_Condensed } from "next/font/google";
 import Script from "next/script";
+import { ConsentManager } from "@/components/ConsentManager";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { siteConfig } from "@/config/site";
@@ -77,7 +77,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
-        <Analytics />
+        <ConsentManager />
       </body>
     </html>
   );
