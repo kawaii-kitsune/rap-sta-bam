@@ -13,7 +13,7 @@ export const metadata: Metadata = createMetadata({
 });
 
 function platformTone(platform: string) {
-  return platform === "ElasticStage" ? "bg-[var(--accent)] text-black" : "border border-[var(--line)] text-[var(--muted)]";
+  return platform === "ElasticStage" ? "rsb-chip rsb-chip-accent" : "rsb-chip text-[var(--muted)]";
 }
 
 export default function ProductsPage() {
@@ -48,7 +48,7 @@ export default function ProductsPage() {
                   href={featured.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--accent)] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-black transition hover:bg-[var(--foreground)]"
+                  className="rsb-button"
                 >
                   Open product <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </a>
@@ -60,7 +60,7 @@ export default function ProductsPage() {
             <SectionHeading eyebrow="Buy / support" title="Bandcamp / ElasticStage" copy="Direct product and support links for people who want to buy or support the releases." />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {otherProducts.map((product, index) => (
-                <article key={product.slug} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
+                <article key={product.slug} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
                   <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
@@ -77,7 +77,7 @@ export default function ProductsPage() {
                     href={product.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 border border-[var(--line)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--foreground)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                    className="rsb-button-secondary"
                   >
                     Open <ExternalLink className="h-4 w-4" aria-hidden="true" />
                   </a>
@@ -90,11 +90,11 @@ export default function ProductsPage() {
             <SectionHeading eyebrow="Listen" title="Spotify releases" copy="Current releases listed on the Phone Memo Spotify artist page." />
             <div className="mt-5 grid gap-0 border-y border-[var(--line)]">
               {spotifyReleases.map((release, index) => (
-                <article key={release.url} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
+                <article key={release.url} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[4rem_1fr_auto] sm:items-center">
                   <div className="display-font text-4xl text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</div>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="inline-flex min-h-7 items-center border border-[#1db954]/50 px-2 text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#1db954]">Spotify</span>
+                      <span className="rsb-chip rsb-chip-spotify">Spotify</span>
                       <span className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--dim)]">{release.kind} · {release.year}</span>
                     </div>
                     <h2 className="mt-3 display-font text-4xl leading-none">{release.title}</h2>
@@ -103,7 +103,7 @@ export default function ProductsPage() {
                     href={release.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 border border-[var(--line)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--foreground)] transition hover:border-[#1db954] hover:text-[#1db954]"
+                    className="rsb-button-secondary hover:border-[#1db954] hover:text-[#1db954]"
                   >
                     Listen <Music2 className="h-4 w-4" aria-hidden="true" />
                   </a>
@@ -121,7 +121,7 @@ export default function ProductsPage() {
                   href={track.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="grid gap-3 border-b border-[var(--line)] py-4 last:border-b-0 hover:text-[#1db954] sm:grid-cols-[3rem_1fr_auto] sm:items-center"
+                  className="rsb-row grid gap-3 py-4 last:border-b-0 hover:text-[#1db954] sm:grid-cols-[3rem_1fr_auto] sm:items-center"
                 >
                   <span className="font-black text-[var(--accent)]">{String(index + 1).padStart(2, "0")}</span>
                   <span>
@@ -147,7 +147,7 @@ export default function ProductsPage() {
                 <Disc3 className="mt-1 h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />
                 Spotify artist page: {spotifyArtist.monthlyListeners} monthly listeners, {spotifyArtist.followers} followers. Data checked on 15/07/2026.
               </p>
-              <a href={spotifyArtist.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 border border-[#1db954]/60 px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[#1db954] hover:bg-[#1db954] hover:text-black">
+              <a href={spotifyArtist.url} target="_blank" rel="noreferrer" className="rsb-button-secondary border-[#1db954]/60 text-[#1db954] hover:bg-[#1db954] hover:text-black">
                 Open Spotify artist <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>

@@ -2,14 +2,17 @@
 
 :root {
   --background: #0a0a0a;
-  --panel: #161616;
-  --panel-2: #201f1f;
-  --foreground: #f5f2f1;
-  --muted: #cfc5c4;
-  --dim: #8c7a78;
+  --panel: #141211;
+  --panel-2: #1d1a19;
+  --surface-raised: #221f1e;
+  --foreground: #f7f1ef;
+  --muted: #c9bfbd;
+  --dim: #8f7d7a;
   --accent: #e63946;
   --accent-2: #a90f20;
-  --line: #353232;
+  --spotify: #1db954;
+  --line: #393331;
+  --line-strong: #574b48;
 }
 
 * {
@@ -22,8 +25,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    linear-gradient(180deg, rgba(230, 57, 70, 0.025), transparent 320px),
+    var(--background);
   color: var(--foreground);
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -118,4 +124,125 @@ img {
   border-radius: 0;
   background: var(--accent);
   cursor: pointer;
+}
+
+.site-header {
+  background: rgba(10, 9, 8, 0.92);
+  backdrop-filter: blur(18px);
+}
+
+.rsb-kicker {
+  font-family: var(--font-mono), monospace;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rsb-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #100908;
+  padding: 0.78rem 1.15rem;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.rsb-button:hover {
+  background: var(--foreground);
+  border-color: var(--foreground);
+  transform: translateY(-1px);
+}
+
+.rsb-button-secondary {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line-strong);
+  color: var(--foreground);
+  padding: 0.68rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.rsb-button-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(230, 57, 70, 0.06);
+}
+
+.rsb-surface {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 88%, black);
+}
+
+.rsb-panel {
+  border-block: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+}
+
+.rsb-row {
+  border-bottom: 1px solid var(--line);
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.rsb-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: var(--line-strong);
+}
+
+.rsb-chip {
+  display: inline-flex;
+  min-height: 1.8rem;
+  align-items: center;
+  border: 1px solid var(--line-strong);
+  padding: 0 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rsb-chip-accent {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #100908;
+}
+
+.rsb-chip-spotify {
+  border-color: color-mix(in srgb, var(--spotify) 60%, transparent);
+  color: var(--spotify);
+}
+
+.section-heading {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.section-heading-title {
+  max-width: 12ch;
+}
+
+@media (max-width: 640px) {
+  .poster-title {
+    line-height: 0.92;
+  }
+
+  .section-heading-title {
+    max-width: 100%;
+  }
 }

@@ -44,7 +44,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <aside className="border-y border-[var(--line)] py-5">
+            <aside className="rsb-panel py-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">
                 #{String(latestEpisode.number).padStart(3, "0")} / {latestIsLive ? formatGreekDate(latestEpisode.publishedAt) : `Πρεμιέρα ${formatGreekDate(latestEpisode.publishedAt)}`}
               </p>
@@ -53,7 +53,7 @@ export default function HomePage() {
               <div className="mt-6">
                 <SocialLinks links={latestLinks} />
               </div>
-              <Link href={`/episodes/${latestEpisode.slug}`} className="mt-7 inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black">
+              <Link href={`/episodes/${latestEpisode.slug}`} className="rsb-button mt-7">
                 Άνοιξε τη σελίδα επεισοδίου <ArrowRight className="h-4 w-4" />
               </Link>
             </aside>
@@ -76,9 +76,9 @@ export default function HomePage() {
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{releaseCadence}, με το audio να ανοίγει στην πρεμιέρα.</p>
             </div>
 
-            <ol className="border-y border-[var(--line)]">
+            <ol className="rsb-panel">
               {releaseSchedule.map((item) => (
-                <li key={item.date} className="grid gap-2 border-b border-[var(--line)] py-4 last:border-b-0 sm:grid-cols-[120px_1fr]">
+                <li key={item.date} className="rsb-row grid gap-2 py-4 last:border-b-0 sm:grid-cols-[120px_1fr]">
                   <time dateTime={item.date} className="display-font text-3xl leading-none text-[var(--accent)]">{item.label}</time>
                   <span className="font-bold text-[var(--foreground)]">{item.title}</span>
                 </li>
@@ -91,9 +91,9 @@ export default function HomePage() {
       <section className="border-b border-[var(--line)] py-16">
         <Container>
           <SectionHeading eyebrow="Μαζί μας στα sessions" title="Καλεσμένος και team" copy="Ο Τζίμος είναι ο καλεσμένος artist του #001. Οι υπόλοιποι είναι οι άνθρωποι της παραγωγής, της εικόνας, του ήχου και της ταυτότητας." />
-          <div className="border-y border-[var(--line)]">
+          <div className="rsb-panel">
             {featuredArtists.map((artist) => (
-              <Link key={artist.slug} href={`/artists/${artist.slug}`} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[96px_1fr] sm:items-center">
+              <Link key={artist.slug} href={`/artists/${artist.slug}`} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[96px_1fr] sm:items-center">
                 <div className="relative aspect-square overflow-hidden bg-black">
                   <Image src={artist.image} alt={artist.name} fill sizes="96px" className="object-cover grayscale" />
                 </div>

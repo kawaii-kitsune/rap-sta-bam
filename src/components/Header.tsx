@@ -19,7 +19,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--line)] bg-[#0b0a09]/98">
+    <header className="site-header sticky top-0 z-40 border-b border-[var(--line)]">
       <Container className="relative flex min-h-16 items-center justify-between gap-4 py-3">
         <Link href="/" className="inline-flex items-center">
           <Image src="/assets/logo/logo-white-red.png" alt="Ραπ Στα Μπαμ" width={56} height={52} priority className="h-10 w-auto" />
@@ -34,7 +34,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`px-3 py-2 text-sm font-bold transition ${active ? "text-[var(--accent)]" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+                className={`px-3 py-2 text-sm font-bold transition ${active ? "bg-[var(--panel)] text-[var(--accent)]" : "text-[var(--muted)] hover:bg-[var(--panel)] hover:text-[var(--foreground)]"}`}
               >
                 {item.label}
               </Link>
