@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { getAnalyticsConsent, setAnalyticsConsent, type AnalyticsConsent, cookieSettingsEvent } from "@/lib/consent";
@@ -38,6 +39,7 @@ export function ConsentManager() {
               <p className="meta-font text-xs font-bold uppercase tracking-[0.16em] text-[var(--accent)]">Cookies / analytics</p>
               <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
                 Χρησιμοποιούμε απαραίτητη αποθήκευση μόνο για την επιλογή σου. Με συγκατάθεση, ενεργοποιούμε ανώνυμα στατιστικά Vercel Analytics και audio play events για να βλέπουμε πώς χρησιμοποιείται το site.
+                <Link href="/privacy" className="ml-1 font-bold text-[var(--foreground)] underline underline-offset-4 hover:text-[var(--accent)]">Privacy / Cookies</Link>
               </p>
             </div>
             <div className="flex flex-wrap gap-2 sm:justify-end">

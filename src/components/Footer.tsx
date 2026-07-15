@@ -10,7 +10,8 @@ const footerLinks = [
   { href: "/episodes", label: "Επεισόδια" },
   { href: "/artists", label: "Πρόσωπα" },
   { href: "/about", label: "Σχετικά" },
-  { href: "/#contact", label: "Επικοινωνία" }
+  { href: "/#contact", label: "Επικοινωνία" },
+  { href: "/privacy", label: "Privacy / Cookies" }
 ];
 
 export function Footer() {
