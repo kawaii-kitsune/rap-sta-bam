@@ -83,7 +83,7 @@ const sections = [
   {
     title: "Social links και εξωτερικές σελίδες",
     body: [
-      "Το site περιέχει links προς YouTube, TikTok, Instagram, Spotify, Behance και websites συνεργατών/συντελεστών. Τα links αυτά ανοίγουν εξωτερικές υπηρεσίες.",
+      "Το site περιέχει links προς YouTube, TikTok, Instagram, Spotify, Bandcamp, ElasticStage, Behance και websites συνεργατών/συντελεστών. Τα links αυτά ανοίγουν εξωτερικές υπηρεσίες.",
       "Όταν ανοίγεις εξωτερικό link, φεύγεις από το δικό μας site και ισχύουν οι πολιτικές privacy/cookies του αντίστοιχου παρόχου."
     ]
   },
@@ -117,6 +117,8 @@ const providers = [
   ["Instagram / Meta", "Instagram embed script and external links"],
   ["TikTok", "External profile links"],
   ["Spotify", "External artist/profile links"],
+  ["Bandcamp", "External album/product links"],
+  ["ElasticStage", "External physical/product release links"],
   ["Behance", "External contributor links"],
   ["Partner websites", "External contributor/portfolio links"]
 ];

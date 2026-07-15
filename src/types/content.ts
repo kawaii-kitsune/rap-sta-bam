@@ -84,3 +84,17 @@ export type TeamMember = {
   role: string;
   url?: string;
 };
+
+export type ProductPlatform = "ElasticStage" | "Bandcamp";
+
+export type Product = {
+  slug: string;
+  title: string;
+  artist: string;
+  platform: ProductPlatform;
+  url: string;
+  releaseDate?: string;
+  format: string;
+  description: string;
+  featured?: boolean;
+};

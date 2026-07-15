@@ -11,6 +11,7 @@ const navItems = [
   { href: "/", label: "Αρχική" },
   { href: "/episodes", label: "Επεισόδια" },
   { href: "/artists", label: "Πρόσωπα" },
+  { href: "/products", label: "Products" },
   { href: "/about", label: "Σχετικά" },
   { href: "/#contact", label: "Επικοινωνία" }
 ];

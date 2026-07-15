@@ -4,7 +4,7 @@ import { getAllArtists, getVisibleEpisodes } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.baseUrl;
-  const staticRoutes = ["", "/episodes", "/artists", "/about", "/privacy"];
+  const staticRoutes = ["", "/episodes", "/artists", "/products", "/about", "/privacy"];
 
   return [
     ...staticRoutes.map((route) => ({
