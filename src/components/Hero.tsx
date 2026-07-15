@@ -26,19 +26,16 @@ export function Hero({ latestEpisode }: { latestEpisode: Episode }) {
             className="mx-auto mb-6 h-24 w-auto opacity-95 sm:h-28 lg:h-32"
           />
           <h1 className="sr-only">Ραπ Στα Μπαμ</h1>
-          <p className="meta-font text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">Ανεξάρτητη σειρά / Ηράκλειο Κρήτης</p>
-          <p className="mt-5 text-2xl font-semibold leading-9 text-[var(--foreground)] sm:text-4xl sm:leading-[1.15]">
-            Rappers μπαίνουν στο δωμάτιο χωρίς έτοιμο κομμάτι. Λένε την ιστορία τους και χτίζουμε beat, κουπλέ και recording σε ένα session.
+          <p className="meta-font text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">DIY hip hop sessions / Ηράκλειο Κρήτης</p>
+          <p className="mt-5 text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-5xl sm:leading-[1.05]">
+            Ένας rapper. Ένα beat. Ένα session από το μηδέν.
           </p>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--muted)]">
-            Η κάμερα κρατάει τη διαδικασία, όχι μόνο το τελικό αποτέλεσμα: ιδέες, δοκιμές, λάθη, γνώμες και την στιγμή που κάτι αρχίζει να ακούγεται σαν κομμάτι.
+          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
+            Ιστορία, γράψιμο, recording και performance όπως συμβαίνουν στο δωμάτιο.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="#first-episode" className="inline-flex min-h-12 items-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black transition hover:bg-[var(--foreground)]">
               Δες το πρώτο επεισόδιο <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link href="/about" className="inline-flex min-h-12 items-center border border-[var(--line)] px-5 py-3 font-black text-[var(--foreground)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]">
-              Το concept
             </Link>
           </div>
         </div>

@@ -90,7 +90,7 @@ export default function HomePage() {
 
       <section className="border-b border-[var(--line)] py-16">
         <Container>
-          <SectionHeading eyebrow="Στο δωμάτιο" title="Καλεσμένος και team" copy="Ο Τζίμος είναι ο καλεσμένος artist του #001. Οι υπόλοιποι είναι οι άνθρωποι της παραγωγής, της εικόνας, του ήχου και της ταυτότητας." />
+          <SectionHeading eyebrow="Μαζί μας στα sessions" title="Καλεσμένος και team" copy="Ο Τζίμος είναι ο καλεσμένος artist του #001. Οι υπόλοιποι είναι οι άνθρωποι της παραγωγής, της εικόνας, του ήχου και της ταυτότητας." />
           <div className="border-y border-[var(--line)]">
             {featuredArtists.map((artist) => (
               <Link key={artist.slug} href={`/artists/${artist.slug}`} className="grid gap-4 border-b border-[var(--line)] py-5 last:border-b-0 sm:grid-cols-[96px_1fr] sm:items-center">
