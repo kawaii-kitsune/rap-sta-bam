@@ -5,7 +5,6 @@ import { Container } from "@/components/Container";
 import { ContactSection } from "@/components/ContactSection";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ShortClipsStrip } from "@/components/ShortClipsStrip";
 import { SocialLinks } from "@/components/SocialLinks";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { releaseCadence, releaseSchedule } from "@/config/site";
@@ -61,8 +60,6 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
-
-      <ShortClipsStrip />
 
       <section className="border-b border-[var(--line)] py-16">
         <Container>

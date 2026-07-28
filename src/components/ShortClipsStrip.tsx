@@ -16,11 +16,6 @@ const clips = [
     title: "Το πρώτο verse",
     src: "/assets/promo/clips/clip-09-final-verse.mp4",
     poster: "/assets/promo/clips/posters/clip-09-final-verse.jpg"
-  },
-  {
-    title: "Τα rhyme schemes του Τζίμου",
-    src: "/assets/promo/clips/tzimos-rhyme-schemes.mp4",
-    poster: "/assets/promo/clips/posters/tzimos-rhyme-schemes.jpg"
   }
 ];
 
@@ -28,8 +23,8 @@ export function ShortClipsStrip() {
   return (
     <section className="border-b border-[var(--line)] py-14">
       <Container>
-        <SectionHeading eyebrow="Αποσπάσματα" title="Κομμάτια από το δωμάτιο" copy="Μικρά clips από το πρώτο επεισόδιο: concept, sample, verse και rhyme schemes. Όχι trailer λογική, απλά στιγμές από τη διαδικασία." />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading eyebrow="Αποσπάσματα" title="Κομμάτια από το δωμάτιο" copy="Μικρά clips από το πρώτο επεισόδιο: concept, sample, verse. Όχι trailer λογική, απλά στιγμές από τη διαδικασία." />
+        <div className="grid gap-4 sm:grid-cols-3">
           {clips.map((clip) => (
             <article key={clip.src} className="border-y border-[var(--line)] bg-transparent">
               <video
