@@ -150,7 +150,9 @@
         "copy": "Το take δένει τη διαδικασία με το τελικό performance και δείχνει γιατί η στιγμή μετράει όσο και το κομμάτι.",
         "image": "/assets/episodes/001-moments/05-performance.jpg"
       }
-    ]
+    ],
+    "teaserVideo": "/assets/promo/episode-001-teaser.mp4",
+    "teaserPoster": "/assets/episodes/001-tzimos-thumbnail-real.jpg"
   },
   {
     "slug": "002-nesom",
@@ -169,9 +171,9 @@
     "thumbnail": "/assets/episodes/002-nesom/thumbnail.png",
     "status": "upcoming",
     "youtubeVideoId": "dJjsfeIUEs4",
-    "youtubeUrl": "https://www.youtube.com/watch?v=dJjsfeIUEs4",
+    "youtubeUrl": "https://youtu.be/dJjsfeIUEs4",
     "instagramUrl": "https://www.instagram.com/nesomnineseven/",
-    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP?si=CMxsyTHfS1ScJLRj27ahBg",
+    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP",
     "shortClips": [
       {
         "title": "Ραπ Στα Μπαμ #002 — Nesom",
@@ -179,9 +181,12 @@
       }
     ],
     "gallery": [
-      "/assets/real/episode-001-studio.jpg",
-      "/assets/real/episode-001-beat.jpg",
-      "/assets/real/episode-001-performance.jpg"
+      "/assets/episodes/002-nesom/still-01.png",
+      "/assets/episodes/002-nesom/still-02.png",
+      "/assets/episodes/002-nesom/still-03.png",
+      "/assets/episodes/002-nesom/still-04.png",
+      "/assets/episodes/002-nesom/still-05.png",
+      "/assets/episodes/002-nesom/still-06.png"
     ],
     "gear": [
       "Logic Pro",
@@ -258,17 +263,17 @@
       {
         "title": "Το session ξεκινάει χωρίς έτοιμο κομμάτι",
         "copy": "Ο Nesom μπαίνει στη διαδικασία από την αρχή, με το beat και το writing να χτίζονται μέσα στο ίδιο δωμάτιο.",
-        "image": "/assets/real/episode-001-studio.jpg"
+        "image": "/assets/episodes/002-nesom/still-01.png"
       },
       {
         "title": "Το beat παίρνει μορφή",
         "copy": "Ιδέες, δοκιμές και αλλαγές μέχρι να βρεθεί το σωστό πάτημα για το verse.",
-        "image": "/assets/real/episode-001-beat.jpg"
+        "image": "/assets/episodes/002-nesom/still-03.png"
       },
       {
         "title": "Το τελικό αποτέλεσμα κλείνει το επεισόδιο",
         "copy": "Η διαδρομή του session φτάνει στο performance και στο κομμάτι που βγαίνει από τη διαδικασία.",
-        "image": "/assets/real/episode-001-performance.jpg"
+        "image": "/assets/episodes/002-nesom/still-06.png"
       }
     ],
     "audio": {
@@ -276,6 +281,9 @@
       "availableAt": "2026-08-18",
       "label": "Ολόκληρο επεισόδιο σε mp3",
       "mimeType": "audio/mpeg"
-    }
+    },
+    "teaserVideo": "/assets/promo/episode-002-trailer.mp4",
+    "teaserPoster": "/assets/episodes/002-nesom/thumbnail.png",
+    "tiktokUrl": "https://www.tiktok.com/@nesomnineseven"
   }
 ]

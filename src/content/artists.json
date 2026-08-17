@@ -66,7 +66,7 @@
   {
     "slug": "nesom",
     "name": "Nesom",
-    "image": "/assets/artists/nesom.svg",
+    "image": "/assets/artists/nesom.png",
     "location": "Ηράκλειο Κρήτης",
     "shortBio": "Rapper από το Ηράκλειο Κρήτης, καλεσμένος στο δεύτερο Ραπ Στα Μπαμ session.",
     "bio": [
@@ -75,8 +75,10 @@
       "Στο επεισόδιο μπαίνει στη διαδικασία χωρίς έτοιμο κομμάτι: beat, στίχοι, δοκιμές, λάθη και τελικό αποτέλεσμα μέσα στο ίδιο δωμάτιο."
     ],
     "instagramUrl": "https://www.instagram.com/nesomnineseven/",
-    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP?si=CMxsyTHfS1ScJLRj27ahBg",
+    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP",
     "featured": true,
-    "kind": "guest"
+    "kind": "guest",
+    "youtubeUrl": "https://www.youtube.com/channel/UC9Msvv88aaIBxHGGoz-MDVg",
+    "tiktokUrl": "https://www.tiktok.com/@nesomnineseven"
   }
 ]

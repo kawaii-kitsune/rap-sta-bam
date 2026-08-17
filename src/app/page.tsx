@@ -4,11 +4,12 @@ import { ArrowRight, CalendarDays } from "lucide-react";
 import { Container } from "@/components/Container";
 import { ContactSection } from "@/components/ContactSection";
 import { Hero } from "@/components/Hero";
+import { PromoTeaser } from "@/components/PromoTeaser";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SocialLinks } from "@/components/SocialLinks";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { releaseCadence, releaseSchedule } from "@/config/site";
-import { formatGreekDate, getAthensDateKey, getFeaturedArtists, getLatestEpisode, isEpisodeLive } from "@/lib/content";
+import { formatGreekDate, getAthensDateKey, getFeaturedArtists, getLatestEpisode, getVisibleEpisodes, isEpisodeLive, isReleased } from "@/lib/content";
 import type { SocialLink } from "@/types/content";
 
 
@@ -24,6 +25,10 @@ export default function HomePage() {
   const featuredArtists = getFeaturedArtists();
   const nextRelease = getNextRelease();
   const latestIsLive = isEpisodeLive(latestEpisode);
+  const upcomingEpisode = getVisibleEpisodes()
+    .filter((episode) => episode.status !== "draft" && !isReleased(episode.publishedAt))
+    .sort((a, b) => a.number - b.number)[0];
+  const heroEpisode = upcomingEpisode ?? latestEpisode;
   const latestLinks: SocialLink[] = [
     { platform: "youtube", label: "YouTube", url: latestEpisode.youtubeUrl ?? "" },
     { platform: "spotify", label: "Spotify", url: latestEpisode.spotifyUrl ?? "" },
@@ -33,7 +38,9 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero latestEpisode={latestEpisode} />
+      <Hero episode={heroEpisode} isUpcoming={Boolean(upcomingEpisode)} />
+
+      {upcomingEpisode ? <PromoTeaser episode={upcomingEpisode} /> : null}
 
       <section id="first-episode" className="scroll-mt-24 border-b border-[var(--line)] py-16">
         <Container>

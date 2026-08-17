@@ -1,14 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { formatGreekDate } from "@/lib/content";
 import type { Episode } from "@/types/content";
 
-export function Hero({ latestEpisode }: { latestEpisode: Episode }) {
+type HeroProps = {
+  episode: Episode;
+  isUpcoming?: boolean;
+};
+
+export function Hero({ episode, isUpcoming = false }: HeroProps) {
   return (
     <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden border-b border-[var(--line)] bg-black">
       <Image
-        src={latestEpisode.thumbnail}
-        alt={`Τελευταίο επεισόδιο: ${latestEpisode.title}`}
+        src={episode.thumbnail}
+        alt={(isUpcoming ? "Επόμενο session" : "Τελευταίο επεισόδιο") + ": " + episode.title}
         fill
         priority
         sizes="100vw"
@@ -26,16 +32,18 @@ export function Hero({ latestEpisode }: { latestEpisode: Episode }) {
             className="mx-auto mb-6 h-24 w-auto opacity-95 sm:h-28 lg:h-32"
           />
           <h1 className="sr-only">Ραπ Στα Μπαμ</h1>
-          <p className="rsb-kicker">DIY hip hop sessions / Ηράκλειο Κρήτης</p>
+          <p className="rsb-kicker">
+            {isUpcoming ? "Πρεμιέρα " + formatGreekDate(episode.publishedAt) + " / " + episode.artistName : "DIY hip hop sessions / Ηράκλειο Κρήτης"}
+          </p>
           <p className="mt-5 text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-5xl sm:leading-[1.05]">
-            Ένας rapper. Ένα beat. Ένα session από το μηδέν.
+            {isUpcoming ? "Επόμενο session: " + episode.title + "." : "Ένας rapper. Ένα beat. Ένα session από το μηδέν."}
           </p>
           <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
             Ιστορία, γράψιμο, recording και performance όπως συμβαίνουν στη ζωή... Απλά πράγματα.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="#first-episode" className="rsb-button">
-              Μπες στο πρώτο session <ArrowRight className="h-4 w-4" />
+            <Link href={isUpcoming ? "#next-episode" : "#first-episode"} className="rsb-button">
+              {isUpcoming ? "Δες το trailer" : "Μπες στο πρώτο session"} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

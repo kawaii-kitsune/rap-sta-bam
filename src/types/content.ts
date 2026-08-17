@@ -27,6 +27,8 @@ export type Episode = {
     captions?: string;
     previewUnlock?: boolean;
   };
+  teaserVideo?: string;
+  teaserPoster?: string;
   youtubeVideoId?: string;
   spotifyUrl?: string;
   youtubeUrl?: string;
