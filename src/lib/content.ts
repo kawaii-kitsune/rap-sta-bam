@@ -10,7 +10,7 @@ export function getAllEpisodes(): Episode[] {
 }
 
 export function getPublishedEpisodes(): Episode[] {
-  return getAllEpisodes().filter((episode) => episode.status === "published" && isReleased(episode.publishedAt));
+  return getAllEpisodes().filter((episode) => episode.status !== "draft" && isReleased(episode.publishedAt));
 }
 
 export function getVisibleEpisodes(): Episode[] {
@@ -71,16 +71,21 @@ export function formatGreekDate(date: string): string {
   }).format(new Date(date));
 }
 
+export function getAthensDateKey(reference = new Date()): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone: "Europe/Athens",
+    year: "numeric"
+  }).format(reference);
+}
+
 export function isReleased(date: string, reference = new Date()): boolean {
-  const target = new Date(`${date}T00:00:00`);
-  const now = new Date(reference);
-  target.setHours(0, 0, 0, 0);
-  now.setHours(0, 0, 0, 0);
-  return target.getTime() <= now.getTime();
+  return date <= getAthensDateKey(reference);
 }
 
 export function isEpisodeLive(episode: Episode, reference = new Date()): boolean {
-  return episode.status === "published" && isReleased(episode.publishedAt, reference);
+  return episode.status !== "draft" && isReleased(episode.publishedAt, reference);
 }
 
 export function isValidHttpUrl(url?: string): url is string {

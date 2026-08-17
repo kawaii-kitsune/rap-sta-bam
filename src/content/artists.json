@@ -62,5 +62,21 @@
     "instagramUrl": "https://www.instagram.com/dimitristsekeris",
     "featured": true,
     "kind": "team"
+  },
+  {
+    "slug": "nesom",
+    "name": "Nesom",
+    "image": "/assets/artists/nesom.svg",
+    "location": "Ηράκλειο Κρήτης",
+    "shortBio": "Rapper από το Ηράκλειο Κρήτης, καλεσμένος στο δεύτερο Ραπ Στα Μπαμ session.",
+    "bio": [
+      "Ο Nesom είναι rapper από το Ηράκλειο Κρήτης και ο δεύτερος καλεσμένος του Ραπ Στα Μπαμ.",
+      "Στο session μιλάει για τη μουσική του, τις επιρροές του και όσα συμβαίνουν πριν ένα κομμάτι φτάσει στην τελική του μορφή.",
+      "Στο επεισόδιο μπαίνει στη διαδικασία χωρίς έτοιμο κομμάτι: beat, στίχοι, δοκιμές, λάθη και τελικό αποτέλεσμα μέσα στο ίδιο δωμάτιο."
+    ],
+    "instagramUrl": "https://www.instagram.com/nesomnineseven/",
+    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP?si=CMxsyTHfS1ScJLRj27ahBg",
+    "featured": true,
+    "kind": "guest"
   }
 ]

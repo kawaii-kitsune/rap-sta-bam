@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { getVisibleEpisodes } from "@/lib/content";
 import { createMetadata } from "@/lib/metadata";
 
+
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = createMetadata({
   title: "Επεισόδια",
   description: "Το αρχείο όλων των επεισοδίων του Ραπ Στα Μπαμ.",

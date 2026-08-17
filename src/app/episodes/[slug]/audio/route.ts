@@ -10,6 +10,7 @@ type RouteContext = {
 };
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request, { params }: RouteContext) {
   const { slug } = await params;

@@ -21,6 +21,8 @@ import { formatGreekDate, getAdjacentEpisodes, getArtistBySlug, getEpisodeBySlug
 import { createMetadata } from "@/lib/metadata";
 import type { SocialLink } from "@/types/content";
 
+
+export const dynamic = "force-dynamic";
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -91,7 +93,7 @@ export default async function EpisodePage({ params }: Props) {
                   <div className="mt-5 grid gap-2 sm:grid-cols-2">
                     <UnlockItem icon={<PlaySquare className="h-4 w-4" />} label="Full YouTube episode" />
                     <UnlockItem icon={<Headphones className="h-4 w-4" />} label="Audio player" />
-                    <UnlockItem icon={<Captions className="h-4 w-4" />} label="Captions / listen page" />
+                    <UnlockItem icon={<Captions className="h-4 w-4" />} label={episode.audio?.captions ? "Captions / listen page" : "Listen page"} />
                     <UnlockItem icon={<CalendarClock className="h-4 w-4" />} label={`Πρεμιέρα ${formatGreekDate(episode.publishedAt)}`} />
                   </div>
                 </div>

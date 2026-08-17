@@ -9,6 +9,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { formatGreekDate, getEpisodeBySlug, getVisibleEpisodes } from "@/lib/content";
 import { createMetadata } from "@/lib/metadata";
 
+
+export const dynamic = "force-dynamic";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -27,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return createMetadata({
     title: `Audio - ${episode.title}`,
-    description: `Άκουσε το πλήρες audio του ${episode.title} με συγχρονισμένα captions.`,
+    description: episode.audio?.captions ? `Άκουσε το πλήρες audio του ${episode.title} με συγχρονισμένα captions.` : `Άκουσε το πλήρες audio του ${episode.title}.`,
     path: `/episodes/${episode.slug}/listen`,
     image: episode.thumbnail
   });
@@ -48,7 +51,7 @@ export default async function EpisodeListenPage({ params }: Props) {
         <Link href={`/episodes/${episode.slug}`} className="mb-6 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:text-[var(--foreground)]">
           <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Πίσω στο επεισόδιο
         </Link>
-        <SectionHeading eyebrow={`#${String(episode.number).padStart(3, "0")} / ${formatGreekDate(episode.publishedAt)}`} title="Audio player" copy="Dedicated ακρόαση του επεισοδίου με captions που ακολουθούν το mp3 και το seek." />
+        <SectionHeading eyebrow={`#${String(episode.number).padStart(3, "0")} / ${formatGreekDate(episode.publishedAt)}`} title="Audio player" copy={episode.audio.captions ? "Dedicated ακρόαση του επεισοδίου με captions που ακολουθούν το mp3 και το seek." : "Dedicated ακρόαση του επεισοδίου σε mp3."} />
         <EpisodeAudioPlayer
           src={`/episodes/${episode.slug}/audio`}
           label={episode.audio.label ?? "Audio αρχείο"}

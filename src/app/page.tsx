@@ -8,14 +8,15 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SocialLinks } from "@/components/SocialLinks";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { releaseCadence, releaseSchedule } from "@/config/site";
-import { formatGreekDate, getFeaturedArtists, getLatestEpisode, isEpisodeLive } from "@/lib/content";
+import { formatGreekDate, getAthensDateKey, getFeaturedArtists, getLatestEpisode, isEpisodeLive } from "@/lib/content";
 import type { SocialLink } from "@/types/content";
 
-function getNextRelease() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
 
-  return releaseSchedule.find((item) => new Date(`${item.date}T00:00:00`) >= today) ?? releaseSchedule.at(-1);
+export const dynamic = "force-dynamic";
+function getNextRelease() {
+  const today = getAthensDateKey();
+
+  return releaseSchedule.find((item) => item.date >= today) ?? releaseSchedule.at(-1);
 }
 
 export default function HomePage() {
@@ -90,7 +91,7 @@ export default function HomePage() {
 
       <section className="border-b border-[var(--line)] py-16">
         <Container>
-          <SectionHeading eyebrow="Μαζί μας στα sessions" title="Καλεσμένος και team" copy="Ο Τζίμος είναι ο καλεσμένος artist του #001. Οι υπόλοιποι είναι οι άνθρωποι της παραγωγής, της εικόνας, του ήχου και της ταυτότητας." />
+          <SectionHeading eyebrow="Μαζί μας στα sessions" title="Καλεσμένος και team" copy="Οι καλεσμένοι artists και οι άνθρωποι της παραγωγής, της εικόνας, του ήχου και της ταυτότητας." />
           <div className="rsb-panel">
             {featuredArtists.map((artist) => (
               <Link key={artist.slug} href={`/artists/${artist.slug}`} className="rsb-row grid gap-4 py-5 last:border-b-0 sm:grid-cols-[96px_1fr] sm:items-center">

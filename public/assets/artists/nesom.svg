@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">Nesom placeholder portrait</title>
+  <desc id="desc">Graphic placeholder for Nesom on Rap Sta Bam.</desc>
+  <rect width="900" height="1125" fill="#0a0a0a"/>
+  <rect x="36" y="36" width="828" height="1053" fill="#141211" stroke="#393331" stroke-width="4"/>
+  <path d="M36 270H864M36 540H864M36 810H864M210 36V1089M450 36V1089M690 36V1089" stroke="#393331" stroke-width="2" opacity="0.55"/>
+  <circle cx="450" cy="420" r="165" fill="#e63946" opacity="0.92"/>
+  <circle cx="450" cy="420" r="104" fill="#0a0a0a"/>
+  <path d="M260 760H640" stroke="#f7f1ef" stroke-width="22" stroke-linecap="square"/>
+  <path d="M260 815H545" stroke="#e63946" stroke-width="22" stroke-linecap="square"/>
+  <text x="450" y="690" text-anchor="middle" fill="#f7f1ef" font-family="Impact, Arial Black, sans-serif" font-size="136" letter-spacing="2">NESOM</text>
+  <text x="450" y="900" text-anchor="middle" fill="#8f7d7a" font-family="monospace" font-size="28" letter-spacing="8">SESSION 002 / HERAKLION</text>
+</svg>

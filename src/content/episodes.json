@@ -13,11 +13,11 @@
       "Μιλάμε για τη μουσική του, τις επιρροές του, τη δημιουργική του διαδικασία και γενικά για όλα αυτά που συμβαίνουν πίσω από ένα κομμάτι, πριν φτάσει να ακουστεί ολοκληρωμένο, αλλά και για ό,τι κάνει τον Τζίμο, Τζίμο.",
       "Αν θα ήθελες να δεις πώς γεννιέται ένα τραγούδι από την αρχή, ακολούθησε το Ραπ Στα Μπαμ και έλα μαζί μας στα επόμενα επεισόδια.",
       "Κάθε επεισόδιο, ένας διαφορετικός καλλιτέχνης. Μια νέα ιδέα. Ένα νέο κομμάτι.",
-      "Τα λέμε κάθε τρίτη Τρίτη του μήνα."
+      "Τα λέμε κάθε μήνα."
     ],
     "publishedAt": "2026-07-21",
     "thumbnail": "/assets/episodes/001-tzimos-thumbnail-real.jpg",
-    "status": "upcoming",
+    "status": "published",
     "audio": {
       "file": "private/audio/001-tzimos.mp3",
       "availableAt": "2026-07-21",
@@ -151,5 +151,131 @@
         "image": "/assets/episodes/001-moments/05-performance.jpg"
       }
     ]
+  },
+  {
+    "slug": "002-nesom",
+    "number": 2,
+    "title": "Ραπ Στα Μπαμ #002 — Nesom",
+    "artistSlug": "nesom",
+    "artistName": "Nesom",
+    "excerpt": "Στο δεύτερο επεισόδιο έχουμε μαζί μας τον Nesom από το Ηράκλειο. Μιλάμε για τη μουσική του, τις επιρροές του και όσα συμβαίνουν πριν ένα κομμάτι φτάσει στην τελική του μορφή.",
+    "description": [
+      "Στο Ραπ Στα Μπαμ, ένας rapper έρχεται στο στούντιο χωρίς έτοιμο κομμάτι.",
+      "Φτιάχνουμε το beat, γράφονται οι στίχοι, δοκιμάζουμε ιδέες, κάνουμε λάθη και κρατάμε όλη τη διαδρομή μέχρι το τελικό αποτέλεσμα.",
+      "Στο δεύτερο μας επεισόδιο έχουμε μαζί μας τον Nesom από το Ηράκλειο. Μιλάμε για τη μουσική του, τις επιρροές του και όσα συμβαίνουν πριν ένα κομμάτι φτάσει στην τελική του μορφή.",
+      "Κάθε επεισόδιο, ένας διαφορετικός καλλιτέχνης. Ένα νέο beat. Ένα νέο κομμάτι."
+    ],
+    "publishedAt": "2026-08-18",
+    "thumbnail": "/assets/episodes/002-nesom/thumbnail.png",
+    "status": "upcoming",
+    "youtubeVideoId": "dJjsfeIUEs4",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dJjsfeIUEs4",
+    "instagramUrl": "https://www.instagram.com/nesomnineseven/",
+    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP?si=CMxsyTHfS1ScJLRj27ahBg",
+    "shortClips": [
+      {
+        "title": "Ραπ Στα Μπαμ #002 — Nesom",
+        "url": "https://www.youtube.com/watch?v=dJjsfeIUEs4"
+      }
+    ],
+    "gallery": [
+      "/assets/real/episode-001-studio.jpg",
+      "/assets/real/episode-001-beat.jpg",
+      "/assets/real/episode-001-performance.jpg"
+    ],
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Flows / Υπομονή",
+        "name": "Nesom",
+        "url": "https://www.instagram.com/nesomnineseven/",
+        "note": "Για τα flows, τα rap και την υπομονή της τύχης μας μέσα.",
+        "artistSlug": "nesom"
+      },
+      {
+        "role": "Εικόνα / Μοντάζ / VFX",
+        "name": "Le Snipe VFX / Μύρωνας Σφυράκης",
+        "url": "https://www.lesnipevfx.com/",
+        "note": "Για την εικόνα, το μοντάζ και τα memes.",
+        "artistSlug": "le-snipe-vfx"
+      },
+      {
+        "role": "Mix / Master",
+        "name": "Redemption Studio / Δημήτρης Τσεκέρης",
+        "url": "https://www.instagram.com/dimitristsekeris/",
+        "note": "Για το mix, το master και την υπομονή με τα exports, πάλι.",
+        "artistSlug": "redemption-studio"
+      },
+      {
+        "role": "Logo / Ταυτότητα project",
+        "name": "Ego Designs / Αντώνης Ντοβίνος",
+        "url": "https://www.behance.net/dovi_made_this",
+        "note": "Για το logo και την ταυτότητα του project."
+      },
+      {
+        "role": "Στήριξη",
+        "name": "Όσοι αφιερώνετε χρόνο για να δείτε αυτό που φτιάχνουμε",
+        "note": "Ευχαριστούμε όλους εσάς που αφιερώνετε χρόνο για να δείτε αυτό που φτιάχνουμε."
+      },
+      {
+        "role": "Μουσική / Παραγωγή / Παρουσίαση",
+        "name": "Phone Memo",
+        "url": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+        "note": "Μουσική από τον Phone Memo.",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "Ένα session / μία μέρα",
+        "note": "Beat, writing, recording και performance μέσα στην ίδια διαδικασία."
+      },
+      {
+        "label": "Καλεσμένος",
+        "value": "Nesom",
+        "note": "Ο δεύτερος καλεσμένος artist του Ραπ Στα Μπαμ."
+      },
+      {
+        "label": "Base",
+        "value": "Ηράκλειο Κρήτης",
+        "note": "Ανεξάρτητη παραγωγή από local studio setup."
+      },
+      {
+        "label": "Release",
+        "value": "18/08/2026",
+        "note": "Πρεμιέρα του δεύτερου επεισοδίου."
+      }
+    ],
+    "bestMoments": [
+      {
+        "title": "Το session ξεκινάει χωρίς έτοιμο κομμάτι",
+        "copy": "Ο Nesom μπαίνει στη διαδικασία από την αρχή, με το beat και το writing να χτίζονται μέσα στο ίδιο δωμάτιο.",
+        "image": "/assets/real/episode-001-studio.jpg"
+      },
+      {
+        "title": "Το beat παίρνει μορφή",
+        "copy": "Ιδέες, δοκιμές και αλλαγές μέχρι να βρεθεί το σωστό πάτημα για το verse.",
+        "image": "/assets/real/episode-001-beat.jpg"
+      },
+      {
+        "title": "Το τελικό αποτέλεσμα κλείνει το επεισόδιο",
+        "copy": "Η διαδρομή του session φτάνει στο performance και στο κομμάτι που βγαίνει από τη διαδικασία.",
+        "image": "/assets/real/episode-001-performance.jpg"
+      }
+    ],
+    "audio": {
+      "file": "private/audio/002-nesom.mp3",
+      "availableAt": "2026-08-18",
+      "label": "Ολόκληρο επεισόδιο σε mp3",
+      "mimeType": "audio/mpeg"
+    }
   }
 ]
