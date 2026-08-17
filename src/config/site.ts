@@ -25,6 +25,7 @@ export const siteConfig = {
     tiktok: "https://www.tiktok.com/@phonememo",
     instagram: "https://www.instagram.com/phone_memo_the.anartist/",
     spotify: "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+    spotifyPodcast: "https://open.spotify.com/show/1mMo7JtgOo6916tseNlmPX",
     dov1nosTikTok: "https://www.tiktok.com/@dov1nos",
     dimitrisTsekerisTikTok: "https://www.tiktok.com/@dimitris.tsekeris2",
     leSnipeInstagram: "https://www.instagram.com/lesnipe.vfx",
@@ -48,5 +49,6 @@ export const projectSocialLinks: SocialLink[] = [
   { platform: "youtube", label: "YouTube", url: siteConfig.socials.youtube },
   { platform: "tiktok", label: "TikTok", url: siteConfig.socials.tiktok },
   { platform: "instagram", label: "Instagram", url: siteConfig.socials.instagram },
-  { platform: "spotify", label: "Spotify", url: siteConfig.socials.spotify }
+  { platform: "spotify", label: "Spotify", url: siteConfig.socials.spotify },
+  { platform: "spotify", label: "Spotify Podcast", url: siteConfig.socials.spotifyPodcast }
 ];
