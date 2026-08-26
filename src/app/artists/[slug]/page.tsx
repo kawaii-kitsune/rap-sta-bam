@@ -48,7 +48,8 @@ export default async function ArtistPage({ params }: Props) {
     { platform: "instagram", label: "Instagram", url: artist.instagramUrl ?? "" },
     { platform: "tiktok", label: "TikTok", url: artist.tiktokUrl ?? "" },
     { platform: "spotify", label: "Spotify", url: artist.spotifyUrl ?? "" },
-    { platform: "youtube", label: "YouTube", url: artist.youtubeUrl ?? "" }
+    { platform: "youtube", label: "YouTube", url: artist.youtubeUrl ?? "" },
+    { platform: "twitch", label: "Twitch", url: artist.twitchUrl ?? "" }
   ];
 
   return (

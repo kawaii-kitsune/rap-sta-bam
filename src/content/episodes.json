@@ -169,7 +169,7 @@
     ],
     "publishedAt": "2026-08-18",
     "thumbnail": "/assets/episodes/002-nesom/thumbnail.png",
-    "status": "upcoming",
+    "status": "published",
     "youtubeVideoId": "dJjsfeIUEs4",
     "youtubeUrl": "https://youtu.be/dJjsfeIUEs4",
     "instagramUrl": "https://www.instagram.com/nesomnineseven/",
@@ -285,5 +285,67 @@
     "teaserVideo": "/assets/promo/episode-002-trailer.mp4",
     "teaserPoster": "/assets/episodes/002-nesom/thumbnail.png",
     "tiktokUrl": "https://www.tiktok.com/@nesomnineseven"
+  },
+  {
+    "slug": "003-chozen",
+    "number": 3,
+    "title": "Ραπ Στα Μπαμ #003 — Chozen",
+    "artistSlug": "chozen",
+    "artistName": "Chozen",
+    "excerpt": "Στο τρίτο επεισόδιο έχουμε μαζί μας τον Chozen. Ένα ακόμη session χωρίς έτοιμο κομμάτι, με beat, γράψιμο και recording να χτίζονται μέσα στο ίδιο δωμάτιο.",
+    "description": [
+      "Στο Ραπ Στα Μπαμ, ένας rapper έρχεται στο στούντιο χωρίς έτοιμο κομμάτι.",
+      "Στο τρίτο επεισόδιο έχουμε μαζί μας τον Chozen και κρατάμε τη διαδικασία όπως συμβαίνει: ιδέες, beat, στίχοι, δοκιμές και λάθη μέχρι να φτάσουμε στο τελικό αποτέλεσμα.",
+      "Περισσότερες λεπτομέρειες και video θα προστεθούν όσο πλησιάζει η πρεμιέρα."
+    ],
+    "publishedAt": "2026-09-15",
+    "thumbnail": "/assets/episodes/003-chozen/thumbnail.png",
+    "status": "upcoming",
+    "instagramUrl": "https://www.instagram.com/chozencho/",
+    "spotifyUrl": "https://open.spotify.com/artist/2JMhsG9u413Y6PYgCMzUnr",
+    "youtubeUrl": "https://www.youtube.com/channel/UCSIZuXRWzp-1NbfSDrhKe9Q",
+    "twitchUrl": "https://www.twitch.tv/freestylepodcast",
+    "gallery": [
+      "/assets/episodes/003-chozen/thumbnail.png"
+    ],
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Session",
+        "name": "Chozen",
+        "url": "https://www.instagram.com/chozencho/",
+        "artistSlug": "chozen"
+      },
+      {
+        "role": "Μουσική / Παραγωγή / Παρουσίαση",
+        "name": "Phone Memo",
+        "url": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "Ένα session / μία μέρα",
+        "note": "Beat, writing, recording και performance μέσα στην ίδια διαδικασία."
+      },
+      {
+        "label": "Καλεσμένος",
+        "value": "Chozen",
+        "note": "Ο τρίτος καλεσμένος artist του Ραπ Στα Μπαμ."
+      },
+      {
+        "label": "Release",
+        "value": "15/09/2026",
+        "note": "Πρεμιέρα του τρίτου επεισοδίου."
+      }
+    ]
   }
 ]

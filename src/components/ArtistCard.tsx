@@ -10,7 +10,8 @@ function artistSocials(artist: Artist): SocialLink[] {
     { platform: "instagram", label: `${artist.name} Instagram`, url: artist.instagramUrl ?? "" },
     { platform: "tiktok", label: `${artist.name} TikTok`, url: artist.tiktokUrl ?? "" },
     { platform: "spotify", label: `${artist.name} Spotify`, url: artist.spotifyUrl ?? "" },
-    { platform: "youtube", label: `${artist.name} YouTube`, url: artist.youtubeUrl ?? "" }
+    { platform: "youtube", label: `${artist.name} YouTube`, url: artist.youtubeUrl ?? "" },
+    { platform: "twitch", label: `${artist.name} Twitch`, url: artist.twitchUrl ?? "" }
   ];
 }
 

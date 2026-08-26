@@ -80,5 +80,23 @@
     "kind": "guest",
     "youtubeUrl": "https://www.youtube.com/channel/UC9Msvv88aaIBxHGGoz-MDVg",
     "tiktokUrl": "https://www.tiktok.com/@nesomnineseven"
+  },
+  {
+    "slug": "chozen",
+    "name": "Chozen",
+    "image": "/assets/artists/chozen.png",
+    "location": "Καλεσμένος artist",
+    "shortBio": "Rapper και καλεσμένος στο τρίτο Ραπ Στα Μπαμ session.",
+    "bio": [
+      "Ο Chozen είναι ο τρίτος καλεσμένος του Ραπ Στα Μπαμ.",
+      "Στο session μπαίνει στη διαδικασία χωρίς έτοιμο κομμάτι, με το beat, το γράψιμο και το recording να χτίζονται μπροστά στην κάμερα.",
+      "Περισσότερα στοιχεία για το επεισόδιο θα προστεθούν όσο πλησιάζει η πρεμιέρα."
+    ],
+    "instagramUrl": "https://www.instagram.com/chozencho/",
+    "spotifyUrl": "https://open.spotify.com/artist/2JMhsG9u413Y6PYgCMzUnr",
+    "youtubeUrl": "https://www.youtube.com/channel/UCSIZuXRWzp-1NbfSDrhKe9Q",
+    "twitchUrl": "https://www.twitch.tv/freestylepodcast",
+    "featured": true,
+    "kind": "guest"
   }
 ]

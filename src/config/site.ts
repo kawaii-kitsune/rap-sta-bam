@@ -37,7 +37,7 @@ export const siteConfig = {
 export const releaseSchedule = [
   { date: "2026-07-21", label: "21/07", title: "Session #001 — Τζίμος" },
   { date: "2026-08-18", label: "18/08", title: "Session #002 — Nesom" },
-  { date: "2026-09-15", label: "15/09", title: "Session #003 — TBA" },
+  { date: "2026-09-15", label: "15/09", title: "Session #003 — Chozen" },
   { date: "2026-10-20", label: "20/10", title: "Session #004 — TBA" },
   { date: "2026-11-10", label: "10/11", title: "Session #005 — TBA" },
   { date: "2026-12-15", label: "15/12", title: "Session #006 — TBA" }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 import { Container } from "@/components/Container";
@@ -9,7 +10,7 @@ type PromoTeaserProps = {
 };
 
 export function PromoTeaser({ episode, compact = false }: PromoTeaserProps) {
-  const videoSrc = episode?.teaserVideo ?? "/assets/promo/episode-001-teaser.mp4";
+  const videoSrc = episode?.teaserVideo ?? (!episode ? "/assets/promo/episode-001-teaser.mp4" : undefined);
   const posterSrc = episode?.teaserPoster ?? episode?.thumbnail ?? "/assets/episodes/001-tzimos-thumbnail-real.jpg";
   const title = episode ? episode.artistName + " μπαίνει στο session" : "Ο Τζίμος μπαίνει στο πρώτο session";
   const copy = episode
@@ -17,31 +18,40 @@ export function PromoTeaser({ episode, compact = false }: PromoTeaserProps) {
     : "Λίγο πριν ανοίξει ολόκληρο το επεισόδιο: κουβέντα, beat, πρώτες γραμμές και η ενέργεια του δωματίου χωρίς πολλή βιτρίνα.";
   const href = episode ? "/episodes/" + episode.slug : "/episodes/001-tzimos";
 
-  const video = (
+  const media = (
     <div className="relative overflow-hidden border border-[var(--line)] bg-black shadow-[10px_10px_0_#000]">
-      <video
-        className="aspect-[9/16] w-full bg-black object-cover"
-        src={videoSrc}
-        poster={posterSrc}
-        controls
-        muted
-        playsInline
-        preload="metadata"
-        autoPlay={!compact}
-        loop={!compact}
-      />
+      {videoSrc ? (
+        <video
+          className="aspect-[9/16] w-full bg-black object-cover"
+          src={videoSrc}
+          poster={posterSrc}
+          controls
+          muted
+          playsInline
+          preload="metadata"
+          autoPlay={!compact}
+          loop={!compact}
+        />
+      ) : (
+        <div className="relative aspect-[9/16] w-full bg-black">
+          <Image src={posterSrc} alt={"Preview εικόνα για " + title} fill sizes="(min-width: 1024px) 360px, 100vw" className="object-cover grayscale" />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--accent)]">Trailer σύντομα</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 
   if (compact) {
-    return video;
+    return media;
   }
 
   return (
     <section id="next-episode" className="scroll-mt-24 border-b border-[var(--line)] py-14">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[minmax(260px,360px)_1fr] lg:items-center">
-          {video}
+          {media}
           <div>
             <p className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">
               <Play className="h-4 w-4" aria-hidden="true" /> Πρώτη εικόνα

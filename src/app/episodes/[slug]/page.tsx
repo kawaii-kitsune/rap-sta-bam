@@ -63,7 +63,8 @@ export default async function EpisodePage({ params }: Props) {
     { platform: "youtube", label: "YouTube", url: episode.youtubeUrl ?? "" },
     { platform: "spotify", label: "Spotify", url: episode.spotifyUrl ?? "" },
     { platform: "tiktok", label: "TikTok", url: episode.tiktokUrl ?? "" },
-    { platform: "instagram", label: "Instagram", url: episode.instagramUrl ?? "" }
+    { platform: "instagram", label: "Instagram", url: episode.instagramUrl ?? "" },
+    { platform: "twitch", label: "Twitch", url: episode.twitchUrl ?? "" }
   ];
 
   return (
@@ -89,11 +90,11 @@ export default async function EpisodePage({ params }: Props) {
                 <div className="border-y border-[var(--line)] px-4 py-5 sm:px-5 sm:py-6">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Κλειδωμένο μέχρι την πρεμιέρα</p>
                   <h2 className="display-font mt-3 text-4xl leading-none">Το επεισόδιο ανοίγει στις {formatGreekDate(episode.publishedAt)}</h2>
-                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει διαθέσιμο μόνο το teaser. Στην πρεμιέρα ανοίγουν όλα τα βασικά κομμάτια του επεισοδίου.</p>
+                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει διαθέσιμο μόνο το preview. Στην πρεμιέρα ανοίγουν τα διαθέσιμα κομμάτια του επεισοδίου.</p>
                   <div className="mt-5 grid gap-2 sm:grid-cols-2">
-                    <UnlockItem icon={<PlaySquare className="h-4 w-4" />} label="Full YouTube episode" />
-                    <UnlockItem icon={<Headphones className="h-4 w-4" />} label="Audio player" />
-                    <UnlockItem icon={<Captions className="h-4 w-4" />} label={episode.audio?.captions ? "Captions / listen page" : "Listen page"} />
+                    <UnlockItem icon={<PlaySquare className="h-4 w-4" />} label={episode.youtubeVideoId ? "Full YouTube episode" : "Video link"} />
+                    {episode.audio ? <UnlockItem icon={<Headphones className="h-4 w-4" />} label="Audio player" /> : null}
+                    {episode.audio ? <UnlockItem icon={<Captions className="h-4 w-4" />} label={episode.audio.captions ? "Captions / listen page" : "Listen page"} /> : null}
                     <UnlockItem icon={<CalendarClock className="h-4 w-4" />} label={`Πρεμιέρα ${formatGreekDate(episode.publishedAt)}`} />
                   </div>
                 </div>

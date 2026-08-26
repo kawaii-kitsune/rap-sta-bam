@@ -9,6 +9,7 @@ const icons: Record<SocialPlatform, React.ComponentType<IconProps>> = {
   tiktok: TikTokIcon,
   instagram: InstagramIcon,
   spotify: SpotifyIcon,
+  twitch: TwitchIcon,
   website: ExternalLink
 };
 
@@ -72,6 +73,14 @@ function SpotifyIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
       <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.8.8 0 0 1-1.1.3c-3-1.8-6.7-2.2-10.9-1.2a.8.8 0 0 1-.4-1.6c4.7-1.1 8.8-.6 12.1 1.4.4.2.5.7.3 1.1Zm1.2-2.8a1 1 0 0 1-1.3.3c-3.4-2.1-8.5-2.7-12.5-1.5a1 1 0 0 1-.6-1.9c4.6-1.4 10.3-.7 14.1 1.7.5.3.6.9.3 1.4Zm.1-3c-4-2.4-10.7-2.6-14.5-1.4a1.1 1.1 0 1 1-.7-2.1c4.4-1.3 11.7-1.1 16.3 1.7a1.1 1.1 0 1 1-1.1 1.8Z" />
+    </svg>
+  );
+}
+
+function TwitchIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M5.2 3 3.8 6.8v13h4.5V22h2.5l2.3-2.2h3.5L21 15.4V3H5.2Zm14 11.6-2.5 2.5h-4l-2.2 2.2v-2.2H6.8V4.8h12.4v9.8Zm-3-6.3v4.4h-1.8V8.3h1.8Zm-4.8 0v4.4H9.6V8.3h1.8Z" />
     </svg>
   );
 }

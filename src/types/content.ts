@@ -1,4 +1,4 @@
-export type SocialPlatform = "youtube" | "tiktok" | "instagram" | "spotify" | "website";
+export type SocialPlatform = "youtube" | "tiktok" | "instagram" | "spotify" | "twitch" | "website";
 
 export type SocialLink = {
   platform: SocialPlatform;
@@ -34,6 +34,7 @@ export type Episode = {
   youtubeUrl?: string;
   instagramUrl?: string;
   tiktokUrl?: string;
+  twitchUrl?: string;
   shortClips?: {
     title: string;
     url: string;
@@ -78,6 +79,7 @@ export type Artist = {
   tiktokUrl?: string;
   spotifyUrl?: string;
   youtubeUrl?: string;
+  twitchUrl?: string;
   featured?: boolean;
 };
 
