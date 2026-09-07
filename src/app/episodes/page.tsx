@@ -20,7 +20,7 @@ export default function EpisodesPage() {
   return (
     <Container className="py-10">
       <Breadcrumbs items={[{ label: "Επεισόδια" }]} />
-      <SectionHeading eyebrow="Αρχείο" title="Όλα τα επεισόδια" copy="Όσα έχουν ανοίξει και όσα έρχονται, με υλικό, συντελεστές και links σε ένα σημείο." />
+      <div className="page-heading"><SectionHeading as="h1" eyebrow="Αρχείο" title="Όλα τα επεισόδια" copy="Όσα έχουν ανοίξει και όσα έρχονται, με υλικό, συντελεστές και links σε ένα σημείο." /></div>
       <EpisodeFilter episodes={episodes} />
     </Container>
   );

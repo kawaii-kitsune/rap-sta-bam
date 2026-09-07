@@ -27,7 +27,7 @@ export default function ProductsPage() {
 
       <div className="grid gap-10 lg:grid-cols-[1fr_340px]">
         <main>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Phone Memo catalog"
             title="Products & releases"
             copy="Official product links, Bandcamp pages and Spotify releases for Phone Memo. Buying, streaming and payments happen on the external platforms."

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Play } from "lucide-react";
+import { Container } from "@/components/Container";
 import { formatGreekDate } from "@/lib/content";
 import type { Episode } from "@/types/content";
 
@@ -10,44 +11,54 @@ type HeroProps = {
 };
 
 export function Hero({ episode, isUpcoming = false }: HeroProps) {
+  const number = String(episode.number).padStart(3, "0");
+  const href = isUpcoming ? "#next-episode" : "#first-episode";
+
   return (
-    <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden border-b border-[var(--line)] bg-black">
-      <Image
-        src={episode.thumbnail}
-        alt={(isUpcoming ? "Επόμενο session" : "Τελευταίο επεισόδιο") + ": " + episode.title}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-72 grayscale contrast-110"
-      />
-      <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,7,6,.22)_0%,rgba(8,7,6,.52)_46%,rgba(8,7,6,.95)_100%)]" />
-      <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-end px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <Image
-            src="/assets/logo/logo-white-red.png"
-            alt="Ραπ Στα Μπαμ logo"
-            width={180}
-            height={167}
-            priority
-            className="mx-auto mb-6 h-24 w-auto opacity-95 sm:h-28 lg:h-32"
-          />
-          <h1 className="sr-only">Ραπ Στα Μπαμ</h1>
-          <p className="rsb-kicker">
-            {isUpcoming ? "Πρεμιέρα " + formatGreekDate(episode.publishedAt) + " / " + episode.artistName : "DIY hip hop sessions / Ηράκλειο Κρήτης"}
-          </p>
-          <p className="mt-5 text-3xl font-semibold leading-tight text-[var(--foreground)] sm:text-5xl sm:leading-[1.05]">
-            {isUpcoming ? "Επόμενο session: " + episode.title + "." : "Ένας rapper. Ένα beat. Ένα session από το μηδέν."}
-          </p>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
-            Ιστορία, γράψιμο, recording και performance όπως συμβαίνουν στη ζωή... Απλά πράγματα.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href={isUpcoming ? "#next-episode" : "#first-episode"} className="rsb-button">
-              {isUpcoming ? "Δες το trailer" : "Μπες στο πρώτο session"} <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+    <section className="home-hero" aria-labelledby="hero-title">
+      <Container>
+        <div className="hero-meta archive-label">
+          <span className="inline-flex items-center gap-3"><span className="record-dot" /> DIY hip hop sessions</span>
+          <span>Ηράκλειο Κρήτης</span>
         </div>
-      </div>
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <h1 id="hero-title" className="hero-title display-font">
+              Ένας rapper.<br />Ένα beat.<br /><span>Ένα session</span><br />από το μηδέν.
+            </h1>
+            <p className="hero-description">Ιστορία, γράψιμο, recording και performance όπως συμβαίνουν στη ζωή... Απλά πράγματα.</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href={href} className="rsb-button">
+                <Play className="h-4 w-4" aria-hidden="true" />
+                {isUpcoming ? (episode.teaserVideo ? "Δες το trailer" : "Δες το preview") : "Δες το session"}
+              </Link>
+              <Link href="/episodes" className="rsb-button-secondary">Όλα τα επεισόδια <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </div>
+          </div>
+          <Link href={`/episodes/${episode.slug}`} className="hero-session group" aria-label={`${isUpcoming ? "Επόμενο session" : "Τελευταίο επεισόδιο"}: ${episode.title}`}>
+            <div className="hero-session-image">
+              <Image src={episode.thumbnail} alt={episode.artistName} fill priority sizes="(min-width: 1024px) 52vw, 100vw" className="object-cover grayscale" />
+              <div className="hero-image-shade" aria-hidden="true" />
+              <div className="hero-frame" aria-hidden="true" />
+              <span className="hero-image-label archive-label">ΡΣΜ / SESSION {number}</span>
+              <span className="hero-image-number display-font" aria-hidden="true">{number}</span>
+              <div className="hero-image-caption">
+                <span className="archive-label">{isUpcoming ? "Επόμενο session" : "Τελευταίο επεισόδιο"}</span>
+                <h2 className="display-font">{episode.artistName}</h2>
+              </div>
+              <span className="hero-session-arrow"><ArrowUpRight className="h-6 w-6" aria-hidden="true" /></span>
+            </div>
+            <div className="hero-session-footer archive-label">
+              <span>{isUpcoming ? "Πρεμιέρα" : "Στο αρχείο"}</span>
+              <time dateTime={episode.publishedAt}>{formatGreekDate(episode.publishedAt)}</time>
+            </div>
+          </Link>
+        </div>
+        <div className="hero-bottom archive-label">
+          <span>Ραπ Στα Μπαμ <span className="text-[var(--dim)]">/ Ανεξάρτητη μουσική σειρά</span></span>
+          <a href="#first-episode" className="inline-flex min-h-11 items-center gap-3">Μέσα στο session <ArrowDown className="h-4 w-4" aria-hidden="true" /></a>
+        </div>
+      </Container>
     </section>
   );
 }

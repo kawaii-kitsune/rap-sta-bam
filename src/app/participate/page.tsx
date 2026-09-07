@@ -16,7 +16,7 @@ export default function ParticipatePage() {
     <Container className="py-10">
       <Breadcrumbs items={[{ label: "Συμμετοχή" }]} />
       <div className="max-w-3xl">
-        <SectionHeading
+        <SectionHeading as="h1"
           eyebrow="Συμμετοχή"
           title="Οι δηλώσεις δεν είναι ανοιχτές ακόμα"
           copy="Προς το παρόν το Ραπ Στα Μπαμ δεν δέχεται δημόσιες αιτήσεις για επόμενα sessions."

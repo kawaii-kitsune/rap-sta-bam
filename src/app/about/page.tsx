@@ -19,7 +19,7 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ label: "Σχετικά" }]} />
       <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
         <div>
-          <SectionHeading eyebrow="Σχετικά" title="Με ό,τι έχουμε, όπως μπορούμε" />
+          <div className="page-heading"><SectionHeading as="h1" eyebrow="Σχετικά" title="Με ό,τι έχουμε, όπως μπορούμε" /></div>
           <div className="prose-rsb max-w-3xl text-lg leading-8 text-[var(--muted)]">
             <p>Το Ραπ Στα Μπαμ είναι μία ανεξάρτητη DIY μουσική σειρά με βάση το Ηράκλειο Κρήτης.</p>
             <p>Σε κάθε επεισόδιο, καλούμε έναν rapper να μας αφηγηθεί την ιστορία του και να μπει στο session χωρίς έτοιμο κομμάτι. Φτιάχνουμε ένα beat, γράφεται ένα κουπλέ, γίνεται η ηχογράφηση και η κάμερα κρατάει όλη τη διαδρομή.</p>

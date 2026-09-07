@@ -17,9 +17,9 @@ export const metadata: Metadata = createMetadata({
 
 function PersonRow({ person, label }: { person: Artist; label: string }) {
   return (
-    <Link href={`/artists/${person.slug}`} className="grid gap-4 border-b border-[var(--line)] px-4 py-5 last:border-b-0 sm:grid-cols-[96px_160px_1fr_32px] sm:items-center sm:px-5">
-      <div className="relative aspect-square overflow-hidden bg-black">
-        <Image src={person.image} alt={person.name} fill sizes="96px" className="object-cover grayscale" />
+    <Link href={`/artists/${person.slug}`} className="person-archive-row">
+      <div className="person-archive-image relative aspect-square overflow-hidden bg-black">
+        <Image src={person.image} alt={person.name} fill sizes="(min-width: 768px) 120px, 80px" className="object-cover grayscale" />
       </div>
       <div>
         <p className="meta-font text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--accent)]">{label}</p>
@@ -41,7 +41,7 @@ export default function ArtistsPage() {
   return (
     <Container className="py-10">
       <Breadcrumbs items={[{ label: "Πρόσωπα" }]} />
-      <SectionHeading eyebrow="Archive" title="Καλεσμένοι και team" copy="Οι rappers που μπαίνουν στο session ξεχωριστά από τους ανθρώπους που κρατούν παραγωγή, ήχο, εικόνα και ταυτότητα." />
+      <div className="page-heading"><SectionHeading as="h1" eyebrow="Archive" title="Καλεσμένοι και team" copy="Οι rappers που μπαίνουν στο session ξεχωριστά από τους ανθρώπους που κρατούν παραγωγή, ήχο, εικόνα και ταυτότητα." /></div>
 
       <section className="mt-10">
         <div className="mb-4 flex items-baseline justify-between border-b border-[var(--line)] pb-2">

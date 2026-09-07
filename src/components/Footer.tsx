@@ -11,6 +11,7 @@ const footerLinks = [
   { href: "/artists", label: "Πρόσωπα" },
   { href: "/products", label: "Releases" },
   { href: "/about", label: "Σχετικά" },
+  { href: "/participate", label: "Συμμετοχή" },
   { href: "/#contact", label: "Επικοινωνία" },
   { href: "/privacy", label: "Privacy / Cookies" }
 ];
@@ -18,14 +19,15 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-[var(--line)] bg-[#080706]">
+      <Container><p className="footer-wordmark display-font" aria-hidden="true">Ραπ Στα <span>Μπαμ.</span></p></Container>
       <Container className="grid gap-8 py-10 md:grid-cols-[1.2fr_.8fr_.8fr]">
         <div>
           <Image src="/assets/logo/logo-white-red.png" alt={siteConfig.name} width={160} height={149} className="h-20 w-auto" />
           <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--muted)]">{siteConfig.description}</p>
         </div>
-        <nav aria-label="Πλοήγηση footer" className="grid gap-2 text-sm font-bold text-[var(--muted)]">
+        <nav aria-label="Πλοήγηση footer" className="grid grid-cols-2 content-start gap-x-4 text-sm font-bold text-[var(--muted)]">
           {footerLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-[var(--foreground)]">
+            <Link key={link.href} href={link.href} className="inline-flex min-h-11 items-center hover:text-[var(--foreground)]">
               {link.label}
             </Link>
           ))}

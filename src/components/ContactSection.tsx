@@ -1,4 +1,5 @@
-import { ExternalLink, Mail } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, ExternalLink, Mail } from "lucide-react";
 import { Container } from "@/components/Container";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -11,7 +12,7 @@ export function ContactSection() {
   const visibleSocialLinks = projectSocialLinks.filter((link) => isValidHttpUrl(link.url));
 
   return (
-    <section id="contact" className="border-b border-[var(--line)] py-14">
+    <section id="contact" className="contact-section section-space scroll-mt-24 border-b border-[var(--line)]">
       <Container>
         <SectionHeading
           eyebrow="Επικοινωνία"
@@ -24,8 +25,8 @@ export function ContactSection() {
             <div className="border-b border-[var(--line)] px-4 py-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Email</p>
               {contactEmail ? (
-                <a href={`mailto:${contactEmail}`} className="mt-3 inline-flex items-center gap-2 text-lg font-black text-[var(--foreground)] hover:text-[var(--accent)]">
-                  <Mail className="h-4 w-4" aria-hidden="true" />
+                <a href={`mailto:${contactEmail}`} className="contact-email mt-3 inline-flex min-h-11 items-center gap-2 text-base font-bold text-[var(--foreground)] hover:text-[var(--accent)]">
+                  <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
                   {contactEmail}
                 </a>
               ) : (
@@ -56,6 +57,7 @@ export function ContactSection() {
             <div className="px-4 py-5 sm:px-5">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Συμμετοχή</p>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">Οι δηλώσεις συμμετοχής δεν είναι ανοιχτές ακόμα. Προς το παρόν δεχόμαστε μόνο γενικά μηνύματα και συνεργασίες από τη φόρμα επικοινωνίας.</p>
+              <Link href="/participate" className="text-link mt-3">Πληροφορίες συμμετοχής <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
             </div>
           </div>
 

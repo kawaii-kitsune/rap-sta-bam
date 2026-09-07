@@ -68,14 +68,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="el" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body className="font-[var(--font-body)] antialiased">
+      <body className="antialiased">
         <Script
           id="project-json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a href="#main-content" className="skip-link">Μετάβαση στο περιεχόμενο</a>
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
         <ConsentManager />
       </body>

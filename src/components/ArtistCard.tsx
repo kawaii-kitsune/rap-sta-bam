@@ -19,10 +19,10 @@ export function ArtistCard({ artist }: { artist: Artist }) {
   const relatedEpisode = getEpisodesByArtist(artist.slug)[0];
 
   return (
-    <article className="border-y border-[var(--line)] bg-transparent">
+    <article className="artist-card">
       <Link href={`/artists/${artist.slug}`} className="group block">
-        <div className="relative aspect-[4/3] overflow-hidden border-b border-[var(--line)] bg-black">
-          <Image src={artist.image} alt={`Πορτρέτο / placeholder για ${artist.name}`} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover grayscale transition group-hover:grayscale-0" />
+        <div className="artist-card-image">
+          <Image src={artist.image} alt={`Πορτρέτο: ${artist.name}`} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover grayscale" />
         </div>
         <div className="p-4">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--accent)]">{artist.location ?? "Καλλιτέχνης"}</p>

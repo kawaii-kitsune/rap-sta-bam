@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 import { MobileMenu } from "@/components/MobileMenu";
@@ -20,9 +21,10 @@ export function Header() {
 
   return (
     <header className="site-header sticky top-0 z-40 border-b border-[var(--line)]">
-      <Container className="relative flex min-h-16 items-center justify-between gap-4 py-3">
-        <Link href="/" className="inline-flex items-center">
-          <Image src="/assets/logo/logo-white-red.png" alt="Ραπ Στα Μπαμ" width={56} height={52} priority className="h-10 w-auto" />
+      <Container className="relative flex min-h-20 items-center justify-between gap-4 py-3">
+        <Link href="/" className="site-brand inline-flex min-h-11 items-center gap-3">
+          <Image src="/assets/logo/logo-white-red.png" alt="Ραπ Στα Μπαμ" width={56} height={52} priority className="h-12 w-auto" />
+          <span aria-hidden="true" className="archive-label hidden border-l border-[var(--line)] pl-3 leading-5 xl:block">Από το μηδέν.</span>
         </Link>
 
         <nav aria-label="Κύρια πλοήγηση" className="hidden items-center gap-1 md:flex">
@@ -34,7 +36,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`px-3 py-2 text-sm font-bold transition ${active ? "bg-[var(--panel)] text-[var(--accent)]" : "text-[var(--muted)] hover:bg-[var(--panel)] hover:text-[var(--foreground)]"}`}
+                className={`nav-link ${active ? "is-active" : ""}`}
               >
                 {item.label}
               </Link>
@@ -42,6 +44,7 @@ export function Header() {
           })}
         </nav>
 
+        <Link href="/episodes" className="archive-label hidden min-h-11 items-center gap-3 border-l border-[var(--line)] pl-5 lg:inline-flex">Μπες στο session <ArrowUpRight className="h-4 w-4 text-[var(--accent)]" aria-hidden="true" /></Link>
         <MobileMenu />
       </Container>
     </header>
