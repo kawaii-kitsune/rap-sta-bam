@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
+import { Field, Textarea, SelectField, focusFirstFormError, FormError } from "@/components/FormField";
 import { siteConfig } from "@/config/site";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -69,6 +70,7 @@ export function ParticipationForm() {
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
+      focusFirstFormError(form, nextErrors);
       return;
     }
 
@@ -110,7 +112,15 @@ export function ParticipationForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5 border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6">
+    <form onSubmit={onSubmit} noValidate aria-busy={state === "submitting"} className="form-panel"
+      onInput={(event) => {
+        const field = event.target;
+        if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+          if (errors[field.name]) setErrors((current) => { const next = { ...current }; delete next[field.name]; return next; });
+          if (state === "error" || state === "success") setState("idle");
+        }
+      }}>
+      <div><h3 className="card-title">Τα στοιχεία σου</h3><p className="form-note mt-1">Τα πεδία με * είναι υποχρεωτικά.</p></div>
       <div className="hidden" aria-hidden="true">
         <label htmlFor="company">Company</label>
         <input id="company" name="company" tabIndex={-1} autoComplete="off" />
@@ -118,70 +128,39 @@ export function ParticipationForm() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <Field id="artistName" label="Καλλιτεχνικό όνομα" error={errors.artistName} />
-        <Field id="realName" label="Πραγματικό όνομα" error={errors.realName} />
-        <Field id="email" label="Email" type="email" error={errors.email} />
+        <Field id="realName" label="Πραγματικό όνομα" autoComplete="name" error={errors.realName} />
+        <Field id="email" label="Email" type="email" autoComplete="email" error={errors.email} />
         <Field id="social" label="Instagram ή TikTok" error={errors.social} />
         <Field id="musicLink" label="Spotify ή YouTube link" required={false} />
-        <Field id="city" label="Πόλη" error={errors.city} />
+        <Field id="city" label="Πόλη" autoComplete="address-level2" error={errors.city} />
       </div>
 
-      <div>
-        <label htmlFor="role" className="mb-2 block text-sm font-bold">Ρόλος</label>
-        <select id="role" name="role" aria-invalid={Boolean(errors.role)} aria-describedby={errors.role ? "role-error" : undefined} className="min-h-12 w-full border border-[var(--line)] bg-[#0d0b0a] px-3 text-[var(--foreground)]">
-          <option value="">Επίλεξε ρόλο</option>
-          {roleOptions.map((role) => <option key={role} value={role}>{role}</option>)}
-        </select>
-        <FormError id="role-error" message={errors.role} />
-      </div>
+      <SelectField id="role" label="Ρόλος" required error={errors.role}>
+        <option value="">Επίλεξε ρόλο</option>
+        {roleOptions.map((role) => <option key={role} value={role}>{role}</option>)}
+      </SelectField>
 
       <Textarea id="intro" label="Σύντομη παρουσίαση" error={errors.intro} />
       <Textarea id="motivation" label="Γιατί θέλεις να συμμετάσχεις" error={errors.motivation} />
 
       <label className="flex gap-3 text-sm leading-6 text-[var(--muted)]">
-        <input name="consent" type="checkbox" className="mt-1 h-5 w-5 accent-[var(--accent)]" aria-invalid={Boolean(errors.consent)} aria-describedby={errors.consent ? "consent-error" : undefined} />
+        <input required name="consent" type="checkbox" className="mt-1 h-5 w-5 accent-[var(--accent)]" aria-invalid={Boolean(errors.consent)} aria-describedby={errors.consent ? "consent-error" : undefined} />
         <span>Συμφωνώ να χρησιμοποιηθούν τα στοιχεία μου αποκλειστικά για επικοινωνία σχετικά με πιθανή συμμετοχή στο Ραπ Στα Μπαμ.</span>
       </label>
       <FormError id="consent-error" message={errors.consent} />
 
-      <button type="submit" disabled={state === "submitting"} className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black disabled:opacity-60">
-        <Send className="h-4 w-4" aria-hidden="true" />
+      <button type="submit" disabled={state === "submitting"} className="rsb-button">
+        {state === "submitting" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Send className="h-4 w-4" aria-hidden="true" />}
         {state === "submitting" ? "Αποστολή..." : "Αποστολή συμμετοχής"}
       </button>
 
       {state === "success" ? (
-        <div role="status" className="border border-[var(--accent)] bg-black p-4 text-sm font-bold text-[var(--foreground)]">
+        <div role="status" className="alert alert-success">
           {formConfigured ? "Η φόρμα στάλθηκε. Θα επικοινωνήσουμε αν υπάρχει κατάλληλο session." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή αίτησης</a>}
         </div>
       ) : null}
-      {state === "error" ? <div role="alert" className="border border-red-500 bg-black p-4 text-sm font-bold text-red-200">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}
+      {state === "error" ? <div role="alert" className="alert alert-error">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}
     </form>
   );
 }
 
-function Field({ id, label, type = "text", error, required = true }: { id: string; label: string; type?: string; error?: string; required?: boolean }) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-bold">{label}{required ? "" : " (προαιρετικό)"}</label>
-      <input id={id} name={id} type={type} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="min-h-12 w-full border border-[var(--line)] bg-[#0d0b0a] px-3 text-[var(--foreground)]" />
-      <FormError id={`${id}-error`} message={error} />
-    </div>
-  );
-}
-
-function Textarea({ id, label, error }: { id: string; label: string; error?: string }) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-bold">{label}</label>
-      <textarea id={id} name={id} rows={5} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="w-full resize-y border border-[var(--line)] bg-[#0d0b0a] px-3 py-3 text-[var(--foreground)]" />
-      <FormError id={`${id}-error`} message={error} />
-    </div>
-  );
-}
-
-function FormError({ id, message }: { id: string; message?: string }) {
-  if (!message) {
-    return null;
-  }
-
-  return <p id={id} role="alert" className="mt-2 text-sm font-bold text-red-300">{message}</p>;
-}

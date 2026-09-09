@@ -40,10 +40,11 @@ export function SocialLinks({
             target="_blank"
             rel="noreferrer"
             aria-label={link.label}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-sm font-bold text-[var(--foreground)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            className="social-link"
+            title={iconOnly ? link.label : undefined}
           >
             <Icon className="h-5 w-5" aria-hidden="true" />
-            {!iconOnly ? <span className="ml-2">{link.label}</span> : null}
+            {!iconOnly ? <span>{link.label}</span> : null}
           </a>
         );
       })}

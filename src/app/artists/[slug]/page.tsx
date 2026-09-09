@@ -53,22 +53,22 @@ export default async function ArtistPage({ params }: Props) {
   ];
 
   return (
-    <Container className="py-10">
+    <Container className="page-shell">
       <Breadcrumbs items={[{ href: "/artists", label: "Πρόσωπα" }, { label: artist.name }]} />
-      <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
-        <div className="relative aspect-[4/5] overflow-hidden border border-[var(--line)] bg-black">
-          <Image src={artist.image} alt={`Πορτρέτο / placeholder για ${artist.name}`} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+      <div className="profile-layout">
+        <div className="profile-image">
+          <Image src={artist.image} alt={`Πορτρέτο: ${artist.name}`} fill priority sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
         </div>
         <div>
-          <p className="meta-font text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">{artist.kind === "team" ? "Team / συντελεστής" : "Καλεσμένος / artist"}</p>
+          <p className="rsb-kicker">{artist.kind === "team" ? "Team / συντελεστής" : "Καλεσμένος / artist"}</p>
           {artist.location ? <p className="mt-2 text-sm text-[var(--dim)]">{artist.location}</p> : null}
-          <h1 className="display-font poster-title mt-3 text-[clamp(4rem,12vw,10rem)]">{artist.name}</h1>
-          <p className="mt-4 max-w-2xl text-xl font-bold leading-8">{artist.shortBio}</p>
+          <h1 className="profile-title display-font">{artist.name}</h1>
+          <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--muted)]">{artist.shortBio}</p>
           <div className="mt-6">
             <SocialLinks links={socialLinks} />
           </div>
           {artist.slug === "phone-memo" ? (
-            <Link href="/products" className="mt-5 inline-flex min-h-11 items-center border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
+            <Link href="/products" className="rsb-button-secondary mt-5">
               Products & releases
             </Link>
           ) : null}

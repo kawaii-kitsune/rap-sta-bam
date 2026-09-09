@@ -15,9 +15,9 @@ export const metadata: Metadata = createMetadata({
 
 export default function AboutPage() {
   return (
-    <Container className="py-10">
+    <Container className="page-shell">
       <Breadcrumbs items={[{ label: "Σχετικά" }]} />
-      <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div>
           <div className="page-heading"><SectionHeading as="h1" eyebrow="Σχετικά" title="Με ό,τι έχουμε, όπως μπορούμε" /></div>
           <div className="prose-rsb max-w-3xl text-lg leading-8 text-[var(--muted)]">
@@ -34,10 +34,10 @@ export default function AboutPage() {
 
           <section className="mt-12">
             <SectionHeading title="Πρόγραμμα" copy={releaseCadence} />
-            <div className="grid gap-0 border-y border-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-0 border-y border-[var(--line)] sm:grid-cols-2">
               {releaseSchedule.map((item) => (
-                <time key={item.date} dateTime={item.date} className="border-b border-[var(--line)] p-4 sm:border-r lg:border-b-0">
-                  <span className="display-font block text-4xl text-[var(--accent)]">{item.label}</span>
+                <time key={item.date} dateTime={item.date} className="border-b border-[var(--line)] p-4 sm:odd:border-r">
+                  <span className="meta-font mb-2 block text-lg text-[var(--accent)]">{item.label}</span>
                   <span className="text-sm font-bold text-[var(--muted)]">{item.title}</span>
                 </time>
               ))}
@@ -58,8 +58,8 @@ export default function AboutPage() {
         </div>
 
         <aside>
-          <div className="sticky top-24 border-y border-[var(--line)] px-4 py-5 sm:px-5">
-            <h2 className="display-font text-4xl">Ομάδα</h2>
+          <div className="quiet-aside lg:sticky lg:top-24">
+            <h2 className="card-title">Ομάδα</h2>
             <div className="mt-5 grid gap-3">
               {team.map((member) => (
                 <div key={member.name} className="border-t border-[var(--line)] pt-3">

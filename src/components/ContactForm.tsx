@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
+import { Field, Textarea, SelectField, focusFirstFormError } from "@/components/FormField";
 import { siteConfig } from "@/config/site";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -53,6 +54,7 @@ export function ContactForm() {
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
+      focusFirstFormError(form, nextErrors);
       return;
     }
 
@@ -126,74 +128,48 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5 border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6">
+    <form onSubmit={onSubmit} noValidate aria-busy={state === "submitting"} className="form-panel"
+      onInput={(event) => {
+        const field = event.target;
+        if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement) {
+          if (errors[field.name]) setErrors((current) => { const next = { ...current }; delete next[field.name]; return next; });
+          if (state === "error" || state === "success") setState("idle");
+        }
+      }}>
+      <div><h3 className="card-title">Στείλε μας ένα μήνυμα</h3><p className="form-note mt-1">Τα πεδία με * είναι υποχρεωτικά.</p></div>
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Field id="name" label="Ονοματεπώνυμο" error={errors.name} />
-        <Field id="email" label="Email" type="email" error={errors.email} />
+        <Field id="name" label="Ονοματεπώνυμο" autoComplete="name" error={errors.name} />
+        <Field id="email" label="Email" type="email" autoComplete="email" error={errors.email} />
       </div>
 
-      <div>
-        <label htmlFor="topic" className="mb-2 block text-sm font-bold">Θέμα</label>
-        <select id="topic" name="topic" className="min-h-12 w-full border border-[var(--line)] bg-[#0d0b0a] px-3 text-[var(--foreground)]">
-          <option value="">Διάλεξε θέμα</option>
-          {quickOptions.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </div>
+      <SelectField id="topic" label="Θέμα">
+        <option value="">Διάλεξε θέμα</option>
+        {quickOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+      </SelectField>
 
       <Textarea id="message" label="Μήνυμα" error={errors.message} />
 
-      <button type="submit" disabled={state === "submitting"} className="inline-flex min-h-12 items-center justify-center gap-2 bg-[var(--accent)] px-5 py-3 font-black text-black disabled:opacity-60">
-        <Send className="h-4 w-4" aria-hidden="true" />
+      <button type="submit" disabled={state === "submitting"} className="rsb-button">
+        {state === "submitting" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Send className="h-4 w-4" aria-hidden="true" />}
         {state === "submitting" ? "Αποστολή..." : "Αποστολή μηνύματος"}
       </button>
 
       <p className="text-xs leading-5 text-[var(--dim)]">
-        Τα στοιχεία χρησιμοποιούνται μόνο για επικοινωνία σχετικά με το μήνυμά σου και αποθηκεύονται στις απαντήσεις του Google Form.
+        Χρησιμοποιούμε τα στοιχεία σου μόνο για να απαντήσουμε στο μήνυμά σου. <a href="/privacy" className="underline underline-offset-4 hover:text-[var(--foreground)]">Πολιτική απορρήτου</a>
       </p>
 
       {state === "success" ? (
-        <div role="status" className="border border-[var(--accent)] bg-black p-4 text-sm font-bold text-[var(--foreground)]">
+        <div role="status" className="alert alert-success">
           {formConfigured || googleFormConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή μηνύματος</a>}
         </div>
       ) : null}
-      {state === "error" ? <div role="alert" className="border border-red-500 bg-black p-4 text-sm font-bold text-red-200">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}
+      {state === "error" ? <div role="alert" className="alert alert-error">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}
     </form>
   );
 }
 
-function Field({ id, label, type = "text", error }: { id: string; label: string; type?: string; error?: string }) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-bold">{label}</label>
-      <input id={id} name={id} type={type} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="min-h-12 w-full border border-[var(--line)] bg-[#0d0b0a] px-3 text-[var(--foreground)]" />
-      <FormError id={`${id}-error`} message={error} />
-    </div>
-  );
-}
-
-function Textarea({ id, label, error }: { id: string; label: string; error?: string }) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-bold">{label}</label>
-      <textarea id={id} name={id} rows={5} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="w-full resize-y border border-[var(--line)] bg-[#0d0b0a] px-3 py-3 text-[var(--foreground)]" />
-      <FormError id={`${id}-error`} message={error} />
-    </div>
-  );
-}
-
-function FormError({ id, message }: { id: string; message?: string }) {
-  if (!message) {
-    return null;
-  }
-
-  return <p id={id} role="alert" className="mt-2 text-sm font-bold text-red-300">{message}</p>;
-}

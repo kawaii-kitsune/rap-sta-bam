@@ -13,7 +13,7 @@ export const metadata: Metadata = createMetadata({
 
 export default function ParticipatePage() {
   return (
-    <Container className="py-10">
+    <Container className="page-shell">
       <Breadcrumbs items={[{ label: "Συμμετοχή" }]} />
       <div className="max-w-3xl">
         <SectionHeading as="h1"
@@ -21,10 +21,10 @@ export default function ParticipatePage() {
           title="Οι δηλώσεις δεν είναι ανοιχτές ακόμα"
           copy="Προς το παρόν το Ραπ Στα Μπαμ δεν δέχεται δημόσιες αιτήσεις για επόμενα sessions."
         />
-        <div className="border border-[var(--line)] bg-[var(--panel)] p-5 text-sm leading-7 text-[var(--muted)] sm:p-6">
+        <div className="quiet-aside text-sm leading-7 text-[var(--muted)]">
           <p>Θα ανοίξουμε τη διαδικασία όταν είμαστε έτοιμοι να καλέσουμε νέους rappers για επόμενα επεισόδια.</p>
           <p className="mt-4 font-bold text-[var(--foreground)]">Για γενικές ερωτήσεις, συνεργασίες ή επικοινωνία με την ομάδα, χρησιμοποίησε τη φόρμα επικοινωνίας.</p>
-          <Link href="/#contact" className="mt-5 inline-flex min-h-11 items-center border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
+          <Link href="/#contact" className="rsb-button mt-5">
             Επικοινωνία
           </Link>
         </div>

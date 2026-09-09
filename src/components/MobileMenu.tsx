@@ -6,16 +6,8 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { SocialLinks } from "@/components/SocialLinks";
 import { projectSocialLinks } from "@/config/site";
+import { isNavActive, navItems } from "@/config/navigation";
 import { trapDialogFocus } from "@/lib/dialog";
-
-const navItems = [
-  { href: "/", label: "Αρχική" },
-  { href: "/episodes", label: "Επεισόδια" },
-  { href: "/artists", label: "Πρόσωπα" },
-  { href: "/products", label: "Releases" },
-  { href: "/about", label: "Σχετικά" },
-  { href: "/#contact", label: "Επικοινωνία" }
-];
 
 export function MobileMenu() {
   const pathname = usePathname();
@@ -26,7 +18,7 @@ export function MobileMenu() {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     const closeOnDesktop = () => { if (desktop.matches) dialog.current?.close(); };
     desktop.addEventListener("change", closeOnDesktop);
     closeOnDesktop();
@@ -37,11 +29,11 @@ export function MobileMenu() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-haspopup="dialog"
         onClick={() => { dialog.current?.showModal(); setOpen(true); }}
-        className="inline-flex min-h-12 items-center justify-center gap-3 border border-[var(--line)] px-4">
-        <span className="archive-label">Μενού</span><Menu className="h-5 w-5" aria-hidden="true" />
+        className="icon-button" aria-label="Άνοιγμα μενού">
+        <Menu className="h-5 w-5" aria-hidden="true" />
       </button>
       <dialog ref={dialog} id="mobile-navigation" className="mobile-dialog" aria-labelledby="mobile-menu-title" onKeyDown={trapDialogFocus}
         onClose={() => setOpen(false)} onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }}>
@@ -51,12 +43,11 @@ export function MobileMenu() {
             <button type="button" aria-label="Κλείσιμο μενού" onClick={() => dialog.current?.close()} className="icon-button"><X className="h-5 w-5" aria-hidden="true" /></button>
           </div>
           <nav aria-label="Κύρια πλοήγηση κινητού">
-            {navItems.map((item, index) => {
-              const active = item.href === "/" ? pathname === "/" : !item.href.includes("#") && pathname.startsWith(item.href);
+            {navItems.map((item) => {
+              const active = isNavActive(pathname, item.href);
               return (
                 <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined} onClick={() => dialog.current?.close()} className={`mobile-nav-link ${active ? "is-active" : ""}`}>
-                  <span className="archive-label text-[var(--dim)]">0{index + 1}</span>
-                  <span className="display-font">{item.label}</span><ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+                  <span>{item.label}</span><ArrowUpRight className="h-5 w-5" aria-hidden="true" />
                 </Link>
               );
             })}

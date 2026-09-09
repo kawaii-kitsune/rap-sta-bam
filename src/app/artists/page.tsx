@@ -19,17 +19,17 @@ function PersonRow({ person, label }: { person: Artist; label: string }) {
   return (
     <Link href={`/artists/${person.slug}`} className="person-archive-row">
       <div className="person-archive-image relative aspect-square overflow-hidden bg-black">
-        <Image src={person.image} alt={person.name} fill sizes="(min-width: 768px) 120px, 80px" className="object-cover grayscale" />
+        <Image src={person.image} alt={person.name} fill sizes="(min-width: 768px) 88px, 72px" className="object-cover" />
       </div>
       <div>
-        <p className="meta-font text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--accent)]">{label}</p>
+        <p className="text-xs text-[var(--dim)]">{label}</p>
         <p className="mt-1 text-xs text-[var(--dim)]">{person.location ?? "Ραπ Στα Μπαμ"}</p>
       </div>
       <div>
-        <h3 className="display-font text-3xl leading-none">{person.name}</h3>
+        <h3 className="card-title">{person.name}</h3>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--muted)]">{person.shortBio}</p>
       </div>
-      <ArrowUpRight className="hidden h-5 w-5 text-[var(--accent)] sm:block" aria-hidden="true" />
+      <ArrowUpRight className="h-5 w-5 text-[var(--dim)]" aria-hidden="true" />
     </Link>
   );
 }
@@ -39,14 +39,14 @@ export default function ArtistsPage() {
   const team = getTeamArtists();
 
   return (
-    <Container className="py-10">
+    <Container className="page-shell">
       <Breadcrumbs items={[{ label: "Πρόσωπα" }]} />
-      <div className="page-heading"><SectionHeading as="h1" eyebrow="Archive" title="Καλεσμένοι και team" copy="Οι rappers που μπαίνουν στο session ξεχωριστά από τους ανθρώπους που κρατούν παραγωγή, ήχο, εικόνα και ταυτότητα." /></div>
+      <div className="page-heading"><SectionHeading as="h1" eyebrow="Το project" title="Τα πρόσωπα" copy="Οι καλεσμένοι που φέρνουν τις ιστορίες τους και η ομάδα που δίνει στα sessions ήχο και εικόνα." /></div>
 
       <section className="mt-10">
-        <div className="mb-4 flex items-baseline justify-between border-b border-[var(--line)] pb-2">
-          <h2 className="display-font text-4xl leading-none">Καλεσμένοι / artists</h2>
-          <span className="meta-font text-xs text-[var(--dim)]">LOG [{guests.length}]</span>
+        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+          <h2 className="section-title">Καλεσμένοι</h2>
+          <span className="meta-font text-xs text-[var(--dim)]">{guests.length} πρόσωπα</span>
         </div>
         <div className="border-y border-[var(--line)]">
           {guests.map((person) => <PersonRow key={person.slug} person={person} label="Καλεσμένος" />)}
@@ -54,9 +54,9 @@ export default function ArtistsPage() {
       </section>
 
       <section className="mt-14">
-        <div className="mb-4 flex items-baseline justify-between border-b border-[var(--line)] pb-2">
-          <h2 className="display-font text-4xl leading-none">Team / συντελεστές</h2>
-          <span className="meta-font text-xs text-[var(--dim)]">LOG [{team.length}]</span>
+        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+          <h2 className="section-title">Ομάδα παραγωγής</h2>
+          <span className="meta-font text-xs text-[var(--dim)]">{team.length} πρόσωπα</span>
         </div>
         <div className="border-y border-[var(--line)]">
           {team.map((person) => <PersonRow key={person.slug} person={person} label="Team" />)}

@@ -35,6 +35,8 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   const [duration, setDuration] = useState(0);
   const [captions, setCaptions] = useState<CaptionCue[]>([]);
   const [captionsReady, setCaptionsReady] = useState(false);
+  const [captionError, setCaptionError] = useState(false);
+  const [audioError, setAudioError] = useState(false);
 
   const released = isReleased(availableAt ?? publishedAt);
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
@@ -67,6 +69,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
         }
       } catch {
         if (!cancelled) {
+          setCaptionError(true);
           setCaptions([]);
           setCaptionsReady(false);
         }
@@ -128,6 +131,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     const onLoadedMetadata = () => {
       setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
       setIsReady(true);
+      setAudioError(false);
       syncTime();
     };
     const onPlay = () => {
@@ -142,6 +146,13 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
       setIsPlaying(false);
       stopAnimation();
       syncTime();
+    };
+    const onError = () => {
+      stopAnimation();
+      setAudioError(true);
+      setIsBuffering(false);
+      setIsPlaying(false);
+      setIsReady(false);
     };
     const onWaiting = () => setIsBuffering(true);
     const onPlaying = () => {
@@ -158,13 +169,16 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
       setCurrentTime(audio.duration || 0);
     };
 
+    audio.addEventListener("error", onError);
     audio.addEventListener("loadedmetadata", onLoadedMetadata);
     audio.addEventListener("durationchange", onLoadedMetadata);
     audio.addEventListener("timeupdate", syncTime);
     audio.addEventListener("seeking", syncTime);
     audio.addEventListener("seeked", syncTime);
 
-    if (audio.readyState >= 1) {
+    if (audio.error) {
+      onError();
+    } else if (audio.readyState >= 1) {
       onLoadedMetadata();
     }
     audio.addEventListener("play", onPlay);
@@ -175,6 +189,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
 
     return () => {
       stopAnimation();
+      audio.removeEventListener("error", onError);
       audio.removeEventListener("loadedmetadata", onLoadedMetadata);
       audio.removeEventListener("durationchange", onLoadedMetadata);
       audio.removeEventListener("timeupdate", syncTime);
@@ -196,7 +211,8 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
     }
 
     if (audio.paused) {
-      void audio.play();
+      setAudioError(false);
+      void audio.play().catch(() => { setAudioError(true); setIsBuffering(false); });
     } else {
       audio.pause();
     }
@@ -229,12 +245,12 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
 
   if (!released) {
     return (
-      <div className="border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6">
+      <div className="audio-player">
         <div className="flex items-start gap-3">
           <Lock className="mt-1 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
           <div>
-            <p className="font-bold text-[var(--foreground)]">Το πλήρες audio είναι κλειδωμένο</p>
-            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Τότε θα είναι διαθέσιμα ο player{captionsSrc ? ", τα synced captions" : ""} και η ξεχωριστή listen page.</p>
+            <p className="font-bold text-[var(--foreground)]">Το audio θα είναι διαθέσιμο στην πρεμιέρα</p>
+            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Θα μπορείς να ακούσεις ολόκληρο το session{captionsSrc ? " με συγχρονισμένους υπότιτλους" : ""}.</p>
           </div>
         </div>
       </div>
@@ -242,13 +258,13 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   }
 
   return (
-    <div className="border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6">
+    <div className="audio-player">
       <audio ref={audioRef} src={src} preload="metadata" className="sr-only">
         Το πρόγραμμα περιήγησης δεν υποστηρίζει audio playback.
       </audio>
 
       <div className="grid gap-4">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="flex items-start gap-3">
             <Music2 className="mt-1 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
             <div>
@@ -256,26 +272,26 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
               <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Πλήρες επεισόδιο με απλά χειριστήρια ακρόασης.</p>
             </div>
           </div>
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">{captionsReady ? "Audio + Captions" : "Audio"}</span>
+          <span className="rsb-chip shrink-0">{captionsReady ? "Audio + Captions" : "Audio"}</span>
         </div>
 
-        <div className="grid gap-3 border border-[var(--line)] bg-[#0c0a09] p-4">
+        <div className="audio-controls">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={togglePlay}
-              className="inline-flex h-12 w-12 items-center justify-center border border-[var(--accent)] bg-[var(--accent)] text-black transition hover:brightness-110"
+              className="rsb-button audio-play"
               aria-label={isPlaying ? "Παύση" : "Αναπαραγωγή"}
             >
               {isBuffering ? <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> : isPlaying ? <Pause className="h-5 w-5" aria-hidden="true" /> : <Play className="h-5 w-5" aria-hidden="true" />}
             </button>
             <div className="min-w-0 flex-1">
-              <div className="flex items-center justify-between gap-3 text-xs font-black uppercase tracking-[0.14em] text-[var(--dim)]" aria-live="polite">
-                <span>{isPlaying ? "Παίζει τώρα" : isReady ? "Έτοιμο για ακρόαση" : "Φόρτωση player"}</span>
+              <div className="audio-time">
+                <span role="status">{audioError ? "Η φόρτωση απέτυχε" : isBuffering ? "Φόρτωση…" : isPlaying ? "Παίζει τώρα" : isReady ? "Έτοιμο για ακρόαση" : "Φόρτωση audio…"}</span>
                 <span>{timeLabel}</span>
               </div>
-              <div className="relative mt-2 h-6">
-                <div className="pointer-events-none absolute left-0 right-0 top-1/2 h-2 -translate-y-1/2 overflow-hidden border border-[var(--line)] bg-black">
+              <div className="relative h-11">
+                <div className="pointer-events-none absolute left-0 right-0 top-1/2 h-1.5 -translate-y-1/2 overflow-hidden rounded-full bg-[var(--line)]">
                   <div className="h-full bg-[var(--accent)] transition-[width] duration-150" style={{ width: `${progress}%` }} />
                 </div>
                 <input
@@ -292,19 +308,21 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
                   onPointerUp={finishSeek}
                   onKeyUp={finishSeek}
                   disabled={!duration}
-                  aria-label={`Χρόνος αναπαραγωγής, ${timeLabel}`}
+                  aria-label="Χρόνος αναπαραγωγής"
+                  aria-valuetext={timeLabel}
                   className="player-range absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent disabled:cursor-not-allowed disabled:opacity-50"
                 />
               </div>
             </div>
           </div>
 
+          {audioError ? <div className="alert alert-error" role="alert"><div><p>Δεν ήταν δυνατή η φόρτωση του audio. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.</p><button type="button" className="text-link mt-1" onClick={() => { setAudioError(false); audioRef.current?.load(); }}>Δοκίμασε ξανά</button></div></div> : null}
           {captionsSrc ? (
-            <div className="grid h-40 grid-rows-[auto_1fr] border border-[var(--line)] bg-black p-4" aria-live="polite" aria-atomic="true">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--accent)]">Captions</p>
+            <div className="audio-captions" aria-live="polite" aria-atomic="true">
+              <p className="text-xs text-[var(--dim)]">Υπότιτλοι</p>
               <div className="mt-3 overflow-y-auto pr-2">
-                <p className="whitespace-pre-line text-lg font-bold leading-8 text-[var(--foreground)]">
-                  {activeCaption?.text ?? (captionsReady ? "..." : "Φόρτωση captions...")}
+                <p className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
+                  {activeCaption?.text ?? (captionError ? "Οι υπότιτλοι δεν φορτώθηκαν. Η ακρόαση παραμένει διαθέσιμη." : captionsReady ? "Οι υπότιτλοι εμφανίζονται κατά την ακρόαση." : "Φόρτωση υποτίτλων…")}
                 </p>
               </div>
             </div>

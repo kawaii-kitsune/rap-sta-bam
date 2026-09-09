@@ -68,7 +68,7 @@ export default async function EpisodePage({ params }: Props) {
   ];
 
   return (
-    <Container className="py-10">
+    <Container className="page-shell">
       <Breadcrumbs items={[{ href: "/episodes", label: "Επεισόδια" }, { label: episode.title }]} />
       <article>
         <header className="episode-cover">
@@ -93,15 +93,15 @@ export default async function EpisodePage({ params }: Props) {
         </nav>
 
         <div className="episode-body">
-          <div className="grid min-w-0 gap-14">
+          <div className="grid min-w-0 grid-cols-1 gap-10">
             <div id="session-video">
             {live ? <VideoEmbed videoId={episode.youtubeVideoId} title={episode.title} poster={episode.thumbnail} /> : (
               <div className="grid gap-5 md:grid-cols-[minmax(220px,320px)_1fr] md:items-center">
                 <PromoTeaser episode={episode} compact />
                 <div className="border-y border-[var(--line)] px-4 py-5 sm:px-5 sm:py-6">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--accent)]">Κλειδωμένο μέχρι την πρεμιέρα</p>
-                  <h2 className="display-font mt-3 text-4xl leading-none">Το επεισόδιο ανοίγει στις {formatGreekDate(episode.publishedAt)}</h2>
-                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε μένει διαθέσιμο μόνο το preview. Στην πρεμιέρα ανοίγουν τα διαθέσιμα κομμάτια του επεισοδίου.</p>
+                  <p className="text-xs font-medium text-[var(--warning)]">Η πρεμιέρα πλησιάζει</p>
+                  <h2 className="section-title mt-3">Διαθέσιμο από {formatGreekDate(episode.publishedAt)}</h2>
+                  <p className="mt-4 leading-7 text-[var(--muted)]">Μέχρι τότε, δες την προεπισκόπηση και γνώρισε τον καλεσμένο.</p>
                   <div className="mt-5 grid gap-2 sm:grid-cols-2">
                     <UnlockItem icon={<PlaySquare className="h-4 w-4" />} label={episode.youtubeVideoId ? "Full YouTube episode" : "Video link"} />
                     {episode.audio ? <UnlockItem icon={<Headphones className="h-4 w-4" />} label="Audio player" /> : null}
@@ -139,8 +139,8 @@ export default async function EpisodePage({ params }: Props) {
               <section id="session-audio">
                 <SectionHeading title="Audio επεισοδίου" />
                 <div className="grid gap-3">
-                  <Link href={`/episodes/${episode.slug}/listen`} className="inline-flex min-h-11 w-fit items-center border border-[var(--accent)] px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black">
-                    Άνοιγμα audio σελίδας
+                  <Link href={`/episodes/${episode.slug}/listen`} className="text-link w-fit">
+                    Ακρόαση σε ξεχωριστή σελίδα
                   </Link>
                   <EpisodeAudioPlayer
                     src={audioHref}
@@ -181,7 +181,7 @@ export default async function EpisodePage({ params }: Props) {
 
             {episode.gallery?.length ? (
               <section id="session-gallery">
-                <SectionHeading eyebrow="Φωτογραφίες" title="Μέσα στο δωμάτιο" copy="Στιγμές από τη συζήτηση, το beatmaking και το performance χωρίς να χρειάζεται να μοιάζουν όλες ίδιες." />
+                <SectionHeading eyebrow="Φωτογραφίες" title="Μέσα στο δωμάτιο" copy="Στιγμές από τη συζήτηση, το beatmaking και το performance. Πάτησε μια φωτογραφία για μεγέθυνση." />
                 <EpisodeGallery images={episode.gallery} title={episode.title} />
               </section>
             ) : null}
@@ -213,13 +213,13 @@ export default async function EpisodePage({ params }: Props) {
 
         <nav aria-label="Προηγούμενο και επόμενο επεισόδιο" className="mt-12 grid gap-3 border-t border-[var(--line)] pt-6 sm:grid-cols-2">
           {adjacent.previous ? (
-            <Link href={`/episodes/${adjacent.previous.slug}`} className="inline-flex items-center gap-2 border border-[var(--line)] p-4 font-bold hover:border-[var(--accent)]">
-              <ArrowLeft className="h-4 w-4" /> {adjacent.previous.title}
+            <Link href={`/episodes/${adjacent.previous.slug}`} className="adjacent-link">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> {adjacent.previous.title}
             </Link>
           ) : <span />}
           {adjacent.next ? (
-            <Link href={`/episodes/${adjacent.next.slug}`} className="inline-flex items-center justify-end gap-2 border border-[var(--line)] p-4 text-right font-bold hover:border-[var(--accent)]">
-              {adjacent.next.title} <ArrowRight className="h-4 w-4" />
+            <Link href={`/episodes/${adjacent.next.slug}`} className="adjacent-link justify-end text-right">
+              {adjacent.next.title} <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}
         </nav>
@@ -231,7 +231,7 @@ export default async function EpisodePage({ params }: Props) {
 
 function UnlockItem({ icon, label }: { icon: ReactNode; label: string }) {
   return (
-    <div className="flex min-h-11 items-center gap-2 border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-sm font-bold text-[var(--foreground)]">
+    <div className="flex min-h-11 items-center gap-2 text-sm text-[var(--muted)]">
       <span className="text-[var(--accent)]" aria-hidden="true">{icon}</span>
       <span>{label}</span>
     </div>

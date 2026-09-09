@@ -112,3 +112,12 @@ src/
 public/
   assets/       Local placeholder images
 ```
+
+
+## UI conventions
+
+The interface uses the existing Tailwind CSS v4 setup. Color, type, radius and control tokens live in `src/app/globals.css`; component styles use `@layer components`, so Tailwind utilities can override them intentionally. Use Tailwind's 4px spacing scale, `Container` for page widths, `page-shell` for route spacing, and `SectionHeading` for section and page titles.
+
+Reuse `rsb-button`, `rsb-button-secondary`, `text-link` and `icon-button` for actions. `FormField` provides visible labels, required indicators and associated validation errors. `EpisodeStatus` supplies the same release labels in the archive and home page; `ReleaseRow` keeps catalog rows consistent. Desktop and mobile navigation share `src/config/navigation.ts`.
+
+Keep release availability, media routes, external destinations and form payloads in their existing data and logic layers. New presentation changes should preserve those interfaces. Check navigation, form feedback, audio playback, galleries and cookie controls at narrow mobile and desktop widths; respect reduced-motion preferences.

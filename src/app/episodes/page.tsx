@@ -18,9 +18,9 @@ export default function EpisodesPage() {
   const episodes = getVisibleEpisodes();
 
   return (
-    <Container className="py-10">
+    <Container className="page-shell">
       <Breadcrumbs items={[{ label: "Επεισόδια" }]} />
-      <div className="page-heading"><SectionHeading as="h1" eyebrow="Αρχείο" title="Όλα τα επεισόδια" copy="Όσα έχουν ανοίξει και όσα έρχονται, με υλικό, συντελεστές και links σε ένα σημείο." /></div>
+      <div className="page-heading"><SectionHeading as="h1" eyebrow="Αρχείο" title="Όλα τα επεισόδια" copy="Δες τα sessions, γνώρισε τους καλεσμένους και εξερεύνησε όσα συμβαίνουν μέσα στο στούντιο." /></div>
       <EpisodeFilter episodes={episodes} />
     </Container>
   );
