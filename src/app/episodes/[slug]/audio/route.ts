@@ -1,7 +1,6 @@
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
 import path from "node:path";
-import { Readable } from "node:stream";
 import { NextResponse } from "next/server";
 import { getEpisodeBySlug, isReleased } from "@/lib/content";
 
@@ -11,6 +10,39 @@ type RouteContext = {
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+
+function createAudioStream(audioPath: string, range?: { start: number; end: number }) {
+  const fileStream = createReadStream(audioPath, range);
+  const chunks = fileStream[Symbol.asyncIterator]();
+  let settled = false;
+
+  return new ReadableStream<Uint8Array>({
+    async pull(controller) {
+      try {
+        const { value, done } = await chunks.next();
+        // A seek or navigation can cancel the response while a file read is pending.
+        if (settled) return;
+
+        if (done) {
+          settled = true;
+          controller.close();
+        } else {
+          controller.enqueue(value);
+        }
+      } catch (error) {
+        if (!settled) {
+          settled = true;
+          controller.error(error);
+        }
+      }
+    },
+    cancel() {
+      settled = true;
+      fileStream.destroy();
+    }
+  });
+}
 
 export async function GET(request: Request, { params }: RouteContext) {
   const { slug } = await params;
@@ -50,7 +82,7 @@ export async function GET(request: Request, { params }: RouteContext) {
         });
       }
 
-      const stream = Readable.toWeb(createReadStream(audioPath, { start, end })) as ReadableStream;
+      const stream = createAudioStream(audioPath, { start, end });
 
       return new NextResponse(stream, {
         status: 206,
@@ -65,7 +97,7 @@ export async function GET(request: Request, { params }: RouteContext) {
       });
     }
 
-    const stream = Readable.toWeb(createReadStream(audioPath)) as ReadableStream;
+    const stream = createAudioStream(audioPath);
 
     return new NextResponse(stream, {
       headers: {

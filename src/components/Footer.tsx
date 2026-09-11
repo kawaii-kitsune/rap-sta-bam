@@ -13,11 +13,11 @@ export function Footer() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="site-brand" aria-label="Ραπ Στα Μπαμ — Αρχική">
-              <Image src="/assets/logo/logo-white-red.png" alt="" width={48} height={45} className="h-11 w-auto" />
+              <Image src="/assets/logo/logo-white-red.png" alt="" width={64} height={61} className="h-16 w-auto" />
               <span className="brand-name">Ραπ Στα Μπαμ</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-7 text-[var(--muted)]">{siteConfig.description}</p>
-            <p className="mt-3 text-xs text-[var(--dim)]">Ηράκλειο Κρήτης · Από το μηδέν.</p>
+            <p className="footer-origin">ΗΡΑΚΛΕΙΟ ΚΡΗΤΗΣ / ΑΠΟ ΤΟ ΜΗΔΕΝ.</p>
           </div>
           <div>
             <p className="mb-3 text-sm font-semibold">Εξερεύνησε το project</p>

@@ -13,8 +13,8 @@ export function Header() {
     <header className="site-header">
       <Container className="header-inner">
         <Link href="/" className="site-brand" aria-label="Ραπ Στα Μπαμ — Αρχική">
-          <Image src="/assets/logo/logo-white-red.png" alt="" width={48} height={45} priority className="h-11 w-auto" />
-          <span><span className="brand-name">Ραπ Στα Μπαμ</span><span className="brand-caption">Ανεξάρτητα hip hop sessions</span></span>
+          <Image src="/assets/logo/logo-white-red.png" alt="" width={76} height={72} priority className="header-logo" />
+          <span><span className="brand-name">ΡΑΠ ΣΤΑ ΜΠΑΜ</span><span className="brand-caption">Ανεξάρτητα. Από το Ηράκλειο.</span></span>
         </Link>
         <nav aria-label="Κύρια πλοήγηση" className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => {

@@ -296,17 +296,22 @@
     "description": [
       "Στο Ραπ Στα Μπαμ, ένας rapper έρχεται στο στούντιο χωρίς έτοιμο κομμάτι.",
       "Στο τρίτο επεισόδιο έχουμε μαζί μας τον Chozen και κρατάμε τη διαδικασία όπως συμβαίνει: ιδέες, beat, στίχοι, δοκιμές και λάθη μέχρι να φτάσουμε στο τελικό αποτέλεσμα.",
-      "Περισσότερες λεπτομέρειες και video θα προστεθούν όσο πλησιάζει η πρεμιέρα."
+      "Από την κουβέντα έξω μέχρι το στήσιμο του beat και το performance, όλη η διαδρομή χωράει σε ένα session."
     ],
     "publishedAt": "2026-09-15",
     "thumbnail": "/assets/episodes/003-chozen/thumbnail.png",
     "status": "upcoming",
     "instagramUrl": "https://www.instagram.com/chozencho/",
     "spotifyUrl": "https://open.spotify.com/artist/2JMhsG9u413Y6PYgCMzUnr",
-    "youtubeUrl": "https://www.youtube.com/channel/UCSIZuXRWzp-1NbfSDrhKe9Q",
+    "youtubeUrl": "https://www.youtube.com/watch?v=9IsE8FqYp2Q",
     "twitchUrl": "https://www.twitch.tv/freestylepodcast",
     "gallery": [
-      "/assets/episodes/003-chozen/thumbnail.png"
+      "/assets/episodes/003-chozen/still-01.jpg",
+      "/assets/episodes/003-chozen/still-02.jpg",
+      "/assets/episodes/003-chozen/still-03.jpg",
+      "/assets/episodes/003-chozen/still-04.jpg",
+      "/assets/episodes/003-chozen/still-05.jpg",
+      "/assets/episodes/003-chozen/still-06.jpg"
     ],
     "gear": [
       "Logic Pro",
@@ -345,6 +350,36 @@
         "label": "Release",
         "value": "15/09/2026",
         "note": "Πρεμιέρα του τρίτου επεισοδίου."
+      },
+      {
+        "label": "Διάρκεια",
+        "value": "24:11",
+        "note": "Ολόκληρο το τρίτο session."
+      }
+    ],
+    "youtubeVideoId": "9IsE8FqYp2Q",
+    "audio": {
+      "file": "private/audio/003-chozen.mp3",
+      "availableAt": "2026-09-15",
+      "label": "Ολόκληρο επεισόδιο σε mp3",
+      "mimeType": "audio/mpeg"
+    },
+    "teaserPoster": "/assets/episodes/003-chozen/still-05.jpg",
+    "bestMoments": [
+      {
+        "title": "Η κουβέντα πριν από το beat",
+        "copy": "Chozen και Phone Memo στην κουβέντα που ανοίγει το τρίτο session.",
+        "image": "/assets/episodes/003-chozen/still-01.jpg"
+      },
+      {
+        "title": "Τα χέρια πάνω στο MPC",
+        "copy": "Η παραγωγή περνάει από τις ιδέες στα πλήκτρα του MPC.",
+        "image": "/assets/episodes/003-chozen/still-04.jpg"
+      },
+      {
+        "title": "Το κουπλέ στο μικρόφωνο",
+        "copy": "Ο Chozen παίρνει το μικρόφωνο για το performance του session.",
+        "image": "/assets/episodes/003-chozen/still-05.jpg"
       }
     ]
   }

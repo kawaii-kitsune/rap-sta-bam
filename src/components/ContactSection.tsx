@@ -14,7 +14,7 @@ export function ContactSection() {
     <section id="contact" className="contact-section section-space">
       <Container className="contact-layout">
         <div>
-          <SectionHeading eyebrow="Επικοινωνία" title="Μίλα μαζί μας" copy="Μια ιδέα, μια συνεργασία ή μια ερώτηση; Στείλε μας ένα μήνυμα." />
+          <SectionHeading eyebrow="Η ΓΡΑΜΜΗ ΕΙΝΑΙ ΑΝΟΙΧΤΗ" title="ΠΕΣ ΤΟ." copy="Έχεις μια ιδέα; Θες να συνεργαστούμε; Στείλε μας." />
           {contactEmail ? <a href={`mailto:${contactEmail}`} className="contact-email text-link"><Mail className="h-4 w-4 text-[var(--dim)]" aria-hidden="true" />{contactEmail}</a> : <p className="text-sm text-[var(--muted)]">Επικοινώνησε μαζί μας από τη φόρμα ή τα social.</p>}
           <div className="mt-6"><p className="mb-3 text-xs text-[var(--dim)]">Ακολούθησε το project</p><SocialLinks links={visibleSocialLinks} iconOnly /></div>
           <div className="mt-8 border-t border-[var(--line)] pt-6">
