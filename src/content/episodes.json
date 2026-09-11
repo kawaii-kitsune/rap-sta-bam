@@ -362,7 +362,8 @@
       "file": "private/audio/003-chozen.mp3",
       "availableAt": "2026-09-15",
       "label": "Ολόκληρο επεισόδιο σε mp3",
-      "mimeType": "audio/mpeg"
+      "mimeType": "audio/mpeg",
+      "captions": "/assets/captions/003-chozen.json"
     },
     "teaserPoster": "/assets/episodes/003-chozen/still-05.jpg",
     "bestMoments": [
