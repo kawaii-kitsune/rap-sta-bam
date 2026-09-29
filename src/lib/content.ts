@@ -1,36 +1,36 @@
-import { artists } from "@/content/artists";
-import { episodes } from "@/content/episodes";
+import { getArtists } from "@/content/artists";
+import { getEpisodes } from "@/content/episodes";
 import type { Artist, Episode } from "@/types/content";
 
 const byEpisodeNumberDesc = (a: Episode, b: Episode) => b.number - a.number;
 const byEpisodeNumberAsc = (a: Episode, b: Episode) => a.number - b.number;
 
-export function getAllEpisodes(): Episode[] {
-  return [...episodes].sort(byEpisodeNumberDesc);
+export function getAllEpisodes(locale = "el"): Episode[] {
+  return [...getEpisodes(locale)].sort(byEpisodeNumberDesc);
 }
 
-export function getPublishedEpisodes(): Episode[] {
-  return getAllEpisodes().filter((episode) => episode.status !== "draft" && isReleased(episode.publishedAt));
+export function getPublishedEpisodes(locale = "el"): Episode[] {
+  return getAllEpisodes(locale).filter((episode) => episode.status !== "draft" && isReleased(episode.publishedAt));
 }
 
-export function getVisibleEpisodes(): Episode[] {
-  return getAllEpisodes().filter((episode) => episode.status !== "draft");
+export function getVisibleEpisodes(locale = "el"): Episode[] {
+  return getAllEpisodes(locale).filter((episode) => episode.status !== "draft");
 }
 
-export function getFeaturedEpisodes(): Episode[] {
-  return getAllEpisodes().filter((episode) => episode.featured);
+export function getFeaturedEpisodes(locale = "el"): Episode[] {
+  return getAllEpisodes(locale).filter((episode) => episode.featured);
 }
 
-export function getLatestEpisode(): Episode {
-  return getPublishedEpisodes()[0] ?? getVisibleEpisodes()[0] ?? getAllEpisodes()[0];
+export function getLatestEpisode(locale = "el"): Episode {
+  return getPublishedEpisodes(locale)[0] ?? getVisibleEpisodes(locale)[0] ?? getAllEpisodes(locale)[0];
 }
 
-export function getEpisodeBySlug(slug: string): Episode | undefined {
-  return episodes.find((episode) => episode.slug === slug);
+export function getEpisodeBySlug(slug: string, locale = "el"): Episode | undefined {
+  return getEpisodes(locale).find((episode) => episode.slug === slug);
 }
 
-export function getAdjacentEpisodes(slug: string): { previous?: Episode; next?: Episode } {
-  const ordered = getVisibleEpisodes().sort(byEpisodeNumberAsc);
+export function getAdjacentEpisodes(slug: string, locale = "el"): { previous?: Episode; next?: Episode } {
+  const ordered = getVisibleEpisodes(locale).sort(byEpisodeNumberAsc);
   const index = ordered.findIndex((episode) => episode.slug === slug);
 
   return {
@@ -39,36 +39,41 @@ export function getAdjacentEpisodes(slug: string): { previous?: Episode; next?: 
   };
 }
 
-export function getAllArtists(): Artist[] {
-  return [...artists].sort((a, b) => a.name.localeCompare(b.name, "el"));
+export function getAllArtists(locale = "el"): Artist[] {
+  return [...getArtists(locale)].sort((a, b) => a.name.localeCompare(b.name, locale));
 }
 
-export function getFeaturedArtists(): Artist[] {
-  return getAllArtists().filter((artist) => artist.featured);
+export function getFeaturedArtists(locale = "el"): Artist[] {
+  return getAllArtists(locale).filter((artist) => artist.featured);
 }
 
-export function getGuestArtists(): Artist[] {
-  return getAllArtists().filter((artist) => (artist.kind ?? "guest") === "guest");
+export function getGuestArtists(locale = "el"): Artist[] {
+  return getAllArtists(locale).filter((artist) => (artist.kind ?? "guest") === "guest");
 }
 
-export function getTeamArtists(): Artist[] {
-  return getAllArtists().filter((artist) => artist.kind === "team");
+export function getTeamArtists(locale = "el"): Artist[] {
+  return getAllArtists(locale).filter((artist) => artist.kind === "team");
 }
 
-export function getArtistBySlug(slug: string): Artist | undefined {
-  return artists.find((artist) => artist.slug === slug);
+export function getArtistBySlug(slug: string, locale = "el"): Artist | undefined {
+  return getArtists(locale).find((artist) => artist.slug === slug);
 }
 
-export function getEpisodesByArtist(artistSlug: string): Episode[] {
-  return getVisibleEpisodes().filter((episode) => episode.artistSlug === artistSlug || episode.credits.some((credit) => credit.artistSlug === artistSlug));
+export function getEpisodesByArtist(artistSlug: string, locale = "el"): Episode[] {
+  return getVisibleEpisodes(locale).filter((episode) => episode.artistSlug === artistSlug || episode.credits.some((credit) => credit.artistSlug === artistSlug));
 }
 
-export function formatGreekDate(date: string): string {
-  return new Intl.DateTimeFormat("el-GR", {
+export function formatDate(date: string, locale = "el"): string {
+  const intlLocale = locale === "en" ? "en-US" : "el-GR";
+  return new Intl.DateTimeFormat(intlLocale, {
     day: "numeric",
     month: "long",
     year: "numeric"
   }).format(new Date(date));
+}
+
+export function formatGreekDate(date: string): string {
+  return formatDate(date, "el");
 }
 
 export function getAthensDateKey(reference = new Date()): string {

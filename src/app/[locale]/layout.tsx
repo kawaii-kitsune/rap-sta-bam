@@ -4,8 +4,9 @@ import Script from "next/script";
 import { ConsentManager } from "@/components/ConsentManager";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { defaultLocale, locales } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
-import "./globals.css";
+import "../globals.css";
 
 const display = Roboto_Condensed({
   subsets: ["latin", "greek"],
@@ -24,6 +25,10 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "600", "700"],
   variable: "--font-mono"
 });
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export const metadata: Metadata = {
   title: {
@@ -53,13 +58,24 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale = defaultLocale } = await params;
+  const isEn = locale === "en";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWorkSeries",
     name: siteConfig.name,
-    description: siteConfig.description,
-    inLanguage: "el",
+    description: isEn
+      ? "Independent DIY hip-hop documentary and studio session series from Heraklion, Crete."
+      : siteConfig.description,
+    inLanguage: locale,
     locationCreated: {
       "@type": "Place",
       name: siteConfig.location
@@ -67,17 +83,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="el" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang={locale} className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="antialiased">
         <Script
           id="project-json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <a href="#main-content" className="skip-link">Μετάβαση στο περιεχόμενο</a>
+        <a href="#main-content" className="skip-link">
+          {isEn ? "Skip to content" : "Μετάβαση στο περιεχόμενο"}
+        </a>
         <Header />
-        <main id="main-content" tabIndex={-1}>{children}</main>
-        <Footer />
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
+        <Footer locale={locale} />
         <ConsentManager />
       </body>
     </html>

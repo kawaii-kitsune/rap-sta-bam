@@ -383,5 +383,62 @@
         "image": "/assets/episodes/003-chozen/still-05.jpg"
       }
     ]
+  },
+  {
+    "slug": "004-black-spirit",
+    "number": 4,
+    "title": "Rap Sta Bam #004 — Black Spirit",
+    "artistSlug": "black-spirit",
+    "artistName": "Black Spirit",
+    "excerpt": "Στο τέταρτο session, ο Black Spirit έρχεται στο στούντιο χωρίς έτοιμο κομμάτι, για ένα ακόμα raw επεισόδιο με beatmaking, γράψιμο και recording από το μηδέν.",
+    "description": [
+      "Στο Ραπ Στα Μπαμ, κάθε καλεσμένος μπαίνει στο στούντιο χωρίς προετοιμασμένο στίχο ή έτοιμο beat.",
+      "Στο τέταρτο επεισόδιο, υποδεχόμαστε τον Black Spirit και καταγράφουμε όλη τη διαδικασία όπως εξελίσσεται: σκέψεις, επιλογή ήχων, κουπλέ και ηχογράφηση.",
+      "Όλο το υλικό, το video και τα κομμάτια του session θα είναι διαθέσιμα στην πρεμιέρα στις 20 Οκτωβρίου."
+    ],
+    "publishedAt": "2026-10-20",
+    "thumbnail": "/assets/episodes/004-black-spirit/thumbnail.jpg",
+    "status": "upcoming",
+    "instagramUrl": "https://www.instagram.com/itsablackspirit_/",
+    "spotifyUrl": "https://open.spotify.com/artist/53RnaV5x1uExID2YGAE9v4",
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Session",
+        "name": "Black Spirit",
+        "url": "https://www.instagram.com/itsablackspirit_/",
+        "artistSlug": "black-spirit"
+      },
+      {
+        "role": "Μουσική / Παραγωγή / Παρουσίαση",
+        "name": "Phone Memo",
+        "url": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "Ένα session / μία μέρα",
+        "note": "Beatmaking, στίχοι, recording και performance στην ίδια συνάντηση."
+      },
+      {
+        "label": "Καλεσμένος",
+        "value": "Black Spirit",
+        "note": "Ο τέταρτος καλεσμένος artist του Ραπ Στα Μπαμ."
+      },
+      {
+        "label": "Release",
+        "value": "20/10/2026",
+        "note": "Επίσημη πρεμιέρα του τέταρτου επεισοδίου."
+      }
+    ]
   }
 ]

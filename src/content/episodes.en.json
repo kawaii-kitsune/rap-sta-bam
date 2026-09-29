@@ -1,0 +1,444 @@
+[
+  {
+    "slug": "001-tzimos",
+    "number": 1,
+    "title": "Rap Sta Bam #001 — Tzimos",
+    "artistSlug": "tzimos",
+    "artistName": "Tzimos",
+    "excerpt": "In the inaugural episode, Tzimos enters the session with no prepared tracks, crafting a beat, lyrics, recording, and a final performance live on camera.",
+    "description": [
+      "In every episode of Rap Sta Bam, a guest rapper joins us in the studio from complete scratch.",
+      "We start from zero: building a beat together, writing live bars, testing ideas, making mistakes, capturing raw moments on digital film, and documenting the entire process down to the final cut.",
+      "In our premiere episode, we are joined by Tzimos from Heraklion, Crete.",
+      "We dive into his music, inspirations, artistic process, and everything that unfolds behind the scenes before a track reaches its finished form.",
+      "If you want to see how songs are forged from scratch, subscribe to Rap Sta Bam and join us for upcoming sessions.",
+      "Every episode: a new artist, a new concept, a fresh track.",
+      "Catch you every month."
+    ],
+    "publishedAt": "2026-07-21",
+    "thumbnail": "/assets/episodes/001-tzimos-thumbnail-real.jpg",
+    "status": "published",
+    "audio": {
+      "file": "private/audio/001-tzimos.mp3",
+      "availableAt": "2026-07-21",
+      "label": "Full episode in MP3",
+      "mimeType": "audio/mpeg",
+      "captions": "/assets/captions/001-tzimos.json"
+    },
+    "youtubeVideoId": "xlflxBU1k5E",
+    "youtubeUrl": "https://www.youtube.com/watch?v=xlflxBU1k5E",
+    "instagramUrl": "https://www.instagram.com/tzimos_msk",
+    "tiktokUrl": "https://www.tiktok.com/@tzimos_msk",
+    "spotifyUrl": "https://open.spotify.com/artist/3jpMSsecieLfKc5oOTfYIQ",
+    "shortClips": [
+      {
+        "title": "What is RAP STA BAM?",
+        "url": "https://www.youtube.com/watch?v=xlflxBU1k5E"
+      },
+      {
+        "title": "A single sample sparks the beat",
+        "url": "https://www.youtube.com/watch?v=xlflxBU1k5E"
+      },
+      {
+        "title": "The inaugural verse of RAP STA BAM",
+        "url": "https://www.youtube.com/watch?v=xlflxBU1k5E"
+      }
+    ],
+    "gallery": [
+      "/assets/episodes/001-tzimos/tzimos-conversation.jpg",
+      "/assets/episodes/001-tzimos/tzimos-closeup.jpg",
+      "/assets/episodes/001-tzimos/tzimos-performance.jpg",
+      "/assets/episodes/001-moments/01-concept.jpg",
+      "/assets/episodes/001-moments/03-beatmaking.jpg",
+      "/assets/episodes/001-moments/05-performance.jpg"
+    ],
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Energy / Trust",
+        "name": "Tzimos",
+        "url": "https://www.instagram.com/tzimos_msk",
+        "note": "For the bars, raw energy, and creative trust.",
+        "artistSlug": "tzimos"
+      },
+      {
+        "role": "Visuals / Editing / VFX",
+        "name": "Le Snipe VFX / Myron Sfyrakis",
+        "url": "https://www.lesnipevfx.com/",
+        "note": "For capturing gritty visuals, editing, and memes.",
+        "artistSlug": "le-snipe-vfx"
+      },
+      {
+        "role": "Mix / Master",
+        "name": "Redemption Studio / Dimitris Tsekeris",
+        "url": "https://www.instagram.com/dimitristsekeris",
+        "note": "For audio mixing, mastering, and infinite patience with project exports.",
+        "artistSlug": "redemption-studio"
+      },
+      {
+        "role": "Logo / Identity Design",
+        "name": "Ego Designs / Antonis Dovinos",
+        "url": "https://www.behance.net/dovi_made_this",
+        "note": "For the signature Rap Sta Bam visual identity and branding."
+      },
+      {
+        "role": "Behind the scenes / Support",
+        "name": "Filippos Sfyrakis",
+        "url": "https://www.instagram.com/philip_sfyrakis",
+        "note": "For keeping behind-the-scenes grounded and supporting local breweries."
+      },
+      {
+        "role": "Community Support",
+        "name": "Everyone taking the time to experience what we build",
+        "note": "Your support keeps this independent DIY project alive."
+      },
+      {
+        "role": "Production / Host",
+        "name": "Phone Memo",
+        "url": "https://www.tiktok.com/@dov1nos",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "instagramEmbeds": [
+      {
+        "title": "Phone Memo Instagram reel",
+        "url": "https://www.instagram.com/reel/DakfDGIs6Lb/"
+      }
+    ],
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "One session / One day",
+        "note": "Beat, writing, recording, and performance in a single creative sprint."
+      },
+      {
+        "label": "Guest Artist",
+        "value": "Tzimos",
+        "note": "The first voice behind the Rap Sta Bam microphone."
+      },
+      {
+        "label": "Base",
+        "value": "Heraklion, Crete",
+        "note": "Independent production from a local home studio setup."
+      },
+      {
+        "label": "Release Date",
+        "value": "2026-07-21",
+        "note": "Official series premiere."
+      }
+    ],
+    "bestMoments": [
+      {
+        "title": "Concept enters the room",
+        "copy": "The episode kicks off with the core premise: no safety nets, no pre-written material, in-the-room intensity.",
+        "image": "/assets/episodes/001-moments/01-concept.jpg"
+      },
+      {
+        "title": "From sample to beat",
+        "copy": "Watch the beat come alive from raw sample chops to punchy drums.",
+        "image": "/assets/episodes/001-moments/03-beatmaking.jpg"
+      },
+      {
+        "title": "The final verse locks in",
+        "copy": "The take unites spontaneous energy with raw studio performance.",
+        "image": "/assets/episodes/001-moments/05-performance.jpg"
+      }
+    ],
+    "teaserVideo": "/assets/promo/episode-001-teaser.mp4",
+    "teaserPoster": "/assets/episodes/001-tzimos-thumbnail-real.jpg"
+  },
+  {
+    "slug": "002-nesom",
+    "number": 2,
+    "title": "Rap Sta Bam #002 — Nesom",
+    "artistSlug": "nesom",
+    "artistName": "Nesom",
+    "excerpt": "In session two, Nesom steps into the studio. We discuss his musical influences and the spontaneous creative process before a track takes its final shape.",
+    "description": [
+      "On Rap Sta Bam, guest rappers pull up to the studio with zero pre-written verses.",
+      "We assemble the beat, write bars, iterate on flows, make mistakes, and capture the full journey through to the final bounce.",
+      "Our second session features Heraklion rapper Nesom, discussing musical identity, technique, and real-time studio improvisation.",
+      "Every episode: a new artist, a fresh beat, an original song."
+    ],
+    "publishedAt": "2026-08-18",
+    "thumbnail": "/assets/episodes/002-nesom/thumbnail.png",
+    "status": "published",
+    "youtubeVideoId": "dJjsfeIUEs4",
+    "youtubeUrl": "https://youtu.be/dJjsfeIUEs4",
+    "instagramUrl": "https://www.instagram.com/nesomnineseven/",
+    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP",
+    "shortClips": [
+      {
+        "title": "Rap Sta Bam #002 — Nesom",
+        "url": "https://www.youtube.com/watch?v=dJjsfeIUEs4"
+      }
+    ],
+    "gallery": [
+      "/assets/episodes/002-nesom/still-01.png",
+      "/assets/episodes/002-nesom/still-02.png",
+      "/assets/episodes/002-nesom/still-03.png",
+      "/assets/episodes/002-nesom/still-04.png",
+      "/assets/episodes/002-nesom/still-05.png",
+      "/assets/episodes/002-nesom/still-06.png"
+    ],
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Flows / Patience",
+        "name": "Nesom",
+        "url": "https://www.instagram.com/nesomnineseven/",
+        "note": "For the effortless flows, sharp bars, and good humor.",
+        "artistSlug": "nesom"
+      },
+      {
+        "role": "Visuals / Editing / VFX",
+        "name": "Le Snipe VFX / Myron Sfyrakis",
+        "url": "https://www.lesnipevfx.com/",
+        "note": "For camera, direction, and seamless video pacing.",
+        "artistSlug": "le-snipe-vfx"
+      },
+      {
+        "role": "Mix / Master",
+        "name": "Redemption Studio / Dimitris Tsekeris",
+        "url": "https://www.instagram.com/dimitristsekeris/",
+        "note": "For audio precision and engineering.",
+        "artistSlug": "redemption-studio"
+      },
+      {
+        "role": "Logo / Identity Design",
+        "name": "Ego Designs / Antonis Dovinos",
+        "url": "https://www.behance.net/dovi_made_this",
+        "note": "For branding and typography."
+      },
+      {
+        "role": "Community Support",
+        "name": "Everyone tuning in to watch our DIY process",
+        "note": "Thank you for supporting real underground music."
+      },
+      {
+        "role": "Music / Production / Host",
+        "name": "Phone Memo",
+        "url": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+        "note": "Beats and session curation by Phone Memo.",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "One session / One day",
+        "note": "Beats, bars, recording, and performance in one sitting."
+      },
+      {
+        "label": "Guest Artist",
+        "value": "Nesom",
+        "note": "The second artist featured on Rap Sta Bam."
+      },
+      {
+        "label": "Base",
+        "value": "Heraklion, Crete",
+        "note": "Independent production from a local home studio setup."
+      },
+      {
+        "label": "Release Date",
+        "value": "2026-08-18",
+        "note": "Premiere of Session #002."
+      }
+    ],
+    "bestMoments": [
+      {
+        "title": "Starting without a script",
+        "copy": "Nesom begins from scratch with beats and verses developed live in the room.",
+        "image": "/assets/episodes/002-nesom/still-01.png"
+      },
+      {
+        "title": "The groove takes shape",
+        "copy": "Tweaking samples and rhythms until finding the pocket.",
+        "image": "/assets/episodes/002-nesom/still-03.png"
+      },
+      {
+        "title": "Final live performance",
+        "copy": "The session concludes with an energetic, raw live vocal take.",
+        "image": "/assets/episodes/002-nesom/still-06.png"
+      }
+    ],
+    "audio": {
+      "file": "private/audio/002-nesom.mp3",
+      "availableAt": "2026-08-18",
+      "label": "Full episode in MP3",
+      "mimeType": "audio/mpeg"
+    },
+    "teaserVideo": "/assets/promo/episode-002-trailer.mp4",
+    "teaserPoster": "/assets/episodes/002-nesom/thumbnail.png",
+    "tiktokUrl": "https://www.tiktok.com/@nesomnineseven"
+  },
+  {
+    "slug": "003-chozen",
+    "number": 3,
+    "title": "Rap Sta Bam #003 — Chozen",
+    "artistSlug": "chozen",
+    "artistName": "Chozen",
+    "excerpt": "Session three features Chozen. Another zero-prep session where beat production, writing, and live recording happen simultaneously.",
+    "description": [
+      "On Rap Sta Bam, an MC arrives with nothing pre-written.",
+      "In episode three, we invite Chozen and document the process unfiltered: ideas, beat chops, penning lyrics, and fine-tuning takes.",
+      "From casual studio talks to MPC finger drumming and live performance, it all fits into one continuous session."
+    ],
+    "publishedAt": "2026-09-15",
+    "thumbnail": "/assets/episodes/003-chozen/thumbnail.png",
+    "status": "upcoming",
+    "instagramUrl": "https://www.instagram.com/chozencho/",
+    "spotifyUrl": "https://open.spotify.com/artist/2JMhsG9u413Y6PYgCMzUnr",
+    "youtubeUrl": "https://www.youtube.com/watch?v=9IsE8FqYp2Q",
+    "twitchUrl": "https://www.twitch.tv/freestylepodcast",
+    "gallery": [
+      "/assets/episodes/003-chozen/still-01.jpg",
+      "/assets/episodes/003-chozen/still-02.jpg",
+      "/assets/episodes/003-chozen/still-03.jpg",
+      "/assets/episodes/003-chozen/still-04.jpg",
+      "/assets/episodes/003-chozen/still-05.jpg",
+      "/assets/episodes/003-chozen/still-06.jpg"
+    ],
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Session",
+        "name": "Chozen",
+        "url": "https://www.instagram.com/chozencho/",
+        "artistSlug": "chozen"
+      },
+      {
+        "role": "Music / Production / Host",
+        "name": "Phone Memo",
+        "url": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "One session / One day",
+        "note": "Beatmaking, lyrical writing, recording, and performance in one sitting."
+      },
+      {
+        "label": "Guest Artist",
+        "value": "Chozen",
+        "note": "The third featured artist on Rap Sta Bam."
+      },
+      {
+        "label": "Release Date",
+        "value": "2026-09-15",
+        "note": "Official premiere of Session #003."
+      },
+      {
+        "label": "Duration",
+        "value": "24:11",
+        "note": "Full length of the session."
+      }
+    ],
+    "youtubeVideoId": "9IsE8FqYp2Q",
+    "audio": {
+      "file": "private/audio/003-chozen.mp3",
+      "availableAt": "2026-09-15",
+      "label": "Full episode in MP3",
+      "mimeType": "audio/mpeg",
+      "captions": "/assets/captions/003-chozen.json"
+    },
+    "teaserPoster": "/assets/episodes/003-chozen/still-05.jpg",
+    "bestMoments": [
+      {
+        "title": "Pre-session dialogue",
+        "copy": "Chozen and Phone Memo kick off the episode with an open studio conversation.",
+        "image": "/assets/episodes/003-chozen/still-01.jpg"
+      },
+      {
+        "title": "Hands on the MPC",
+        "copy": "Production translates from sonic ideas to MPC pads.",
+        "image": "/assets/episodes/003-chozen/still-04.jpg"
+      },
+      {
+        "title": "Vocal take on the mic",
+        "copy": "Chozen steps to the mic for the session's performance.",
+        "image": "/assets/episodes/003-chozen/still-05.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "004-black-spirit",
+    "number": 4,
+    "title": "Rap Sta Bam #004 — Black Spirit",
+    "artistSlug": "black-spirit",
+    "artistName": "Black Spirit",
+    "excerpt": "In session four, Black Spirit joins the studio with no pre-written material for another raw session of beatmaking, writing, and recording from scratch.",
+    "description": [
+      "On Rap Sta Bam, every guest rapper arrives with zero pre-written verses or prepared tracks.",
+      "In episode four, we invite Black Spirit to document the unfiltered creative process: ideas, sample selection, penning bars, and vocal takes.",
+      "Full episode content, videos, and music will unlock on premiere day, October 20."
+    ],
+    "publishedAt": "2026-10-20",
+    "thumbnail": "/assets/episodes/004-black-spirit/thumbnail.jpg",
+    "status": "upcoming",
+    "instagramUrl": "https://www.instagram.com/itsablackspirit_/",
+    "spotifyUrl": "https://open.spotify.com/artist/53RnaV5x1uExID2YGAE9v4",
+    "gear": [
+      "Logic Pro",
+      "Akai MPC Key37",
+      "Shure Beta 58A",
+      "ESI Neva Duo",
+      "Sennheiser HD-200 Pro"
+    ],
+    "credits": [
+      {
+        "role": "Rap / Session",
+        "name": "Black Spirit",
+        "url": "https://www.instagram.com/itsablackspirit_/",
+        "artistSlug": "black-spirit"
+      },
+      {
+        "role": "Music / Production / Host",
+        "name": "Phone Memo",
+        "url": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+        "artistSlug": "phone-memo"
+      }
+    ],
+    "featured": true,
+    "sessionFacts": [
+      {
+        "label": "Format",
+        "value": "One session / One day",
+        "note": "Beat production, lyric writing, and live recording in one sitting."
+      },
+      {
+        "label": "Guest Artist",
+        "value": "Black Spirit",
+        "note": "The fourth guest artist featured on Rap Sta Bam."
+      },
+      {
+        "label": "Release Date",
+        "value": "2026-10-20",
+        "note": "Official premiere of Session #004."
+      }
+    ]
+  }
+]

@@ -98,5 +98,21 @@
     "twitchUrl": "https://www.twitch.tv/freestylepodcast",
     "featured": true,
     "kind": "guest"
+  },
+  {
+    "slug": "black-spirit",
+    "name": "Black Spirit",
+    "image": "/assets/artists/black-spirit.jpg",
+    "location": "Καλεσμένος artist",
+    "shortBio": "Rapper και καλεσμένος στο τέταρτο Ραπ Στα Μπαμ session.",
+    "bio": [
+      "Ο Black Spirit είναι ο τέταρτος καλεσμένος του Ραπ Στα Μπαμ.",
+      "Στο session μπαίνει στη διαδικασία από το μηδέν: beatmaking, στίχοι και ηχογράφηση σε μία μέρα, όπως ακριβώς εξελίσσεται μέσα στο στούντιο.",
+      "Όλο το υλικό και τα tracks του επεισοδίου θα ανοίξουν με την πρεμιέρα."
+    ],
+    "instagramUrl": "https://www.instagram.com/itsablackspirit_/",
+    "spotifyUrl": "https://open.spotify.com/artist/53RnaV5x1uExID2YGAE9v4",
+    "featured": true,
+    "kind": "guest"
   }
 ]

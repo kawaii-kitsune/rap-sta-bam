@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "tzimos",
+    "name": "Tzimos",
+    "image": "/assets/artists/tzimos.jpg",
+    "location": "Crete",
+    "shortBio": "Rapper from Heraklion, Crete and co-founder of Maskes, returning after 8 years with Reboot produced by Phone Memo.",
+    "bio": [
+      "Tzimos is a rapper from Heraklion, Crete and co-founder of the hip hop crew Maskes alongside Ace Beats, Abyss, Doc, and Rade.",
+      "Following several releases in the 2010s, he returns after an 8-year hiatus with Reboot, a comeback EP fully produced by Phone Memo.",
+      "Reboot marks a fresh beginning and reintroduction of Tzimos to the hip hop scene."
+    ],
+    "instagramUrl": "https://www.instagram.com/tzimos_msk",
+    "tiktokUrl": "https://www.tiktok.com/@tzimos_msk",
+    "spotifyUrl": "https://open.spotify.com/artist/3jpMSsecieLfKc5oOTfYIQ",
+    "featured": true,
+    "kind": "guest"
+  },
+  {
+    "slug": "phone-memo",
+    "name": "Phone Memo",
+    "image": "/assets/artists/phone-memo-frame.jpg",
+    "location": "Heraklion",
+    "shortBio": "Production, hosting and session direction from initial spark to final bounce.",
+    "bio": [
+      "Phone Memo serves as the production core of the series: crafting beats, guiding studio direction, hosting, and gluing each episode together.",
+      "His goal is giving artists the creative freedom to explore, while keeping sessions tight and focused so beats and verses come together on the spot."
+    ],
+    "tiktokUrl": "https://www.tiktok.com/@phonememo",
+    "featured": true,
+    "spotifyUrl": "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
+    "instagramUrl": "https://www.instagram.com/phone_memo_the.anartist/",
+    "youtubeUrl": "https://www.youtube.com/@phonememo_the.anartist",
+    "kind": "team"
+  },
+  {
+    "slug": "le-snipe-vfx",
+    "name": "Le Snipe VFX",
+    "image": "/assets/artists/le-snipe-vfx-instagram.png",
+    "location": "Visuals / Editing / VFX",
+    "shortBio": "Visual identity, dynamic editing, VFX and gritty film aesthetic.",
+    "bio": [
+      "Le Snipe VFX / Myron Sfyrakis drives the visual dimension of the series: camera work, editing, VFX, grain textures, and rhythm in the final cut.",
+      "Visuals are approached as an organic part of the track, far beyond standard behind-the-scenes documentation."
+    ],
+    "instagramUrl": "https://www.instagram.com/lesnipe.vfx",
+    "tiktokUrl": "https://www.tiktok.com/@lesnipe_vfx",
+    "youtubeUrl": "https://www.lesnipevfx.com/",
+    "featured": true,
+    "kind": "team"
+  },
+  {
+    "slug": "redemption-studio",
+    "name": "Redemption Studio / Dimitris Tsekeris",
+    "image": "/assets/artists/redemption-studio-dj.png",
+    "location": "Mix / Master",
+    "shortBio": "Mixing, mastering, and engineering the sonic polish.",
+    "bio": [
+      "Redemption Studio / Dimitris Tsekeris handles mix and master engineering, keeping the audio cohesive, punchy, and clear.",
+      "His contribution anchors the critical final step: transforming raw takes, fresh beats, and spontaneous studio energy into an official listening experience."
+    ],
+    "instagramUrl": "https://www.instagram.com/dimitristsekeris",
+    "featured": true,
+    "kind": "team"
+  },
+  {
+    "slug": "nesom",
+    "name": "Nesom",
+    "image": "/assets/artists/nesom.png",
+    "location": "Heraklion, Crete",
+    "shortBio": "Rapper from Heraklion, Crete, featured on the second Rap Sta Bam session.",
+    "bio": [
+      "Nesom is a rapper hailing from Heraklion, Crete and the featured guest of Rap Sta Bam Session #002.",
+      "During the session, he breaks down his musical roots, influences, and the unfiltered studio process before tracks reach final form.",
+      "He dives into the session from complete scratch: beat creation, live lyrics, trial, error, and the final cut recorded in one room."
+    ],
+    "instagramUrl": "https://www.instagram.com/nesomnineseven/",
+    "spotifyUrl": "https://open.spotify.com/artist/6tvPpTNTpyfYaFg15uJpWP",
+    "featured": true,
+    "kind": "guest",
+    "youtubeUrl": "https://www.youtube.com/channel/UC9Msvv88aaIBxHGGoz-MDVg",
+    "tiktokUrl": "https://www.tiktok.com/@nesomnineseven"
+  },
+  {
+    "slug": "chozen",
+    "name": "Chozen",
+    "image": "/assets/artists/chozen.png",
+    "location": "Guest Artist",
+    "shortBio": "Rapper and featured guest for Rap Sta Bam Session #003.",
+    "bio": [
+      "Chozen is the third guest artist featured on Rap Sta Bam.",
+      "Entering the studio with no pre-written material, the beat, writing, and vocals take shape live right in front of the lens.",
+      "Full episode details and tracks will unlock upon premiere."
+    ],
+    "instagramUrl": "https://www.instagram.com/chozencho/",
+    "spotifyUrl": "https://open.spotify.com/artist/2JMhsG9u413Y6PYgCMzUnr",
+    "youtubeUrl": "https://www.youtube.com/channel/UCSIZuXRWzp-1NbfSDrhKe9Q",
+    "twitchUrl": "https://www.twitch.tv/freestylepodcast",
+    "featured": true,
+    "kind": "guest"
+  },
+  {
+    "slug": "black-spirit",
+    "name": "Black Spirit",
+    "image": "/assets/artists/black-spirit.jpg",
+    "location": "Guest Artist",
+    "shortBio": "Rapper and featured guest for Rap Sta Bam Session #004.",
+    "bio": [
+      "Black Spirit is the fourth guest artist featured on Rap Sta Bam.",
+      "Stepping into the studio with zero pre-written verses, beatmaking, writing, and recording unfold live in a single continuous session.",
+      "Full episode content, videos, and audio tracks will unlock upon premiere."
+    ],
+    "instagramUrl": "https://www.instagram.com/itsablackspirit_/",
+    "spotifyUrl": "https://open.spotify.com/artist/53RnaV5x1uExID2YGAE9v4",
+    "featured": true,
+    "kind": "guest"
+  }
+]

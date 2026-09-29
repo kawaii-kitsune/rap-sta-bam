@@ -1,23 +1,21 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Loader2, Send } from "lucide-react";
 import { Field, Textarea, SelectField, focusFirstFormError } from "@/components/FormField";
+import { getDictionary } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 const requiredFields = ["name", "email", "message"] as const;
 
-type RequiredField = (typeof requiredFields)[number];
+export function ContactForm({ locale: propLocale }: { locale?: string }) {
+  const pathname = usePathname();
+  const locale = propLocale ?? (pathname?.startsWith("/en") ? "en" : "el");
+  const dict = getDictionary(locale);
 
-const labels: Record<RequiredField, string> = {
-  name: "όνομα",
-  email: "email",
-  message: "μήνυμα"
-};
-
-export function ContactForm() {
   const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
   const [state, setState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -27,9 +25,20 @@ export function ContactForm() {
   const googleForm = siteConfig.googleContactForm;
   const googleFormConfigured = Boolean(googleForm.actionUrl);
   const contactEmail = siteConfig.contactEmail.trim();
-  const canUseMailto = Boolean(contactEmail);
 
-  const quickOptions = useMemo(() => ["Συνεργασία", "Συνέντευξη", "Γενική ερώτηση", "Άλλο"], []);
+  const quickOptions = useMemo(
+    () =>
+      locale === "en"
+        ? ["Collaboration", "Interview", "General Inquiry", "Other"]
+        : ["Συνεργασία", "Συνέντευξη", "Γενική ερώτηση", "Άλλο"],
+    [locale]
+  );
+
+  const fieldLabels: Record<(typeof requiredFields)[number], string> = {
+    name: dict.contact.name,
+    email: dict.contact.email,
+    message: dict.contact.message
+  };
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,13 +52,16 @@ export function ContactForm() {
 
     requiredFields.forEach((field) => {
       if (!String(data.get(field) ?? "").trim()) {
-        nextErrors[field] = `Συμπλήρωσε το πεδίο: ${labels[field]}.`;
+        nextErrors[field] =
+          locale === "en"
+            ? `Please fill in: ${fieldLabels[field]}.`
+            : `Συμπλήρωσε το πεδίο: ${fieldLabels[field]}.`;
       }
     });
 
     const email = String(data.get("email") ?? "");
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      nextErrors.email = "Γράψε ένα έγκυρο email.";
+      nextErrors.email = locale === "en" ? "Enter a valid email address." : "Γράψε ένα έγκυρο email.";
     }
 
     setErrors(nextErrors);
@@ -65,7 +77,7 @@ export function ContactForm() {
         const payload = new URLSearchParams();
         payload.set(googleForm.fields.email, String(data.get("email") ?? ""));
         payload.set(googleForm.fields.name, String(data.get("name") ?? ""));
-        payload.set(googleForm.fields.topic, String(data.get("topic") || "Γενική ερώτηση"));
+        payload.set(googleForm.fields.topic, String(data.get("topic") || (locale === "en" ? "General inquiry" : "Γενική ερώτηση")));
         payload.set(googleForm.fields.message, String(data.get("message") ?? ""));
         payload.set("fvv", "1");
         payload.set("pageHistory", "0");
@@ -86,17 +98,14 @@ export function ContactForm() {
     }
 
     if (!formConfigured) {
-      if (!canUseMailto) {
-        setState("error");
-        return;
-      }
-
-      const subject = encodeURIComponent(String(data.get("topic") || "Επικοινωνία από το Ραπ Στα Μπαμ"));
+      const subject = encodeURIComponent(
+        `${locale === "en" ? "Rap Sta Bam Contact" : "Ραπ Στα Μπαμ μήνυμα"}: ${String(data.get("topic") || (locale === "en" ? "General inquiry" : "Γενικό"))}`
+      );
       const body = encodeURIComponent(
         [
-          `Όνομα: ${String(data.get("name") ?? "")}`,
-          `Email: ${String(data.get("email") ?? "")}`,
-          `Θέμα: ${String(data.get("topic") ?? "")}`,
+          `${dict.contact.name}: ${String(data.get("name") ?? "")}`,
+          `${dict.contact.email}: ${String(data.get("email") ?? "")}`,
+          `${dict.contact.topic}: ${String(data.get("topic") ?? "")}`,
           "",
           String(data.get("message") ?? "")
         ].join("\n")
@@ -136,40 +145,49 @@ export function ContactForm() {
           if (state === "error" || state === "success") setState("idle");
         }
       }}>
-      <div><h3 className="card-title">Στείλε μας ένα μήνυμα</h3><p className="form-note mt-1">Τα πεδία με * είναι υποχρεωτικά.</p></div>
+      <div>
+        <h3 className="card-title">{dict.contact.heading}</h3>
+        <p className="form-note mt-1">{dict.contact.note}</p>
+      </div>
       <div className="hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Field id="name" label="Ονοματεπώνυμο" autoComplete="name" error={errors.name} />
-        <Field id="email" label="Email" type="email" autoComplete="email" error={errors.email} />
+        <Field id="name" label={dict.contact.name} autoComplete="name" error={errors.name} />
+        <Field id="email" label={dict.contact.email} type="email" autoComplete="email" error={errors.email} />
       </div>
 
-      <SelectField id="topic" label="Θέμα">
-        <option value="">Διάλεξε θέμα</option>
+      <SelectField id="topic" label={dict.contact.topic}>
+        <option value="">{dict.contact.topicSelect}</option>
         {quickOptions.map((option) => <option key={option} value={option}>{option}</option>)}
       </SelectField>
 
-      <Textarea id="message" label="Μήνυμα" error={errors.message} />
+      <Textarea id="message" label={dict.contact.message} error={errors.message} />
 
       <button type="submit" disabled={state === "submitting"} className="rsb-button">
         {state === "submitting" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Send className="h-4 w-4" aria-hidden="true" />}
-        {state === "submitting" ? "Αποστολή..." : "Αποστολή μηνύματος"}
+        {state === "submitting" ? dict.contact.sending : dict.contact.send}
       </button>
 
       <p className="text-xs leading-5 text-[var(--dim)]">
-        Χρησιμοποιούμε τα στοιχεία σου μόνο για να απαντήσουμε στο μήνυμά σου. <a href="/privacy" className="underline underline-offset-4 hover:text-[var(--foreground)]">Πολιτική απορρήτου</a>
+        {locale === "en"
+          ? "We only use your information to reply to your message. "
+          : "Χρησιμοποιούμε τα στοιχεία σου μόνο για να απαντήσουμε στο μήνυμά σου. "}
+        <a href={`/${locale}/privacy`} className="underline underline-offset-4 hover:text-[var(--foreground)]">
+          {locale === "en" ? "Privacy policy" : "Πολιτική απορρήτου"}
+        </a>
       </p>
 
       {state === "success" ? (
         <div role="status" className="alert alert-success">
-          {formConfigured || googleFormConfigured ? "Το μήνυμα στάλθηκε. Θα απαντήσουμε όταν το δούμε." : <a href={mailto} className="text-[var(--accent)] underline">Άνοιγμα email για αποστολή μηνύματος</a>}
+          {formConfigured || googleFormConfigured
+            ? dict.contact.success
+            : <a href={mailto} className="text-[var(--accent)] underline">{locale === "en" ? "Open email client to send message" : "Άνοιγμα email για αποστολή μηνύματος"}</a>}
         </div>
       ) : null}
-      {state === "error" ? <div role="alert" className="alert alert-error">Η αποστολή απέτυχε. Δοκίμασε ξανά ή επικοινώνησε μέσω email/social.</div> : null}
+      {state === "error" ? <div role="alert" className="alert alert-error">{dict.contact.error}</div> : null}
     </form>
   );
 }
-
