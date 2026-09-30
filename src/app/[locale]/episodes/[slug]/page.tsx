@@ -58,12 +58,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
 
+  const live = isEpisodeLive(episode);
+
   return createMetadata({
     title: episode.title,
     description: episode.excerpt,
     path: `/${locale}/episodes/${episode.slug}`,
     image: episode.thumbnail,
-    locale
+    locale,
+    audio:
+      live && episode.audio
+        ? {
+            url: `${siteConfig.baseUrl}/episodes/${episode.slug}/audio`,
+            type: episode.audio.mimeType ?? "audio/mpeg"
+          }
+        : undefined
   });
 }
 

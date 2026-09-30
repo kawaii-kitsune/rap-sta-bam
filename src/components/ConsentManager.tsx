@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDictionary } from "@/config/i18n";
 import { getAnalyticsConsent, setAnalyticsConsent, type AnalyticsConsent, cookieSettingsEvent } from "@/lib/consent";
 
@@ -47,7 +48,12 @@ export function ConsentManager() {
 
   return (
     <>
-      {ready && consent === "accepted" ? <Analytics /> : null}
+      {ready && consent === "accepted" ? (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      ) : null}
       {ready && open ? (
         <section className="cookie-banner" aria-label={dict.cookie.title}>
           <h2 className="text-sm font-semibold">{dict.cookie.title}</h2>

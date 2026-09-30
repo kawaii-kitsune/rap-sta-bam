@@ -8,6 +8,10 @@ type MetadataInput = {
   path?: string;
   image?: string;
   locale?: string;
+  audio?: {
+    url: string;
+    type?: string;
+  };
 };
 
 export function createMetadata({
@@ -15,7 +19,8 @@ export function createMetadata({
   description,
   path = "",
   image,
-  locale = defaultLocale
+  locale = defaultLocale,
+  audio
 }: MetadataInput): Metadata {
   const isEn = locale === "en";
   const siteName = isEn ? "Rap Sta Bam" : siteConfig.name;
@@ -50,7 +55,8 @@ export function createMetadata({
       siteName,
       locale: isEn ? "en_US" : "el_GR",
       type: "website",
-      images: [{ url: resolvedImage, alt: resolvedTitle }]
+      images: [{ url: resolvedImage, alt: resolvedTitle }],
+      ...(audio ? { audio: [{ url: audio.url, type: audio.type ?? "audio/mpeg" }] } : {})
     },
     twitter: {
       card: "summary_large_image",

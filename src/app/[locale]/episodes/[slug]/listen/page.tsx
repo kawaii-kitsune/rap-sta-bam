@@ -44,7 +44,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : `Άκουσε το πλήρες audio του ${episode.title} με συγχρονισμένα captions.`,
     path: `/${locale}/episodes/${episode.slug}/listen`,
     image: episode.thumbnail,
-    locale
+    locale,
+    audio: episode.audio
+      ? {
+          url: `${siteConfig.baseUrl}/episodes/${episode.slug}/audio`,
+          type: episode.audio.mimeType ?? "audio/mpeg"
+        }
+      : undefined
   });
 }
 
