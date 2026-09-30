@@ -72,7 +72,7 @@ export default async function HomePage({
         <PromoTeaser episode={upcomingEpisode} locale={locale} />
       ) : null}
 
-      <SessionContactSheet episodes={visibleEpisodes} />
+      <SessionContactSheet episodes={visibleEpisodes} locale={locale} />
 
       <section className="home-crew section-space" aria-label={isEn ? "The crew" : "Το crew"}>
         <Container>
