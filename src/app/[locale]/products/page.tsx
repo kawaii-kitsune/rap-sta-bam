@@ -142,7 +142,7 @@ export default async function ProductsPage({ params }: Props) {
           <section id="catalog-tracks" className="mt-12">
             <SectionHeading
               title={isEn ? "Popular Tracks" : "Δημοφιλή κομμάτια"}
-              copy={isEn ? "Stream data from Spotify · 15/07/2026." : "Στοιχεία ακρόασης από το Spotify · 15/07/2026."}
+              copy={isEn ? "Stream data from Spotify · 30/09/2026." : "Στοιχεία ακρόασης από το Spotify · 30/09/2026."}
             />
             <ol className="border-t border-[var(--line)]">
               {spotifyTopTracks.map((track, index) => (
@@ -191,7 +191,7 @@ export default async function ProductsPage({ params }: Props) {
             <iframe
               src="https://open.spotify.com/embed/artist/2KroWFsi3xsAX5snSQyXqc?utm_source=generator&theme=0"
               width="100%"
-              height="152"
+              height="352"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
               title="Spotify Player"
