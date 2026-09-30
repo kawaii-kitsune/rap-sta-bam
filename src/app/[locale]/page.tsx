@@ -69,7 +69,7 @@ export default async function HomePage({
       </section>
 
       {upcomingEpisode && upcomingEpisode.slug !== latestEpisode.slug ? (
-        <PromoTeaser episode={upcomingEpisode} />
+        <PromoTeaser episode={upcomingEpisode} locale={locale} />
       ) : null}
 
       <SessionContactSheet episodes={visibleEpisodes} />
@@ -123,38 +123,68 @@ export default async function HomePage({
         </Container>
       </section>
 
-      <section className="home-schedule section-space" aria-labelledby="schedule-title">
-        <Container>
-          <div className="section-topline">
-            <div>
-              <p className="rsb-kicker">
-                {isEn ? "MONTHLY TIMELINE" : "ΧΡΟΝΟΔΙΑΓΡΑΜΜΑ"}
-              </p>
-              <h2 id="schedule-title" className="home-section-title">
-                {isEn ? "NEXT RELEASES" : "ΕΠΟΜΕΝΕΣ ΚΥΚΛΟΦΟΡΙΕΣ"}
-              </h2>
+      <section className="home-project section-space" aria-labelledby="project-manifesto-title">
+        <Container className="project-grid">
+          <div className="project-manifesto">
+            <p className="rsb-kicker">
+              {isEn ? "FORGED BY THE CREW" : "ΦΤΙΑΓΜΕΝΟ ΑΠΟ ΤΗΝ ΠΑΡΕΑ"}
+            </p>
+            <h2 id="project-manifesto-title" className="home-section-title">
+              {isEn ? (
+                <>
+                  FROM SAMPLE.<br />
+                  <span>DOWN TO THE TAKE.</span>
+                </>
+              ) : (
+                <>
+                  ΑΠΟ ΤΟ SAMPLE.<br />
+                  <span>ΜΕΧΡΙ ΤΟ TAKE.</span>
+                </>
+              )}
+            </h2>
+            <p className="project-copy">
+              {isEn
+                ? "We link up in Heraklion, Crete. Sharing stories, building beats, writing bars, and testing ideas on the fly. We keep the mistakes, the debates, and the energy until the spark turns into a recorded track."
+                : "Μαζευόμαστε στο Ηράκλειο. Μοιραζόμαστε ιστορίες, χτίζουμε beats, γράφουμε και δοκιμάζουμε. Κρατάμε τα λάθη και την ενέργεια, μέχρι η ιδέα να γίνει κομμάτι."}
+            </p>
+            <Link href={`/${locale}/about`} className="text-link">
+              {isEn ? "This is Rap Sta Bam" : "Αυτό είναι το Ραπ Στα Μπαμ"}{" "}
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="release-board">
+            <div className="release-board-heading">
+              <h2>{isEn ? "THE RELEASES" : "ΟΙ ΚΥΚΛΟΦΟΡΙΕΣ"}</h2>
+              <span className="meta-font">{releaseSchedule[0].date.slice(0, 4)}</span>
             </div>
-            <p className="section-meta">
+            <p className="release-cadence">
               {isEn ? "One new session every month" : releaseCadence}
             </p>
-          </div>
-          <div className="schedule-grid">
-            {releaseSchedule.map((item) => (
-              <div
-                key={item.date}
-                className={`schedule-card ${nextRelease?.date === item.date ? "schedule-card-active" : ""}`}
-              >
-                <div className="schedule-date-chip">
-                  <span className="schedule-date-number">{item.label}</span>
-                  {nextRelease?.date === item.date ? (
-                    <span className="schedule-next-badge">
-                      {isEn ? "NEXT UP" : "ΕΠΟΜΕΝΟ"}
-                    </span>
-                  ) : null}
-                </div>
-                <p className="schedule-title">{item.title}</p>
-              </div>
-            ))}
+            <ol className="rsb-panel">
+              {releaseSchedule.map((item) => {
+                const isNext = item.date === nextRelease?.date;
+                return (
+                  <li
+                    key={item.date}
+                    className={`rsb-row release-row grid grid-cols-[3.5rem_minmax(0,1fr)] items-center gap-4 py-4 last:border-b-0 ${isNext ? "is-next" : ""}`}
+                  >
+                    <time dateTime={item.date} className="meta-font text-sm text-[var(--dim)]">
+                      {item.label}
+                    </time>
+                    <div>
+                      <span className="text-sm font-medium">
+                        {isEn ? item.title.replace("Τζίμος", "Tzimos") : item.title}
+                      </span>
+                      {isNext ? (
+                        <span className="mt-1 block text-xs text-[var(--accent)] font-semibold">
+                          {isEn ? "Next Premiere" : "Επόμενη πρεμιέρα"}
+                        </span>
+                      ) : null}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
         </Container>
       </section>
