@@ -37,7 +37,13 @@ export const dictionaries = {
       listen: "Ακρόαση",
       support: "Στήριξη",
       languageName: "Ελληνικά",
-      switchLanguage: "English"
+      switchLanguage: "English",
+      searchPlaceholder: "Αναζήτηση (καλλιτέχνης, στίχοι, εξοπλισμός)...",
+      searchLabel: "Αναζήτηση",
+      podcastBadge: "Άκου το Podcast στο Spotify",
+      shareEpisode: "Κοινοποίηση",
+      linkCopied: "Ο σύνδεσμος αντιγράφηκε!",
+      copyLink: "Αντιγραφή link"
     },
     cookie: {
       title: "Η επιλογή σου για τα cookies",
@@ -95,7 +101,13 @@ export const dictionaries = {
       listen: "Listen",
       support: "Support",
       languageName: "English",
-      switchLanguage: "Ελληνικά"
+      switchLanguage: "Ελληνικά",
+      searchPlaceholder: "Search (artist, lyrics, gear)...",
+      searchLabel: "Search",
+      podcastBadge: "Listen on Spotify Podcast",
+      shareEpisode: "Share",
+      linkCopied: "Link copied!",
+      copyLink: "Copy link"
     },
     cookie: {
       title: "Your Cookie Preferences",

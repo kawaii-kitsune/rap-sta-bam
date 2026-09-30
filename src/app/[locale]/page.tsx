@@ -10,7 +10,7 @@ import { SessionArchive } from "@/components/SessionArchive";
 import { SessionContactSheet } from "@/components/SessionContactSheet";
 import { TextureOverlay } from "@/components/TextureOverlay";
 import { defaultLocale } from "@/config/i18n";
-import { releaseCadence, releaseSchedule } from "@/config/site";
+import { releaseCadence, releaseSchedule, siteConfig } from "@/config/site";
 import {
   getAthensDateKey,
   getFeaturedArtists,
@@ -55,9 +55,21 @@ export default async function HomePage({
                 <span className="section-count">[{String(visibleEpisodes.length).padStart(3, "0")}]</span>
               </h2>
             </div>
-            <Link href={`/${locale}/episodes`} className="text-link">
-              {isEn ? "Full Archive" : "Όλο το αρχείο"} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={siteConfig.socials.spotifyPodcast}
+                target="_blank"
+                rel="noreferrer"
+                className="rsb-button-secondary !min-h-9 !px-3 !py-1 text-xs font-semibold"
+              >
+                <span className="h-2 w-2 rounded-full bg-[#1DB954]" aria-hidden="true" />
+                {isEn ? "Spotify Podcast" : "Podcast στο Spotify"}
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+              <Link href={`/${locale}/episodes`} className="text-link">
+                {isEn ? "Full Archive" : "Όλο το αρχείο"} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
           <SessionArchive episodes={visibleEpisodes.slice(0, 6)} locale={locale} />
           <p className="archive-footnote">

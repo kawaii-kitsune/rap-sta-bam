@@ -15,6 +15,7 @@ import { InstagramEmbed } from "@/components/InstagramEmbed";
 import { PromoTeaser } from "@/components/PromoTeaser";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SessionFacts } from "@/components/SessionFacts";
+import { ShareLinks } from "@/components/ShareLinks";
 import { SocialLinks } from "@/components/SocialLinks";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { JsonLd } from "@/components/JsonLd";
@@ -350,6 +351,7 @@ export default async function EpisodePage({ params }: Props) {
             <section>
               <h2 className="display-font mb-3 text-3xl">{isEn ? "Episode Links" : "Links επεισοδίου"}</h2>
               <SocialLinks links={socialLinks} />
+              <ShareLinks title={episode.title} locale={locale} />
             </section>
             {artist ? (
               <section>

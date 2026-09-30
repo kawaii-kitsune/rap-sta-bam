@@ -272,7 +272,16 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
               <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Πλήρες επεισόδιο με απλά χειριστήρια ακρόασης.</p>
             </div>
           </div>
-          <span className="rsb-chip shrink-0">{captionsReady ? "Audio + Captions" : "Audio"}</span>
+          <div className="flex items-center gap-3">
+            <span className="rsb-chip shrink-0">{captionsReady ? "Audio + Captions" : "Audio"}</span>
+            <div className={`audio-waveform ${isPlaying ? "is-playing" : ""}`} aria-hidden="true">
+              <span className="audio-waveform-bar" style={{ height: isPlaying ? undefined : "6px" }} />
+              <span className="audio-waveform-bar" style={{ height: isPlaying ? undefined : "12px" }} />
+              <span className="audio-waveform-bar" style={{ height: isPlaying ? undefined : "16px" }} />
+              <span className="audio-waveform-bar" style={{ height: isPlaying ? undefined : "8px" }} />
+              <span className="audio-waveform-bar" style={{ height: isPlaying ? undefined : "14px" }} />
+            </div>
+          </div>
         </div>
 
         <div className="audio-controls">

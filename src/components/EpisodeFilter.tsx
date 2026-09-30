@@ -3,9 +3,10 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, RotateCcw } from "lucide-react";
+import { ArrowUpRight, RotateCcw, Search } from "lucide-react";
 import { EmptyState } from "@/components/EmptyState";
 import { EpisodeStatus } from "@/components/EpisodeStatus";
+import { getDictionary } from "@/config/i18n";
 import { formatDate, isEpisodeLive } from "@/lib/content";
 import type { Episode } from "@/types/content";
 
@@ -17,19 +18,42 @@ export function EpisodeFilter({
   locale?: string;
 }) {
   const [artist, setArtist] = useState("all");
+  const [query, setQuery] = useState("");
   const isEn = locale === "en";
+  const dict = getDictionary(locale);
 
   const artists = useMemo(
     () => Array.from(new Set(episodes.map((episode) => episode.artistName))),
     [episodes]
   );
-  const filtered =
-    artist === "all" ? episodes : episodes.filter((episode) => episode.artistName === artist);
+
+  const filtered = useMemo(() => {
+    return episodes.filter((episode) => {
+      const matchArtist = artist === "all" || episode.artistName === artist;
+      if (!matchArtist) return false;
+
+      if (!query.trim()) return true;
+      const q = query.toLowerCase().trim();
+      const matchTitle = episode.title.toLowerCase().includes(q);
+      const matchName = episode.artistName.toLowerCase().includes(q);
+      const matchExcerpt = episode.excerpt.toLowerCase().includes(q);
+      const matchGear = episode.gear?.some((g) => g.toLowerCase().includes(q));
+
+      return matchTitle || matchName || matchExcerpt || matchGear;
+    });
+  }, [episodes, artist, query]);
+
+  const hasActiveFilters = artist !== "all" || query.trim().length > 0;
+
+  function resetFilters() {
+    setArtist("all");
+    setQuery("");
+  }
 
   return (
     <div>
-      <div className="archive-toolbar">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <div className="archive-toolbar flex-col items-stretch gap-4 sm:flex-row sm:items-end">
+        <div className="flex flex-1 flex-wrap items-center gap-x-4 gap-y-2">
           <p className="text-sm text-[var(--muted)]" role="status">
             {filtered.length}{" "}
             {isEn
@@ -39,40 +63,60 @@ export function EpisodeFilter({
               : filtered.length === 1
                 ? "επεισόδιο"
                 : "επεισόδια"}
-            {artist !== "all"
-              ? ` · ${artist}`
+            {hasActiveFilters
+              ? isEn
+                ? " found"
+                : " βρέθηκαν"
               : isEn
                 ? " in archive"
                 : " στο αρχείο"}
           </p>
-          {artist !== "all" ? (
+          {hasActiveFilters ? (
             <button
               type="button"
               className="text-link text-xs"
-              onClick={() => setArtist("all")}
+              onClick={resetFilters}
             >
               <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-              {isEn ? "Reset filter" : "Καθαρισμός φίλτρου"}
+              {isEn ? "Reset filters" : "Καθαρισμός φίλτρων"}
             </button>
           ) : null}
         </div>
-        <div>
-          <label htmlFor="artist-filter" className="field-label text-xs text-[var(--dim)]">
-            {isEn ? "Guest Artist" : "Καλεσμένος"}
-          </label>
-          <select
-            id="artist-filter"
-            value={artist}
-            onChange={(event) => setArtist(event.target.value)}
-            className="form-control sm:min-w-56"
-          >
-            <option value="all">{isEn ? "All Artists" : "Όλοι οι καλεσμένοι"}</option>
-            {artists.map((name) => (
-              <option key={name} value={name}>
-                {name}
-              </option>
-            ))}
-          </select>
+        <div className="grid grid-cols-1 gap-3 sm:flex sm:items-end">
+          <div className="relative">
+            <label htmlFor="search-filter" className="field-label text-xs text-[var(--dim)]">
+              {dict.common.searchLabel}
+            </label>
+            <div className="relative">
+              <input
+                id="search-filter"
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={dict.common.searchPlaceholder}
+                className="form-control pl-9 sm:min-w-64"
+              />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--dim)]" aria-hidden="true" />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="artist-filter" className="field-label text-xs text-[var(--dim)]">
+              {isEn ? "Guest Artist" : "Καλεσμένος"}
+            </label>
+            <select
+              id="artist-filter"
+              value={artist}
+              onChange={(event) => setArtist(event.target.value)}
+              className="form-control sm:min-w-52"
+            >
+              <option value="all">{isEn ? "All Artists" : "Όλοι οι καλεσμένοι"}</option>
+              {artists.map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       {filtered.length ? (
@@ -128,17 +172,17 @@ export function EpisodeFilter({
           title={isEn ? "No sessions found" : "Κανένα επεισόδιο"}
           copy={
             isEn
-              ? "No session matches the selected filter."
-              : "Δεν υπάρχει επεισόδιο για το συγκεκριμένο φίλτρο."
+              ? "No session matches your search or selected filter."
+              : "Δεν υπάρχει επεισόδιο που να ταιριάζει στην αναζήτησή σου."
           }
           action={
-            artist !== "all" ? (
+            hasActiveFilters ? (
               <button
                 type="button"
                 className="rsb-button-secondary"
-                onClick={() => setArtist("all")}
+                onClick={resetFilters}
               >
-                {isEn ? "Show all sessions" : "Όλα τα επεισόδια"}
+                {isEn ? "Reset filters" : "Επαναφορά φίλτρων"}
               </button>
             ) : undefined
           }

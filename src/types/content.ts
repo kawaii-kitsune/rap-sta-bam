@@ -100,7 +100,10 @@ export type Product = {
   image?: string;
   releaseDate?: string;
   format: string;
-  description: string;
+  description: {
+    el: string;
+    en: string;
+  };
   featured?: boolean;
 };
 

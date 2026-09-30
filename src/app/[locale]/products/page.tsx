@@ -75,8 +75,8 @@ export default async function ProductsPage({ params }: Props) {
                 <p className="mt-2 text-sm text-[var(--muted)]">
                   {featured.artist} · {featured.format}
                 </p>
-                <p lang="en" className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                  {featured.description}
+                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                  {isEn ? featured.description.en : featured.description.el}
                 </p>
                 <a
                   href={featured.url}
@@ -113,7 +113,7 @@ export default async function ProductsPage({ params }: Props) {
                   title={product.title}
                   image={product.image}
                   subtitle={[product.artist, product.format, product.releaseDate].filter(Boolean).join(" · ")}
-                  description={product.description}
+                  description={isEn ? product.description.en : product.description.el}
                   platform={product.platform}
                   url={product.url}
                   action={isEn ? "Open" : "Άνοιγμα"}
@@ -187,6 +187,16 @@ export default async function ProductsPage({ params }: Props) {
           >
             {isEn ? "Spotify Profile" : "Προφίλ στο Spotify"} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
+          <div className="mt-5 overflow-hidden rounded-md border border-[var(--line)]">
+            <iframe
+              src="https://open.spotify.com/embed/artist/2KroWFsi3xsAX5snSQyXqc?utm_source=generator&theme=0"
+              width="100%"
+              height="152"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Spotify Player"
+            />
+          </div>
           <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-[var(--line)] pt-5">
             <div>
               <dt className="text-xs text-[var(--dim)]">{isEn ? "Monthly Listeners" : "Ακροατές / μήνα"}</dt>
@@ -198,7 +208,7 @@ export default async function ProductsPage({ params }: Props) {
             </div>
           </dl>
           <p className="mt-3 text-xs text-[var(--dim)]">
-            {isEn ? "Snapshot: 15/07/2026" : "Καταγραφή: 15/07/2026"}
+            {isEn ? "Snapshot: 30/09/2026" : "Καταγραφή: 30/09/2026"}
           </p>
         </aside>
       </div>

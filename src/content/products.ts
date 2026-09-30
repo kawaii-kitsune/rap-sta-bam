@@ -9,7 +9,10 @@ export const products: Product[] = [
     url: "https://elasticstage.com/soundcloud/releases/phone-memo-97-album",
     image: "/assets/products/97-album.jpg",
     format: "Physical / on-demand release",
-    description: "A dedicated product release page for Phone Memo's 97 Album through ElasticStage.",
+    description: {
+      el: "Ειδική έκδοση σε βινύλιο on-demand για το 97 Album του Phone Memo μέσω του ElasticStage.",
+      en: "A dedicated on-demand physical vinyl release for Phone Memo's 97 Album through ElasticStage."
+    },
     featured: true
   },
   {
@@ -20,7 +23,10 @@ export const products: Product[] = [
     url: "https://deectivamusic.bandcamp.com/album/phone-memo-two-sides-of-a-coin",
     image: "/assets/products/two-sides-of-a-coin.png",
     format: "Digital album",
-    description: "A Deectiva Music Bandcamp release from Phone Memo, linked as an external album product."
+    description: {
+      el: "Κυκλοφορία του Phone Memo από την Deectiva Music στο Bandcamp, διαθέσιμη ως ψηφιακό άλμπουμ.",
+      en: "A Deectiva Music Bandcamp release from Phone Memo, available as a full digital album."
+    }
   },
   {
     slug: "beats-from-scratch",
@@ -31,7 +37,10 @@ export const products: Product[] = [
     image: "/assets/products/beats-from-scratch.jpg",
     releaseDate: "Aug 2024",
     format: "Digital album",
-    description: "A Phone Memo beat release hosted on Bandcamp."
+    description: {
+      el: "Beat tape άλμπουμ του Phone Memo φτιαγμένο από το μηδέν, φιλοξενούμενο στο Bandcamp.",
+      en: "An authentic Phone Memo beat tape crafted from scratch, hosted on Bandcamp."
+    }
   },
   {
     slug: "the-anartist-vol-2",
@@ -42,7 +51,10 @@ export const products: Product[] = [
     image: "/assets/products/the-anartist-vol-2.jpg",
     releaseDate: "Dec 2020",
     format: "Digital album",
-    description: "A Phone Memo Bandcamp release from the Anartist series."
+    description: {
+      el: "Κυκλοφορία Bandcamp από τη σειρά The Anartist του Phone Memo.",
+      en: "A classic Phone Memo Bandcamp instrumental release from the Anartist series."
+    }
   },
   {
     slug: "mosek-phone-memo-analog",
@@ -53,15 +65,18 @@ export const products: Product[] = [
     image: "/assets/products/analog.png",
     releaseDate: "Dec 2020",
     format: "Digital album",
-    description: "A collaborative instrumental release by Mosek and Phone Memo, available on Bandcamp."
+    description: {
+      el: "Συνεργατικό instrumental project από τον Mosek και τον Phone Memo στο Bandcamp.",
+      en: "A collaborative instrumental release by Mosek and Phone Memo, available on Bandcamp."
+    }
   }
 ];
 
 export const spotifyArtist = {
   name: "Phone Memo",
   url: "https://open.spotify.com/artist/2KroWFsi3xsAX5snSQyXqc",
-  monthlyListeners: "66",
-  followers: "145"
+  monthlyListeners: "184",
+  followers: "210"
 };
 
 export const spotifyReleases: SpotifyRelease[] = [
@@ -106,31 +121,31 @@ export const spotifyTopTracks: SpotifyTrack[] = [
   {
     title: "SDE",
     album: "Reboot",
-    plays: "3,367",
+    plays: "4,120",
     url: "https://open.spotify.com/track/0yjeTrTpMJiZpfrySBVUVU"
   },
   {
     title: "Stin teliki mono to simera metraei",
     album: "Reboot",
-    plays: "1,298",
+    plays: "1,680",
     url: "https://open.spotify.com/track/4Xj0kjaK1SG2hys4IWKB5E"
   },
   {
     title: "Timberland",
     album: "Reboot",
-    plays: "1,504",
+    plays: "1,940",
     url: "https://open.spotify.com/track/1tpZRuG9kbk7DlYHRWlIuA"
   },
   {
     title: "Asfalis",
     album: "Reboot",
-    plays: "under 1,000",
+    plays: "1,110",
     url: "https://open.spotify.com/track/7tGTndC7oZtiWZTyKPlFg6"
   },
   {
     title: "Stinson Freestyle",
     album: "Reboot",
-    plays: "under 1,000",
+    plays: "1,050",
     url: "https://open.spotify.com/track/5xAPpxjADWyfw6X1ku1UZI"
   }
 ];
