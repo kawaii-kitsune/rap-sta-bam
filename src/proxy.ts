@@ -5,6 +5,16 @@ import { defaultLocale, locales } from "@/config/i18n";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Never redirect audio streaming routes
+  if (pathname.includes("/audio")) {
+    const cleanPath = pathname.replace(/^\/(el|en)/, "");
+    if (cleanPath !== pathname) {
+      request.nextUrl.pathname = cleanPath;
+      return NextResponse.rewrite(request.nextUrl);
+    }
+    return;
+  }
+
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
