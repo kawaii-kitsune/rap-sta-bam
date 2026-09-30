@@ -2,7 +2,7 @@
 
 import { type ChangeEvent, type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
-import { Loader2, Lock, Pause, Play, Music2 } from "lucide-react";
+import { ChevronDown, ChevronUp, FileText, Loader2, Lock, Pause, Play, Volume2, VolumeX, Music2 } from "lucide-react";
 import { formatGreekDate, isReleased } from "@/lib/content";
 import { hasAnalyticsConsent } from "@/lib/consent";
 
@@ -31,12 +31,14 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [captions, setCaptions] = useState<CaptionCue[]>([]);
   const [captionsReady, setCaptionsReady] = useState(false);
   const [captionError, setCaptionError] = useState(false);
   const [audioError, setAudioError] = useState(false);
+  const [showFullTranscript, setShowFullTranscript] = useState(false);
 
   const released = isReleased(availableAt ?? publishedAt);
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
@@ -148,99 +150,139 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
       syncTime();
     };
     const onError = () => {
-      stopAnimation();
-      setAudioError(true);
-      setIsBuffering(false);
       setIsPlaying(false);
-      setIsReady(false);
+      setIsBuffering(false);
+      setAudioError(true);
+      stopAnimation();
     };
     const onWaiting = () => setIsBuffering(true);
     const onPlaying = () => {
       setIsBuffering(false);
-      startAnimation();
+      setIsPlaying(true);
     };
     const onEnded = () => {
-      stopAnimation();
       if (!completeTrackedRef.current) {
         trackAudioEvent("audio_complete");
         completeTrackedRef.current = true;
       }
       setIsPlaying(false);
-      setCurrentTime(audio.duration || 0);
+      stopAnimation();
+      setCurrentTime(0);
     };
 
-    audio.addEventListener("error", onError);
     audio.addEventListener("loadedmetadata", onLoadedMetadata);
-    audio.addEventListener("durationchange", onLoadedMetadata);
-    audio.addEventListener("timeupdate", syncTime);
-    audio.addEventListener("seeking", syncTime);
-    audio.addEventListener("seeked", syncTime);
-
-    if (audio.error) {
-      onError();
-    } else if (audio.readyState >= 1) {
-      onLoadedMetadata();
-    }
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("waiting", onWaiting);
     audio.addEventListener("playing", onPlaying);
     audio.addEventListener("ended", onEnded);
+    audio.addEventListener("error", onError);
 
     return () => {
       stopAnimation();
-      audio.removeEventListener("error", onError);
       audio.removeEventListener("loadedmetadata", onLoadedMetadata);
-      audio.removeEventListener("durationchange", onLoadedMetadata);
-      audio.removeEventListener("timeupdate", syncTime);
-      audio.removeEventListener("seeking", syncTime);
-      audio.removeEventListener("seeked", syncTime);
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("waiting", onWaiting);
       audio.removeEventListener("playing", onPlaying);
       audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("error", onError);
     };
   }, [released, trackAudioEvent, trackProgressMilestones]);
 
-
-  function togglePlay() {
+  const togglePlay = useCallback(() => {
     const audio = audioRef.current;
-    if (!audio || !released) {
+    if (!audio) {
       return;
     }
 
     if (audio.paused) {
-      setAudioError(false);
-      void audio.play().catch(() => { setAudioError(true); setIsBuffering(false); });
+      void audio.play().catch(() => {
+        setAudioError(true);
+        setIsBuffering(false);
+      });
     } else {
       audio.pause();
     }
-  }
+  }, []);
+
+  const toggleMute = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.muted = !audio.muted;
+    setIsMuted(audio.muted);
+  }, []);
+
+  const seekRelative = useCallback((delta: number) => {
+    const audio = audioRef.current;
+    if (!audio || !Number.isFinite(audio.duration)) return;
+    const target = Math.max(0, Math.min(audio.duration, audio.currentTime + delta));
+    audio.currentTime = target;
+    setCurrentTime(target);
+  }, []);
+
+  // Desktop DAW Keyboard Shortcuts
+  useEffect(() => {
+    if (!released) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      const activeEl = document.activeElement;
+      if (
+        activeEl instanceof HTMLInputElement ||
+        activeEl instanceof HTMLTextAreaElement ||
+        activeEl instanceof HTMLSelectElement
+      ) {
+        return;
+      }
+
+      if (event.code === "Space") {
+        event.preventDefault();
+        togglePlay();
+      } else if (event.code === "ArrowLeft") {
+        event.preventDefault();
+        seekRelative(-5);
+      } else if (event.code === "ArrowRight") {
+        event.preventDefault();
+        seekRelative(5);
+      } else if (event.key.toLowerCase() === "m") {
+        event.preventDefault();
+        toggleMute();
+      } else if (event.key.toLowerCase() === "c" && captionsSrc) {
+        event.preventDefault();
+        setShowFullTranscript((prev) => !prev);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [released, togglePlay, seekRelative, toggleMute, captionsSrc]);
 
   function commitSeek(nextTime: number) {
     const audio = audioRef.current;
-
-    if (!Number.isFinite(nextTime)) {
+    if (!audio || !Number.isFinite(nextTime)) {
       return;
     }
 
-    const boundedTime = Number.isFinite(duration) && duration > 0 ? Math.min(duration, Math.max(0, nextTime)) : Math.max(0, nextTime);
-    setCurrentTime(boundedTime);
-
-    if (audio && Number.isFinite(duration) && duration > 0) {
-      audio.currentTime = boundedTime;
-    }
+    audio.currentTime = nextTime;
+    setCurrentTime(nextTime);
   }
 
-  function onSeek(event: ChangeEvent<HTMLInputElement> | FormEvent<HTMLInputElement>) {
+  function onSeek(event: FormEvent<HTMLInputElement>) {
     seekingRef.current = true;
-    commitSeek(Number(event.currentTarget.value));
+    setCurrentTime(Number(event.currentTarget.value));
   }
 
   function finishSeek(event: ChangeEvent<HTMLInputElement> | FormEvent<HTMLInputElement>) {
     commitSeek(Number(event.currentTarget.value));
     seekingRef.current = false;
+  }
+
+  function jumpToCaption(start: number) {
+    commitSeek(start);
+    const audio = audioRef.current;
+    if (audio && audio.paused) {
+      void audio.play();
+    }
   }
 
   if (!released) {
@@ -250,7 +292,9 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
           <Lock className="mt-1 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
           <div>
             <p className="font-bold text-[var(--foreground)]">Το audio θα είναι διαθέσιμο στην πρεμιέρα</p>
-            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Θα μπορείς να ακούσεις ολόκληρο το session{captionsSrc ? " με συγχρονισμένους υπότιτλους" : ""}.</p>
+            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+              Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Θα μπορείς να ακούσεις ολόκληρο το session{captionsSrc ? " με συγχρονισμένους υπότιτλους" : ""}.
+            </p>
           </div>
         </div>
       </div>
@@ -294,6 +338,14 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
             >
               {isBuffering ? <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> : isPlaying ? <Pause className="h-5 w-5" aria-hidden="true" /> : <Play className="h-5 w-5" aria-hidden="true" />}
             </button>
+            <button
+              type="button"
+              onClick={toggleMute}
+              className="rsb-button-secondary !min-h-10 !w-10 !p-0 justify-center"
+              aria-label={isMuted ? "Κατάργηση σίγασης" : "Σίγαση"}
+            >
+              {isMuted ? <VolumeX className="h-4 w-4 text-[var(--accent)]" /> : <Volume2 className="h-4 w-4" />}
+            </button>
             <div className="min-w-0 flex-1">
               <div className="audio-time">
                 <span role="status">{audioError ? "Η φόρτωση απέτυχε" : isBuffering ? "Φόρτωση…" : isPlaying ? "Παίζει τώρα" : isReady ? "Έτοιμο για ακρόαση" : "Φόρτωση audio…"}</span>
@@ -325,15 +377,62 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
             </div>
           </div>
 
+          <div className="hidden text-[10px] text-[var(--dim)] sm:flex items-center gap-4 pt-1">
+            <span>Space: Play/Pause</span>
+            <span>← / →: ±5s</span>
+            <span>M: Mute</span>
+            {captionsSrc ? <span>C: Transcript</span> : null}
+          </div>
+
           {audioError ? <div className="alert alert-error" role="alert"><div><p>Δεν ήταν δυνατή η φόρτωση του audio. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.</p><button type="button" className="text-link mt-1" onClick={() => { setAudioError(false); audioRef.current?.load(); }}>Δοκίμασε ξανά</button></div></div> : null}
+
           {captionsSrc ? (
-            <div className="audio-captions" aria-live="polite" aria-atomic="true">
-              <p className="text-xs text-[var(--dim)]">Υπότιτλοι</p>
-              <div className="mt-3 overflow-y-auto pr-2">
-                <p className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
-                  {activeCaption?.text ?? (captionError ? "Οι υπότιτλοι δεν φορτώθηκαν. Η ακρόαση παραμένει διαθέσιμη." : captionsReady ? "Οι υπότιτλοι εμφανίζονται κατά την ακρόαση." : "Φόρτωση υποτίτλων…")}
-                </p>
+            <div className="audio-captions border border-[var(--line)] bg-[var(--panel-2)] p-4 rounded" aria-live="polite" aria-atomic="true">
+              <div className="flex items-center justify-between">
+                <p className="text-xs font-semibold text-[var(--dim)]">Υπότιτλοι / Live Captions</p>
+                <button
+                  type="button"
+                  onClick={() => setShowFullTranscript((prev) => !prev)}
+                  className="text-link flex items-center gap-1 text-xs"
+                >
+                  <FileText className="h-3.5 w-3.5" />
+                  {showFullTranscript ? "Σύμπτυξη" : "Όλο το κείμενο"}
+                  {showFullTranscript ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+                </button>
               </div>
+
+              {showFullTranscript ? (
+                <div className="mt-4 max-h-64 space-y-2 overflow-y-auto pr-2 divide-y divide-[var(--line)]">
+                  {captions.map((cue, index) => {
+                    const isActive = activeCaption?.start === cue.start;
+                    return (
+                      <button
+                        key={`${cue.start}-${index}`}
+                        type="button"
+                        onClick={() => jumpToCaption(cue.start)}
+                        className={`w-full text-left py-2 px-2.5 rounded transition-colors flex items-start gap-3 ${
+                          isActive
+                            ? "bg-[var(--accent-ink)] text-[var(--foreground)] font-semibold"
+                            : "hover:bg-[var(--panel)] text-[var(--muted)]"
+                        }`}
+                      >
+                        <span className="font-mono text-xs text-[var(--accent)] shrink-0 pt-0.5">
+                          {formatTime(cue.start)}
+                        </span>
+                        <span className="text-sm leading-6 whitespace-pre-line flex-1">
+                          {cue.text}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="mt-3 overflow-y-auto pr-2">
+                  <p className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
+                    {activeCaption?.text ?? (captionError ? "Οι υπότιτλοι δεν φορτώθηκαν. Η ακρόαση παραμένει διαθέσιμη." : captionsReady ? "Οι υπότιτλοι εμφανίζονται κατά την ακρόαση." : "Φόρτωση υποτίτλων…")}
+                  </p>
+                </div>
+              )}
             </div>
           ) : null}
         </div>
@@ -353,7 +452,6 @@ function formatTime(seconds: number) {
 
   return `${String(minutes).padStart(2, "0")}:${String(remaining).padStart(2, "0")}`;
 }
-
 
 function findActiveCaption(captions: CaptionCue[], currentTime: number): CaptionCue | undefined {
   if (!captions.length) {

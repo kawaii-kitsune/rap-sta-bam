@@ -354,7 +354,7 @@ export default async function EpisodePage({ params }: Props) {
             {episode.gear?.length ? (
               <section>
                 <h2 className="display-font mb-3 text-3xl">{isEn ? "Studio Gear" : "Εξοπλισμός"}</h2>
-                <GearList gear={episode.gear} />
+                <GearList gear={episode.gear} locale={locale} />
               </section>
             ) : null}
             <section>

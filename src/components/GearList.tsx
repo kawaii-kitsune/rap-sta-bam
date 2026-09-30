@@ -1,15 +1,32 @@
-export function GearList({ gear }: { gear?: string[] }) {
+import Link from "next/link";
+import { SlidersHorizontal } from "lucide-react";
+
+export function GearList({
+  gear,
+  locale = "el"
+}: {
+  gear?: string[];
+  locale?: string;
+}) {
   if (!gear?.length) {
     return null;
   }
 
+  const isEn = locale === "en";
+
   return (
-    <ul className="grid border-y border-[var(--line)]">
+    <div className="flex flex-wrap gap-2 pt-1">
       {gear.map((item) => (
-        <li key={item} className="border-b border-[var(--line)] py-3 text-sm text-[var(--muted)] last:border-b-0">
-          {item}
-        </li>
+        <Link
+          key={item}
+          href={`/${locale}/episodes?search=${encodeURIComponent(item)}`}
+          className="rsb-button-secondary !min-h-8 !px-3 !py-1 text-xs font-normal"
+          title={isEn ? `Find sessions using ${item}` : `Βρες sessions με ${item}`}
+        >
+          <SlidersHorizontal className="h-3 w-3 text-[var(--accent)]" />
+          <span>{item}</span>
+        </Link>
       ))}
-    </ul>
+    </div>
   );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
 import { Container } from "@/components/Container";
+import { CountdownTimer } from "@/components/CountdownTimer";
 import { EpisodeStatus } from "@/components/EpisodeStatus";
 import { formatDate } from "@/lib/content";
 import type { Episode } from "@/types/content";
@@ -77,14 +78,17 @@ export function PromoTeaser({
             </div>
             <h2 className="section-title">{episode?.artistName ?? "Tzimos"}</h2>
             {episode ? (
-              <p className="mt-4 flex items-center gap-2 text-sm text-[var(--warning)]">
-                <CalendarDays className="h-4 w-4" aria-hidden="true" />
-                <time dateTime={episode.publishedAt}>
-                  {isEn
-                    ? `Premiere: ${formatDate(episode.publishedAt, locale)}`
-                    : `Πρεμιέρα ${formatDate(episode.publishedAt, locale)}`}
-                </time>
-              </p>
+              <>
+                <p className="mt-4 flex items-center gap-2 text-sm text-[var(--warning)]">
+                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                  <time dateTime={episode.publishedAt}>
+                    {isEn
+                      ? `Premiere: ${formatDate(episode.publishedAt, locale)}`
+                      : `Πρεμιέρα ${formatDate(episode.publishedAt, locale)}`}
+                  </time>
+                </p>
+                <CountdownTimer targetDate={episode.publishedAt} locale={locale} />
+              </>
             ) : null}
             <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)]">
               {episode?.excerpt ??

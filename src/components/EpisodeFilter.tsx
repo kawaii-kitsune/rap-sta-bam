@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArrowUpRight, RotateCcw, Search } from "lucide-react";
 import { EmptyState } from "@/components/EmptyState";
 import { EpisodeStatus } from "@/components/EpisodeStatus";
@@ -17,8 +18,11 @@ export function EpisodeFilter({
   episodes: Episode[];
   locale?: string;
 }) {
+  const searchParams = useSearchParams();
+  const urlSearch = searchParams?.get("search") ?? "";
   const [artist, setArtist] = useState("all");
-  const [query, setQuery] = useState("");
+  const [userQuery, setUserQuery] = useState<string | null>(null);
+  const query = userQuery !== null ? userQuery : urlSearch;
   const isEn = locale === "en";
   const dict = getDictionary(locale);
 
@@ -47,7 +51,7 @@ export function EpisodeFilter({
 
   function resetFilters() {
     setArtist("all");
-    setQuery("");
+    setUserQuery("");
   }
 
   return (
@@ -92,7 +96,7 @@ export function EpisodeFilter({
                 id="search-filter"
                 type="search"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => setUserQuery(e.target.value)}
                 placeholder={dict.common.searchPlaceholder}
                 className="form-control pl-9 sm:min-w-64"
               />

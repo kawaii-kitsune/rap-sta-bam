@@ -2,84 +2,64 @@
 
 import { useEffect, useState } from "react";
 
-type TimeLeft = {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  finished: boolean;
+type CountdownProps = {
+  targetDate: string;
+  locale?: string;
 };
 
-function getTimeLeft(targetDate: string): TimeLeft {
-  const target = new Date(`${targetDate}T00:00:00`).getTime();
-  const now = Date.now();
-  const diff = Math.max(0, target - now);
-
-  if (diff === 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0, finished: true };
-  }
-
-  const seconds = Math.floor(diff / 1000);
-  const days = Math.floor(seconds / 86400);
-  const hours = Math.floor((seconds % 86400) / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const remainingSeconds = seconds % 60;
-
-  return {
-    days,
-    hours,
-    minutes,
-    seconds: remainingSeconds,
-    finished: false
-  };
-}
-
-export function CountdownTimer({ targetDate }: { targetDate: string }) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+export function CountdownTimer({ targetDate, locale = "el" }: CountdownProps) {
+  const isEn = locale === "en";
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  } | null>(null);
 
   useEffect(() => {
-    const tick = () => setTimeLeft(getTimeLeft(targetDate));
-    const timeout = window.setTimeout(tick, 0);
-    const interval = window.setInterval(tick, 1000);
+    function calculate() {
+      const difference = +new Date(`${targetDate}T12:00:00+03:00`) - +new Date();
+      if (difference <= 0) {
+        setTimeLeft(null);
+        return;
+      }
 
-    return () => {
-      window.clearTimeout(timeout);
-      window.clearInterval(interval);
-    };
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      });
+    }
+
+    calculate();
+    const interval = setInterval(calculate, 1000);
+    return () => clearInterval(interval);
   }, [targetDate]);
 
-  if (!timeLeft) {
-    return (
-      <dl className="mt-5 grid grid-cols-4 gap-2" aria-label="Φόρτωση countdown">
-        {["ημ.", "ώρ.", "λεπ.", "δευτ."].map((label) => (
-          <div key={label} className="border border-black/10 bg-black/5 p-3 text-center text-black">
-            <dt className="text-[0.65rem] font-black uppercase tracking-[0.16em] text-black/60">{label}</dt>
-            <dd className="display-font mt-1 text-4xl leading-none">--</dd>
-          </div>
-        ))}
-      </dl>
-    );
-  }
-
-  if (timeLeft.finished) {
-    return <p className="text-sm font-bold text-black/80">Το release είναι εδώ.</p>;
-  }
-
-  const items = [
-    { label: "ημ.", value: timeLeft.days },
-    { label: "ώρ.", value: timeLeft.hours },
-    { label: "λεπ.", value: timeLeft.minutes },
-    { label: "δευτ.", value: timeLeft.seconds }
-  ];
+  if (!timeLeft) return null;
 
   return (
-    <dl className="mt-5 grid grid-cols-4 gap-2">
-      {items.map((item) => (
-        <div key={item.label} className="border border-black/10 bg-black/5 p-3 text-center text-black">
-          <dt className="text-[0.65rem] font-black uppercase tracking-[0.16em] text-black/60">{item.label}</dt>
-          <dd className="display-font mt-1 text-4xl leading-none">{String(item.value).padStart(2, "0")}</dd>
-        </div>
-      ))}
-    </dl>
+    <div className="mt-4 flex items-center gap-2 font-mono text-xs font-bold text-[var(--accent)]">
+      <div className="rounded bg-[var(--panel-2)] px-2 py-1">
+        <span>{String(timeLeft.days).padStart(2, "0")}</span>
+        <span className="ml-1 text-[10px] text-[var(--dim)]">{isEn ? "d" : "ημ"}</span>
+      </div>
+      <span>:</span>
+      <div className="rounded bg-[var(--panel-2)] px-2 py-1">
+        <span>{String(timeLeft.hours).padStart(2, "0")}</span>
+        <span className="ml-1 text-[10px] text-[var(--dim)]">{isEn ? "h" : "ωρ"}</span>
+      </div>
+      <span>:</span>
+      <div className="rounded bg-[var(--panel-2)] px-2 py-1">
+        <span>{String(timeLeft.minutes).padStart(2, "0")}</span>
+        <span className="ml-1 text-[10px] text-[var(--dim)]">{isEn ? "m" : "λεπ"}</span>
+      </div>
+      <span>:</span>
+      <div className="rounded bg-[var(--panel-2)] px-2 py-1">
+        <span>{String(timeLeft.seconds).padStart(2, "0")}</span>
+        <span className="ml-1 text-[10px] text-[var(--dim)]">{isEn ? "s" : "δευτ"}</span>
+      </div>
+    </div>
   );
 }
