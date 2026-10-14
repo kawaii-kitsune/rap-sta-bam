@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return createMetadata({
     title: `Audio - ${episode.title}`,
     description: isEn
-      ? `Listen to the full audio of ${episode.title}${episode.audio?.captions ? " with synchronized Greek captions" : ""}.`
+      ? `Listen to the full audio of ${episode.title}${episode.audio?.captions ? " with synchronized English captions" : ""}.`
       : `Άκουσε το πλήρες audio του ${episode.title}${episode.audio?.captions ? " με συγχρονισμένους υπότιτλους" : ""}.`,
     path: `/${locale}/episodes/${episode.slug}/listen`,
     image: episode.thumbnail,
@@ -128,7 +128,7 @@ export default async function EpisodeListenPage({ params }: Props) {
           copy={
             episode.audio.captions
               ? isEn
-                ? "Listen to the entire session with synchronized Greek captions."
+                ? "Listen to the entire session with synchronized English captions."
                 : "Άκουσε ολόκληρο το session με συγχρονισμένους υπότιτλους."
               : isEn
                 ? "Listen to the entire session anywhere."
@@ -142,6 +142,7 @@ export default async function EpisodeListenPage({ params }: Props) {
           availableAt={episode.audio.availableAt}
           publishedAt={episode.publishedAt}
           captionsSrc={episode.audio.captions}
+          captionsLanguage={episode.audio.captionsLanguage}
         />
       </div>
     </Container>

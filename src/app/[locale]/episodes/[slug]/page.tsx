@@ -236,7 +236,7 @@ export default async function EpisodePage({ params }: Props) {
                       {episode.audio ? (
                         <UnlockItem
                           icon={<Captions className="h-4 w-4" />}
-                          label={episode.audio.captions ? (isEn ? "Greek captions / listen page" : "Υπότιτλοι / σελίδα ακρόασης") : (isEn ? "Listen page" : "Σελίδα ακρόασης")}
+                          label={episode.audio.captions ? (isEn ? "Captions / listen page" : "Υπότιτλοι / σελίδα ακρόασης") : (isEn ? "Listen page" : "Σελίδα ακρόασης")}
                         />
                       ) : null}
                       <UnlockItem
@@ -294,6 +294,7 @@ export default async function EpisodePage({ params }: Props) {
                     availableAt={episode.audio.availableAt}
                     publishedAt={episode.publishedAt}
                     captionsSrc={episode.audio.captions}
+                    captionsLanguage={episode.audio.captionsLanguage}
                   />
                 </div>
               </section>

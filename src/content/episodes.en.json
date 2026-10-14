@@ -23,7 +23,8 @@
       "availableAt": "2026-07-21",
       "label": "Full episode in MP3",
       "mimeType": "audio/mpeg",
-      "captions": "/assets/captions/001-tzimos.json"
+      "captions": "/assets/captions/001-tzimos.en.json",
+      "captionsLanguage": "en"
     },
     "youtubeVideoId": "xlflxBU1k5E",
     "youtubeUrl": "https://www.youtube.com/watch?v=xlflxBU1k5E",
@@ -281,7 +282,8 @@
       "availableAt": "2026-08-18",
       "label": "Full episode in MP3",
       "mimeType": "audio/mpeg",
-      "captions": "/assets/captions/002-nesom.json"
+      "captions": "/assets/captions/002-nesom.en.json",
+      "captionsLanguage": "en"
     },
     "teaserVideo": "/assets/promo/episode-002-trailer.mp4",
     "teaserPoster": "/assets/episodes/002-nesom/thumbnail.png",
@@ -364,7 +366,8 @@
       "availableAt": "2026-09-15",
       "label": "Full episode in MP3",
       "mimeType": "audio/mpeg",
-      "captions": "/assets/captions/003-chozen.json"
+      "captions": "/assets/captions/003-chozen.en.json",
+      "captionsLanguage": "en"
     },
     "teaserPoster": "/assets/episodes/003-chozen/still-05.jpg",
     "bestMoments": [

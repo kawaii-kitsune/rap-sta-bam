@@ -55,3 +55,29 @@
 32:00 Τελικές αλλαγές στον ήχο
 34:00 Γράψιμο και προετοιμασία recording
 35:00 Τελικό performance
+
+## Episode 004 — Black Spirit (draft from the transcript)
+
+00:00 Intro — Black Spirit στο πάρκο Γεωργιάδη
+01:18 Από τον Κορυδαλλό στο Ηράκλειο
+02:24 Η σκηνή του Ηρακλείου και το low bap
+03:28 Πρώτα ακούσματα και rap επιρροές
+05:26 Τα πρώτα crew και οι Playground Kids
+07:34 Από τον Εξόριστο στον Black Spirit
+08:51 «Karma» και ο χρόνος μέσα στους στίχους
+11:01 Sampling και ο ρόλος του producer
+12:37 «Hood Elegance» και η επιστροφή στη μουσική
+16:26 Η δημιουργική φλόγα και το κοινό
+20:03 Ο Μάνος και ο Black Spirit
+20:31 «Paranomo Refrain» και η εξέλιξη του στίχου
+26:18 Αγαπημένοι rappers, στίχοι και «Illmatic»
+28:39 MPC με μπαταρία και session έξω
+30:07 Drums και χτίσιμο του beat
+32:50 Από τον Straight Jacker στον Phone Memo
+34:58 Chopping, samples και warp
+36:54 Recording στα pads και μπάσο
+40:02 Samples, τονικότητα και 16 Levels
+42:50 Προετοιμασία ηχογράφησης
+44:05 Τελικό performance
+
+These Episode 4 boundaries follow the transcript's topic changes. Confirm them against the video before publishing.

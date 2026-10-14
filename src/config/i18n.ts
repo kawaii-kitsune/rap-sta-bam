@@ -149,7 +149,7 @@ export const dictionaries = {
       lockedTitle: "Audio will be available at the premiere",
       lockedStart: "Available on",
       lockedEnd: "when the episode is released. You can listen to the entire session",
-      withCaptions: " with synchronized Greek captions",
+      withCaptions: " with synchronized captions",
       unsupported: "Your browser does not support audio playback.",
       description: "Full episode with simple playback controls.",
       play: "Play",
@@ -167,11 +167,11 @@ export const dictionaries = {
       transcriptShortcut: "C: Transcript",
       error: "Audio could not be loaded. Check your connection and try again.",
       retry: "Try again",
-      captions: "Greek captions",
+      captions: "Captions",
       collapse: "Collapse",
       transcript: "Full transcript",
       captionsError: "Captions could not be loaded. Audio is still available.",
-      captionsReady: "Greek captions appear during playback.",
+      captionsReady: "Captions appear during playback.",
       captionsLoading: "Loading captions…"
     },
     contact: {

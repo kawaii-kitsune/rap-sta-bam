@@ -25,6 +25,7 @@ export type Episode = {
     label?: string;
     mimeType?: string;
     captions?: string;
+    captionsLanguage?: "el" | "en";
     previewUnlock?: boolean;
   };
   teaserVideo?: string;

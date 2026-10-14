@@ -166,6 +166,27 @@ function validateDataset(episodesFile, artistsFile, teamFile) {
 
       if (episode.audio.captions) {
         checkPublicAsset(`${scope}.audio.captions`, episode.audio.captions);
+        const captions = readJson(path.join(root, "public", episode.audio.captions));
+        if (!Array.isArray(captions) || !captions.length) {
+          errors.push(`${scope}.audio.captions: captions must be a non-empty array`);
+        } else {
+          captions.forEach((cue, index) => {
+            if (!Number.isFinite(cue.start) || !Number.isFinite(cue.end) ||
+                cue.start < 0 || cue.end <= cue.start ||
+                typeof cue.text !== "string" || !cue.text.trim()) {
+              errors.push(`${scope}.audio.captions: invalid cue ${index + 1}`);
+            }
+            if (index > 0 && cue.start < captions[index - 1].end) {
+              errors.push(`${scope}.audio.captions: overlapping cue ${index + 1}`);
+            }
+            if (episode.audio.captionsLanguage === "en" && /\p{Script=Greek}/u.test(cue.text)) {
+              errors.push(`${scope}.audio.captions: untranslated Greek in cue ${index + 1}`);
+            }
+          });
+        }
+        if (episode.audio.captionsLanguage && !["el", "en"].includes(episode.audio.captionsLanguage)) {
+          errors.push(`${scope}.audio: captionsLanguage must be el or en`);
+        }
       }
     }
 
@@ -206,10 +227,20 @@ function checkLocaleParity(dataset, fields) {
         errors.push(`${dataset} ${entry.slug}: ${field} differs between Greek and English`);
       }
     }
-    for (const field of ["file", "availableAt", "mimeType", "captions", "previewUnlock"]) {
+    for (const field of ["file", "availableAt", "mimeType", "previewUnlock"]) {
       if (entry.audio?.[field] !== translated.audio?.[field]) {
         errors.push(`${dataset} ${entry.slug}: audio.${field} differs between Greek and English`);
       }
+    }
+    if (entry.audio?.captions && translated.audio?.captions) {
+      const original = readJson(path.join(root, "public", entry.audio.captions));
+      const captions = readJson(path.join(root, "public", translated.audio.captions));
+      if (original.length !== captions.length || original.some((cue, index) =>
+        cue.start !== captions[index]?.start || cue.end !== captions[index]?.end)) {
+        errors.push(`${dataset} ${entry.slug}: translated captions must preserve cue count and timings`);
+      }
+    } else if (Boolean(entry.audio?.captions) !== Boolean(translated.audio?.captions)) {
+      errors.push(`${dataset} ${entry.slug}: captions must be available in both languages`);
     }
   }
 }

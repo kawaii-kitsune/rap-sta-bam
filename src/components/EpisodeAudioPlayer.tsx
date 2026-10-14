@@ -19,11 +19,15 @@ type Props = {
   availableAt: string;
   publishedAt: string;
   captionsSrc?: string;
+  captionsLanguage?: "el" | "en";
   locale?: string;
 };
 
-export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, captionsSrc, locale = "el" }: Props) {
+export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, captionsSrc, captionsLanguage = "el", locale = "el" }: Props) {
   const copy = getDictionary(locale).audio;
+  const captionLabel = captionsLanguage === "en"
+    ? (locale === "en" ? "English captions" : "Αγγλικοί υπότιτλοι")
+    : (locale === "en" ? "Greek captions" : "Ελληνικοί υπότιτλοι");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const seekingRef = useRef(false);
@@ -392,7 +396,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
           {captionsSrc ? (
             <div className="audio-captions border border-[var(--line)] bg-[var(--panel-2)] p-4 rounded" aria-live="polite" aria-atomic="true">
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-[var(--dim)]">{copy.captions}</p>
+                <p className="text-xs font-semibold text-[var(--dim)]">{captionLabel}</p>
                 <button
                   type="button"
                   onClick={() => setShowFullTranscript((prev) => !prev)}
@@ -422,7 +426,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
                         <span className="font-mono text-xs text-[var(--accent)] shrink-0 pt-0.5">
                           {formatTime(cue.start)}
                         </span>
-                        <span lang="el" className="text-sm leading-6 whitespace-pre-line flex-1">
+                        <span lang={captionsLanguage} className="text-sm leading-6 whitespace-pre-line flex-1">
                           {cue.text}
                         </span>
                       </button>
@@ -431,7 +435,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
                 </div>
               ) : (
                 <div className="mt-3 overflow-y-auto pr-2">
-                  <p lang={activeCaption ? "el" : locale} className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
+                  <p lang={activeCaption ? captionsLanguage : locale} className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
                     {activeCaption?.text ?? (captionError ? copy.captionsError : captionsReady ? copy.captionsReady : copy.captionsLoading)}
                   </p>
                 </div>
