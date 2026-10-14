@@ -438,6 +438,43 @@
         "label": "Release Date",
         "value": "2026-10-20",
         "note": "Official premiere of Session #004."
+      },
+      {
+        "label": "Duration",
+        "value": "47:37",
+        "note": "Full fourth session."
+      }
+    ],
+    "gallery": [
+      "/assets/episodes/004-black-spirit/still-01.jpg",
+      "/assets/episodes/004-black-spirit/still-02.jpg",
+      "/assets/episodes/004-black-spirit/still-03.jpg",
+      "/assets/episodes/004-black-spirit/still-04.jpg",
+      "/assets/episodes/004-black-spirit/still-05.jpg",
+      "/assets/episodes/004-black-spirit/still-06.jpg"
+    ],
+    "audio": {
+      "file": "private/audio/004-black-spirit.mp3",
+      "availableAt": "2026-10-20",
+      "label": "Full episode MP3",
+      "mimeType": "audio/mpeg"
+    },
+    "teaserPoster": "/assets/episodes/004-black-spirit/still-05.jpg",
+    "bestMoments": [
+      {
+        "title": "The session begins",
+        "copy": "Black Spirit and Phone Memo start building the fourth session.",
+        "image": "/assets/episodes/004-black-spirit/still-01.jpg"
+      },
+      {
+        "title": "Writing and recording",
+        "copy": "The track takes shape in the room.",
+        "image": "/assets/episodes/004-black-spirit/still-04.jpg"
+      },
+      {
+        "title": "Final performance",
+        "copy": "The finished take closes the session.",
+        "image": "/assets/episodes/004-black-spirit/still-05.jpg"
       }
     ]
   }

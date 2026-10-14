@@ -438,9 +438,46 @@
         "label": "Release",
         "value": "20/10/2026",
         "note": "Επίσημη πρεμιέρα του τέταρτου επεισοδίου."
+      },
+      {
+        "label": "Διάρκεια",
+        "value": "47:37",
+        "note": "Ολόκληρο το τέταρτο session."
       }
     ],
     "youtubeVideoId": "Qn-EhGN6pAo",
-    "youtubeUrl": "https://youtu.be/Qn-EhGN6pAo"
+    "youtubeUrl": "https://youtu.be/Qn-EhGN6pAo",
+    "gallery": [
+      "/assets/episodes/004-black-spirit/still-01.jpg",
+      "/assets/episodes/004-black-spirit/still-02.jpg",
+      "/assets/episodes/004-black-spirit/still-03.jpg",
+      "/assets/episodes/004-black-spirit/still-04.jpg",
+      "/assets/episodes/004-black-spirit/still-05.jpg",
+      "/assets/episodes/004-black-spirit/still-06.jpg"
+    ],
+    "audio": {
+      "file": "private/audio/004-black-spirit.mp3",
+      "availableAt": "2026-10-20",
+      "label": "Ολόκληρο επεισόδιο σε mp3",
+      "mimeType": "audio/mpeg"
+    },
+    "teaserPoster": "/assets/episodes/004-black-spirit/still-05.jpg",
+    "bestMoments": [
+      {
+        "title": "Η έναρξη του session",
+        "copy": "Ο Black Spirit και ο Phone Memo ξεκινούν να χτίζουν το τέταρτο session.",
+        "image": "/assets/episodes/004-black-spirit/still-01.jpg"
+      },
+      {
+        "title": "Γράψιμο και ηχογράφηση",
+        "copy": "Το κομμάτι παίρνει μορφή μέσα στο δωμάτιο.",
+        "image": "/assets/episodes/004-black-spirit/still-04.jpg"
+      },
+      {
+        "title": "Το τελικό performance",
+        "copy": "Το τελικό take κλείνει το session.",
+        "image": "/assets/episodes/004-black-spirit/still-05.jpg"
+      }
+    ]
   }
 ]
