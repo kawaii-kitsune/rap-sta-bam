@@ -280,7 +280,8 @@
       "file": "private/audio/002-nesom.mp3",
       "availableAt": "2026-08-18",
       "label": "Full episode in MP3",
-      "mimeType": "audio/mpeg"
+      "mimeType": "audio/mpeg",
+      "captions": "/assets/captions/002-nesom.json"
     },
     "teaserVideo": "/assets/promo/episode-002-trailer.mp4",
     "teaserPoster": "/assets/episodes/002-nesom/thumbnail.png",
