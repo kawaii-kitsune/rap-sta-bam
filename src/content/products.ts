@@ -8,7 +8,7 @@ export const products: Product[] = [
     platform: "ElasticStage",
     url: "https://elasticstage.com/soundcloud/releases/phone-memo-97-album",
     image: "/assets/products/97-album.jpg",
-    format: "Physical / on-demand release",
+    format: { el: "Φυσική έκδοση κατόπιν παραγγελίας", en: "Physical / on-demand release" },
     description: {
       el: "Ειδική έκδοση σε βινύλιο on-demand για το 97 Album του Phone Memo μέσω του ElasticStage.",
       en: "A dedicated on-demand physical vinyl release for Phone Memo's 97 Album through ElasticStage."
@@ -22,7 +22,7 @@ export const products: Product[] = [
     platform: "Bandcamp",
     url: "https://deectivamusic.bandcamp.com/album/phone-memo-two-sides-of-a-coin",
     image: "/assets/products/two-sides-of-a-coin.png",
-    format: "Digital album",
+    format: { el: "Ψηφιακό άλμπουμ", en: "Digital album" },
     description: {
       el: "Κυκλοφορία του Phone Memo από την Deectiva Music στο Bandcamp, διαθέσιμη ως ψηφιακό άλμπουμ.",
       en: "A Deectiva Music Bandcamp release from Phone Memo, available as a full digital album."
@@ -35,8 +35,8 @@ export const products: Product[] = [
     platform: "Bandcamp",
     url: "https://phonememo.bandcamp.com/album/beats-from-scratch",
     image: "/assets/products/beats-from-scratch.jpg",
-    releaseDate: "Aug 2024",
-    format: "Digital album",
+    releaseDate: "2024-08-01",
+    format: { el: "Ψηφιακό άλμπουμ", en: "Digital album" },
     description: {
       el: "Beat tape άλμπουμ του Phone Memo φτιαγμένο από το μηδέν, φιλοξενούμενο στο Bandcamp.",
       en: "An authentic Phone Memo beat tape crafted from scratch, hosted on Bandcamp."
@@ -49,8 +49,8 @@ export const products: Product[] = [
     platform: "Bandcamp",
     url: "https://phonememo.bandcamp.com/album/the-anartist-vol-2",
     image: "/assets/products/the-anartist-vol-2.jpg",
-    releaseDate: "Dec 2020",
-    format: "Digital album",
+    releaseDate: "2020-12-01",
+    format: { el: "Ψηφιακό άλμπουμ", en: "Digital album" },
     description: {
       el: "Κυκλοφορία Bandcamp από τη σειρά The Anartist του Phone Memo.",
       en: "A classic Phone Memo Bandcamp instrumental release from the Anartist series."
@@ -63,8 +63,8 @@ export const products: Product[] = [
     platform: "Bandcamp",
     url: "https://phonememo.bandcamp.com/album/mosek-phone-memo-analog",
     image: "/assets/products/analog.png",
-    releaseDate: "Dec 2020",
-    format: "Digital album",
+    releaseDate: "2020-12-01",
+    format: { el: "Ψηφιακό άλμπουμ", en: "Digital album" },
     description: {
       el: "Συνεργατικό instrumental project από τον Mosek και τον Phone Memo στο Bandcamp.",
       en: "A collaborative instrumental release by Mosek and Phone Memo, available on Bandcamp."

@@ -1,10 +1,14 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/Container";
 
 export default function Loading() {
+  const isEn = usePathname().startsWith("/en");
   return (
     <Container className="page-shell">
       <div role="status" aria-busy="true">
-        <span className="sr-only">Φόρτωση περιεχομένου…</span>
+        <span className="sr-only">{isEn ? "Loading content…" : "Φόρτωση περιεχομένου…"}</span>
         <div aria-hidden="true" className="motion-safe:animate-pulse">
           <div className="mb-8 h-4 w-32 rounded bg-[var(--panel-2)]" />
           <div className="mb-4 h-10 w-3/4 max-w-sm rounded bg-[var(--panel-2)]" />

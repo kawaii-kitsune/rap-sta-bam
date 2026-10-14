@@ -66,7 +66,7 @@ export function MobileMenu() {
               onClick={() => dialog.current?.close()}
               className="rsb-button-secondary w-full justify-center !min-h-10 text-sm"
             >
-              {locale === "en" ? "Αλλαγή σε Ελληνικά (EL)" : "Switch to English (EN)"}
+              {locale === "en" ? "Switch to Greek (EL)" : "Αλλαγή σε Αγγλικά (EN)"}
             </Link>
           </div>
           <div className="mt-auto pt-8">

@@ -201,7 +201,7 @@ export default async function HomePage({
         </Container>
       </section>
 
-      <ContactSection />
+      <ContactSection locale={locale} />
     </div>
   );
 }

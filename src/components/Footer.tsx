@@ -46,7 +46,7 @@ export function Footer({ locale = "el" }: { locale?: string }) {
         <div className="footer-bottom">
           <p>© 2026 {dict.footer.aboutTitle}. {dict.footer.rights}</p>
           <div className="flex flex-wrap items-center gap-x-6">
-            <Link href={`/${locale}/privacy`} className="text-link text-xs">Privacy & Cookies</Link>
+            <Link href={`/${locale}/privacy`} className="text-link text-xs">{locale === "en" ? "Privacy & Cookies" : "Απόρρητο & Cookies"}</Link>
             <CookieSettingsButton />
           </div>
         </div>

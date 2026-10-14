@@ -99,7 +99,10 @@ export type Product = {
   url: string;
   image?: string;
   releaseDate?: string;
-  format: string;
+  format: {
+    el: string;
+    en: string;
+  };
   description: {
     el: string;
     en: string;

@@ -73,7 +73,7 @@ export function ShareLinks({
         type="button"
         onClick={() => handleShare("whatsapp")}
         className="rsb-button-secondary !min-h-8 !px-2.5 !py-1 !text-xs"
-        aria-label="Share on WhatsApp"
+        aria-label={locale === "en" ? "Share on WhatsApp" : "Κοινοποίηση στο WhatsApp"}
       >
         WhatsApp
       </button>
@@ -81,7 +81,7 @@ export function ShareLinks({
         type="button"
         onClick={() => handleShare("twitter")}
         className="rsb-button-secondary !min-h-8 !px-2.5 !py-1 !text-xs"
-        aria-label="Share on X"
+        aria-label={locale === "en" ? "Share on X" : "Κοινοποίηση στο X"}
       >
         X (Twitter)
       </button>
@@ -89,7 +89,7 @@ export function ShareLinks({
         type="button"
         onClick={() => handleShare("facebook")}
         className="rsb-button-secondary !min-h-8 !px-2.5 !py-1 !text-xs"
-        aria-label="Share on Facebook"
+        aria-label={locale === "en" ? "Share on Facebook" : "Κοινοποίηση στο Facebook"}
       >
         Facebook
       </button>

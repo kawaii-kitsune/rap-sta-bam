@@ -155,16 +155,16 @@ export function ContactForm({ locale: propLocale }: { locale?: string }) {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Field id="name" label={dict.contact.name} autoComplete="name" error={errors.name} />
-        <Field id="email" label={dict.contact.email} type="email" autoComplete="email" error={errors.email} />
+        <Field locale={locale} id="name" label={dict.contact.name} autoComplete="name" error={errors.name} />
+        <Field locale={locale} id="email" label={dict.contact.email} type="email" autoComplete="email" error={errors.email} />
       </div>
 
-      <SelectField id="topic" label={dict.contact.topic}>
+      <SelectField locale={locale} id="topic" label={dict.contact.topic}>
         <option value="">{dict.contact.topicSelect}</option>
         {quickOptions.map((option) => <option key={option} value={option}>{option}</option>)}
       </SelectField>
 
-      <Textarea id="message" label={dict.contact.message} error={errors.message} />
+      <Textarea locale={locale} id="message" label={dict.contact.message} error={errors.message} />
 
       <button type="submit" disabled={state === "submitting"} className="rsb-button">
         {state === "submitting" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <Send className="h-4 w-4" aria-hidden="true" />}

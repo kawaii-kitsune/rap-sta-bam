@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <Container className="page-shell">
-      <Breadcrumbs items={[{ label: isEn ? "About" : "Σχετικά" }]} />
+      <Breadcrumbs locale={locale} items={[{ label: isEn ? "About" : "Σχετικά" }]} />
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div>
           <div className="page-heading">
@@ -95,7 +95,7 @@ export default async function AboutPage({ params }: Props) {
                   className="border-b border-[var(--line)] p-4 sm:odd:border-r"
                 >
                   <span className="meta-font mb-2 block text-lg text-[var(--accent)]">{item.label}</span>
-                  <span className="text-sm font-bold text-[var(--muted)]">{item.title}</span>
+                  <span className="text-sm font-bold text-[var(--muted)]">{isEn ? item.title.replace("Τζίμος", "Tzimos") : item.title}</span>
                 </time>
               ))}
             </div>

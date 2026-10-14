@@ -70,7 +70,7 @@ export default async function ArtistsPage({ params }: Props) {
 
   return (
     <Container className="page-shell">
-      <Breadcrumbs items={[{ label: isEn ? "Crew & Artists" : "Πρόσωπα" }]} />
+      <Breadcrumbs locale={locale} items={[{ label: isEn ? "Crew & Artists" : "Πρόσωπα" }]} />
       <div className="page-heading">
         <SectionHeading
           as="h1"

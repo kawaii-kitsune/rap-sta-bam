@@ -22,7 +22,7 @@ export function Header() {
       <Container className="header-inner">
         <Link href={`/${locale}`} className="site-brand" aria-label={`${dict.footer.aboutTitle} — ${dict.nav.home}`}>
           <Image src="/assets/logo/logo-white-red.png" alt="" width={76} height={72} priority className="header-logo" />
-          <span><span className="brand-name">ΡΑΠ ΣΤΑ ΜΠΑΜ</span><span className="brand-caption">{locale === "en" ? "Independent. From Heraklion." : "Ανεξάρτητα. Από το Ηράκλειο."}</span></span>
+          <span><span className="brand-name">{locale === "en" ? "RAP STA BAM" : "ΡΑΠ ΣΤΑ ΜΠΑΜ"}</span><span className="brand-caption">{locale === "en" ? "Independent. From Heraklion." : "Ανεξάρτητα. Από το Ηράκλειο."}</span></span>
         </Link>
         <div className="flex items-center gap-3">
           <nav aria-label={locale === "en" ? "Main navigation" : "Κύρια πλοήγηση"} className="hidden items-center gap-1 lg:flex">
@@ -34,7 +34,8 @@ export function Header() {
           <Link
             href={targetLanguageHref}
             className="rsb-button-secondary !min-h-9 !py-1 !px-2.5 !text-xs font-semibold"
-            aria-label={locale === "en" ? "Αλλαγή σε Ελληνικά" : "Switch to English"}
+            aria-label={locale === "en" ? "Switch to Greek" : "Αλλαγή σε Αγγλικά"}
+            hrefLang={locale === "en" ? "el" : "en"}
           >
             {locale === "en" ? "ΕΛ" : "EN"}
           </Link>

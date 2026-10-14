@@ -1,39 +1,39 @@
 import type { ComponentProps, ReactNode } from "react";
 
-type FieldProps = { id: string; label: string; error?: string; required?: boolean };
+type FieldProps = { id: string; label: string; error?: string; required?: boolean; locale?: string };
 
-function FieldLabel({ id, label, required }: FieldProps) {
-  return <label htmlFor={id} className="field-label">{label}{required ? <span aria-hidden="true" className="ml-1 text-[var(--accent)]">*</span> : <span className="field-optional"> (προαιρετικό)</span>}</label>;
+function FieldLabel({ id, label, required, locale = "el" }: FieldProps) {
+  return <label htmlFor={id} className="field-label">{label}{required ? <span aria-hidden="true" className="ml-1 text-[var(--accent)]">*</span> : <span className="field-optional"> {locale === "en" ? "(optional)" : "(προαιρετικό)"}</span>}</label>;
 }
 
 export function FormError({ id, message }: { id: string; message?: string }) {
   return message ? <p id={id} role="alert" className="field-error">{message}</p> : null;
 }
 
-export function Field({ id, label, error, required = true, ...props }: FieldProps & Omit<ComponentProps<"input">, "id">) {
+export function Field({ id, label, error, required = true, locale, ...props }: FieldProps & Omit<ComponentProps<"input">, "id">) {
   return (
     <div>
-      <FieldLabel id={id} label={label} required={required} />
+      <FieldLabel id={id} label={label} required={required} locale={locale} />
       <input {...props} id={id} name={props.name ?? id} required={required} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="form-control" />
       <FormError id={`${id}-error`} message={error} />
     </div>
   );
 }
 
-export function Textarea({ id, label, error, required = true, ...props }: FieldProps & Omit<ComponentProps<"textarea">, "id">) {
+export function Textarea({ id, label, error, required = true, locale, ...props }: FieldProps & Omit<ComponentProps<"textarea">, "id">) {
   return (
     <div>
-      <FieldLabel id={id} label={label} required={required} />
+      <FieldLabel id={id} label={label} required={required} locale={locale} />
       <textarea rows={5} {...props} id={id} name={props.name ?? id} required={required} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="form-control" />
       <FormError id={`${id}-error`} message={error} />
     </div>
   );
 }
 
-export function SelectField({ id, label, error, required = false, children, ...props }: FieldProps & Omit<ComponentProps<"select">, "id"> & { children: ReactNode }) {
+export function SelectField({ id, label, error, required = false, children, locale, ...props }: FieldProps & Omit<ComponentProps<"select">, "id"> & { children: ReactNode }) {
   return (
     <div>
-      <FieldLabel id={id} label={label} required={required} />
+      <FieldLabel id={id} label={label} required={required} locale={locale} />
       <select {...props} id={id} name={props.name ?? id} required={required} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} className="form-control">{children}</select>
       <FormError id={`${id}-error`} message={error} />
     </div>

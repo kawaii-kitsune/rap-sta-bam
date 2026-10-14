@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return createMetadata({
     title: `Audio - ${episode.title}`,
     description: isEn
-      ? `Listen to the full audio of ${episode.title} with synchronized captions.`
-      : `Άκουσε το πλήρες audio του ${episode.title} με συγχρονισμένα captions.`,
+      ? `Listen to the full audio of ${episode.title}${episode.audio?.captions ? " with synchronized Greek captions" : ""}.`
+      : `Άκουσε το πλήρες audio του ${episode.title}${episode.audio?.captions ? " με συγχρονισμένους υπότιτλους" : ""}.`,
     path: `/${locale}/episodes/${episode.slug}/listen`,
     image: episode.thumbnail,
     locale,
@@ -109,6 +109,7 @@ export default async function EpisodeListenPage({ params }: Props) {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={audioJsonLd} />
       <Breadcrumbs
+        locale={locale}
         items={[
           { href: `/${locale}/episodes`, label: isEn ? "Sessions" : "Επεισόδια" },
           { href: `/${locale}/episodes/${episode.slug}`, label: episode.title },
@@ -127,7 +128,7 @@ export default async function EpisodeListenPage({ params }: Props) {
           copy={
             episode.audio.captions
               ? isEn
-                ? "Listen to the entire session with synchronized captions."
+                ? "Listen to the entire session with synchronized Greek captions."
                 : "Άκουσε ολόκληρο το session με συγχρονισμένους υπότιτλους."
               : isEn
                 ? "Listen to the entire session anywhere."
@@ -135,6 +136,7 @@ export default async function EpisodeListenPage({ params }: Props) {
           }
         />
         <EpisodeAudioPlayer
+          locale={locale}
           src={`/episodes/${episode.slug}/audio`}
           label={episode.audio.label ?? (isEn ? "Audio File" : "Audio αρχείο")}
           availableAt={episode.audio.availableAt}

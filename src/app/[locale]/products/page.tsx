@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isEn = locale === "en";
 
   return createMetadata({
-    title: isEn ? "Releases & Discography" : "Products & Releases",
+    title: isEn ? "Releases & Discography" : "Κυκλοφορίες & Δισκογραφία",
     description: isEn
       ? "Phone Memo product links, Bandcamp releases, ElasticStage vinyl and Spotify catalog."
-      : "Phone Memo product links, Bandcamp releases, ElasticStage products and Spotify catalog entries.",
+      : "Η δισκογραφία του Phone Memo: κυκλοφορίες στο Bandcamp, βινύλιο στο ElasticStage και μουσική στο Spotify.",
     path: `/${locale}/products`,
     locale
   });
@@ -30,13 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductsPage({ params }: Props) {
   const { locale = defaultLocale } = await params;
   const isEn = locale === "en";
+  const dateFormatter = new Intl.DateTimeFormat(isEn ? "en-US" : "el-GR", { month: "short", year: "numeric", timeZone: "UTC" });
 
   const featured = products.find((product) => product.featured);
   const otherProducts = products.filter((product) => product.slug !== featured?.slug);
 
   return (
     <Container className="page-shell">
-      <Breadcrumbs items={[{ label: isEn ? "Releases" : "Releases" }]} />
+      <Breadcrumbs locale={locale} items={[{ label: isEn ? "Releases" : "Κυκλοφορίες" }]} />
       <div className="page-heading">
         <SectionHeading
           as="h1"
@@ -73,7 +74,7 @@ export default async function ProductsPage({ params }: Props) {
                   {featured.title}
                 </h2>
                 <p className="mt-2 text-sm text-[var(--muted)]">
-                  {featured.artist} · {featured.format}
+                  {featured.artist} · {isEn ? featured.format.en : featured.format.el}
                 </p>
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                   {isEn ? featured.description.en : featured.description.el}
@@ -109,10 +110,11 @@ export default async function ProductsPage({ params }: Props) {
             <div className="border-t border-[var(--line)]">
               {otherProducts.map((product) => (
                 <ReleaseRow
+                  locale={locale}
                   key={product.slug}
                   title={product.title}
                   image={product.image}
-                  subtitle={[product.artist, product.format, product.releaseDate].filter(Boolean).join(" · ")}
+                  subtitle={[product.artist, isEn ? product.format.en : product.format.el, product.releaseDate ? dateFormatter.format(new Date(product.releaseDate)) : undefined].filter(Boolean).join(" · ")}
                   description={isEn ? product.description.en : product.description.el}
                   platform={product.platform}
                   url={product.url}
@@ -127,10 +129,11 @@ export default async function ProductsPage({ params }: Props) {
             <div className="border-t border-[var(--line)]">
               {spotifyReleases.map((release) => (
                 <ReleaseRow
+                  locale={locale}
                   key={release.url}
                   title={release.title}
                   image={release.image}
-                  subtitle={`${release.kind} · ${release.year}`}
+                  subtitle={`${isEn ? release.kind : release.kind === "Album" ? "Άλμπουμ" : release.kind === "Single" ? "Σινγκλ" : "EP"} · ${release.year}`}
                   platform="Spotify"
                   url={release.url}
                   action={isEn ? "Listen" : "Ακρόαση"}
@@ -194,7 +197,7 @@ export default async function ProductsPage({ params }: Props) {
               height="352"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
-              title="Spotify Player"
+              title={isEn ? "Spotify player" : "Ακρόαση στο Spotify"}
             />
           </div>
           <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-[var(--line)] pt-5">
@@ -203,7 +206,7 @@ export default async function ProductsPage({ params }: Props) {
               <dd className="mt-1 text-lg font-medium">{spotifyArtist.monthlyListeners}</dd>
             </div>
             <div>
-              <dt className="text-xs text-[var(--dim)]">{isEn ? "Followers" : "Followers"}</dt>
+              <dt className="text-xs text-[var(--dim)]">{isEn ? "Followers" : "Ακόλουθοι"}</dt>
               <dd className="mt-1 text-lg font-medium">{spotifyArtist.followers}</dd>
             </div>
           </dl>

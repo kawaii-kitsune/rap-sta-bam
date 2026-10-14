@@ -93,48 +93,56 @@ const sectionsEn = [
     title: "Who We Are",
     body: [
       `Rap Sta Bam is an independent DIY music series based in Heraklion, Crete. For inquiries regarding privacy, data access, or deletion, contact us at ${siteConfig.contactEmail}.`,
-      "This document outlines how our website handles data and privacy."
+      "This page explains what the site uses in practice. It is not a substitute for personalized legal advice."
     ]
   },
   {
     title: "Essential Site Functionality",
     body: [
-      "The site operates without tracking or marketing cookies. To remember your consent choice, we only store a single key in your browser's localStorage indicating whether you accepted or declined analytics.",
-      "Audio, captions, photography, and site assets are served directly from our project. Captions load from local JSON files and audio streams from a protected endpoint."
+      "The site can operate without analytics cookies. To remember your choice, it stores one essential value in your browser's localStorage: whether you accepted or declined analytics.",
+      "Audio, captions, images, and most assets are served by the site. Captions load from local JSON files, and audio streams from a protected endpoint after the premiere."
     ]
   },
   {
     title: "Cookies & localStorage",
     body: [
       "We use localStorage solely to store your cookie preferences so you do not see the banner on every visit.",
-      "Selecting 'Essential Only' disables all analytics and custom audio telemetry. Selecting 'Accept Analytics' activates anonymous page view and listener metrics."
+      "Selecting 'Essential Only' prevents Vercel Analytics from loading and disables custom audio analytics events. Selecting 'Accept Analytics' enables usage statistics."
     ]
   },
   {
     title: "Hosting & Analytics",
     body: [
-      "Our website is hosted on Vercel. Standard server logs are processed by Vercel for technical operations, security, and debugging.",
-      "With your consent, Vercel Web Analytics records aggregate page views and session insights without cross-site tracking or advertising profiling."
+      "The site is hosted on Vercel. As with any hosting provider, Vercel may process technical request and server logs for security, debugging, and operation of the service.",
+      "With your consent, we load Vercel Web Analytics for aggregate statistics, such as page views and basic site usage. Analytics load only after you accept statistics."
     ]
   },
   {
-    title: "Contact Form",
+    title: "Audio Analytics Events",
     body: [
-      "Information submitted through our contact form (name, email, topic, and message) is used strictly to reply to your inquiry.",
-      "Never submit sensitive passwords, financial information, or personal identifiers through the contact form."
+      "With your consent, the audio player may send custom events to Vercel Analytics: audio_play, audio_30_seconds, audio_50_percent, and audio_complete.",
+      "These events help us understand whether episodes are being listened to. They are not displayed publicly and are not used for advertising profiling."
+    ]
+  },
+  {
+    title: "Contact Form & Google Forms",
+    body: [
+      "The contact form sends responses to Google Forms. It submits the details you enter: name, email, subject, and message.",
+      "These details are used only to read and reply to your message. Responses are stored in the Google Forms account managed by the project until we delete them or you request deletion.",
+      "Do not send passwords, financial information, medical data, or other sensitive information through the form."
     ]
   },
   {
     title: "External Services & Social Media",
     body: [
-      "The site features links and embeds for YouTube, Instagram, Spotify, Bandcamp, and partner platforms.",
-      "Interacting with external players or clicking external links transfers you to third-party domains governed by their respective privacy terms."
+      "The site includes links to YouTube, TikTok, Instagram, Spotify, Bandcamp, ElasticStage, Behance, and the websites of collaborators and contributors. These links open external services.",
+      "When you open an external link, you leave our site and the privacy and cookie policies of the respective provider apply."
     ]
   },
   {
     title: "Your Rights",
     body: [
-      "You have the right to request access to or deletion of messages submitted via our contact forms by emailing us directly.",
+      "You can request access to, correction of, or deletion of details submitted through a form by contacting the project email.",
       "You may update your cookie preferences at any time by clicking 'Cookie Settings' in the footer."
     ]
   }
@@ -147,7 +155,7 @@ export default async function PrivacyPage({ params }: Props) {
 
   return (
     <Container className="page-shell">
-      <Breadcrumbs items={[{ label: isEn ? "Privacy & Cookies" : "Privacy & Cookies" }]} />
+      <Breadcrumbs locale={locale} items={[{ label: isEn ? "Privacy & Cookies" : "Απόρρητο & Cookies" }]} />
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div>
           <div className="page-heading">

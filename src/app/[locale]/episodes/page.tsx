@@ -34,7 +34,7 @@ export default async function EpisodesPage({ params }: Props) {
 
   return (
     <Container className="page-shell">
-      <Breadcrumbs items={[{ label: isEn ? "Sessions" : "Επεισόδια" }]} />
+      <Breadcrumbs locale={locale} items={[{ label: isEn ? "Sessions" : "Επεισόδια" }]} />
       <div className="page-heading">
         <SectionHeading
           as="h1"

@@ -111,6 +111,7 @@ export default async function ArtistPage({ params }: Props) {
       <JsonLd data={breadcrumbJsonLd} />
       <JsonLd data={artistJsonLd} />
       <Breadcrumbs
+        locale={locale}
         items={[
           { href: `/${locale}/artists`, label: isEn ? "Crew & Artists" : "Πρόσωπα" },
           { label: artist.name }

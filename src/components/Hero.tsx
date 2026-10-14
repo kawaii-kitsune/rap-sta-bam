@@ -55,7 +55,7 @@ export function Hero({
           <div className="hero-identity">
             <Image
               src="/assets/logo/logo-white-red.png"
-              alt="Ραπ Στα Μπαμ"
+              alt={isEn ? "Rap Sta Bam" : "Ραπ Στα Μπαμ"}
               width={220}
               height={208}
               priority
@@ -79,9 +79,10 @@ export function Hero({
               <span>{isUpcoming ? "PREVIEW" : isEn ? "PRESS PLAY" : "ΠΑΤΑ PLAY"}</span>
             </div>
             {isUpcoming ? (
-              <PromoTeaser episode={episode} compact />
+              <PromoTeaser episode={episode} compact locale={locale} />
             ) : (
               <VideoEmbed
+                locale={locale}
                 videoId={episode.youtubeVideoId}
                 title={episode.title}
                 poster={episode.gallery?.[0] ?? episode.thumbnail}

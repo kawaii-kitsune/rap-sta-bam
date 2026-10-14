@@ -30,7 +30,7 @@ export default async function ParticipatePage({ params }: Props) {
 
   return (
     <Container className="page-shell">
-      <Breadcrumbs items={[{ label: isEn ? "Participate" : "Συμμετοχή" }]} />
+      <Breadcrumbs locale={locale} items={[{ label: isEn ? "Participate" : "Συμμετοχή" }]} />
       <div className="max-w-3xl">
         <SectionHeading
           as="h1"

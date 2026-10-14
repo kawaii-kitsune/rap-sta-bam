@@ -3,7 +3,8 @@
 import { type ChangeEvent, type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { ChevronDown, ChevronUp, FileText, Loader2, Lock, Pause, Play, Volume2, VolumeX, Music2 } from "lucide-react";
-import { formatGreekDate, isReleased } from "@/lib/content";
+import { formatDate, isReleased } from "@/lib/content";
+import { getDictionary } from "@/config/i18n";
 import { hasAnalyticsConsent } from "@/lib/consent";
 
 type CaptionCue = {
@@ -18,9 +19,11 @@ type Props = {
   availableAt: string;
   publishedAt: string;
   captionsSrc?: string;
+  locale?: string;
 };
 
-export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, captionsSrc }: Props) {
+export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, captionsSrc, locale = "el" }: Props) {
+  const copy = getDictionary(locale).audio;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const seekingRef = useRef(false);
@@ -291,9 +294,9 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
         <div className="flex items-start gap-3">
           <Lock className="mt-1 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
           <div>
-            <p className="font-bold text-[var(--foreground)]">Το audio θα είναι διαθέσιμο στην πρεμιέρα</p>
+            <p className="font-bold text-[var(--foreground)]">{copy.lockedTitle}</p>
             <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
-              Θα ανοίξει στις {formatGreekDate(availableAt)} μαζί με τη δημοσίευση του επεισοδίου. Θα μπορείς να ακούσεις ολόκληρο το session{captionsSrc ? " με συγχρονισμένους υπότιτλους" : ""}.
+              {copy.lockedStart} {formatDate(availableAt, locale)} {copy.lockedEnd}{captionsSrc ? copy.withCaptions : ""}.
             </p>
           </div>
         </div>
@@ -304,7 +307,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
   return (
     <div className="audio-player">
       <audio ref={audioRef} src={src} preload="metadata" className="sr-only">
-        Το πρόγραμμα περιήγησης δεν υποστηρίζει audio playback.
+        {copy.unsupported}
       </audio>
 
       <div className="grid gap-4">
@@ -313,7 +316,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
             <Music2 className="mt-1 h-5 w-5 text-[var(--accent)]" aria-hidden="true" />
             <div>
               <p className="font-bold text-[var(--foreground)]">{label}</p>
-              <p className="mt-1 text-sm leading-6 text-[var(--muted)]">Πλήρες επεισόδιο με απλά χειριστήρια ακρόασης.</p>
+              <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{copy.description}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -334,7 +337,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
               type="button"
               onClick={togglePlay}
               className="rsb-button audio-play"
-              aria-label={isPlaying ? "Παύση" : "Αναπαραγωγή"}
+              aria-label={isPlaying ? copy.pause : copy.play}
             >
               {isBuffering ? <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> : isPlaying ? <Pause className="h-5 w-5" aria-hidden="true" /> : <Play className="h-5 w-5" aria-hidden="true" />}
             </button>
@@ -342,13 +345,13 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
               type="button"
               onClick={toggleMute}
               className="rsb-button-secondary !min-h-10 !w-10 !p-0 justify-center"
-              aria-label={isMuted ? "Κατάργηση σίγασης" : "Σίγαση"}
+              aria-label={isMuted ? copy.unmute : copy.mute}
             >
               {isMuted ? <VolumeX className="h-4 w-4 text-[var(--accent)]" /> : <Volume2 className="h-4 w-4" />}
             </button>
             <div className="min-w-0 flex-1">
               <div className="audio-time">
-                <span role="status">{audioError ? "Η φόρτωση απέτυχε" : isBuffering ? "Φόρτωση…" : isPlaying ? "Παίζει τώρα" : isReady ? "Έτοιμο για ακρόαση" : "Φόρτωση audio…"}</span>
+                <span role="status">{audioError ? copy.failed : isBuffering ? copy.buffering : isPlaying ? copy.playing : isReady ? copy.ready : copy.loading}</span>
                 <span>{timeLabel}</span>
               </div>
               <div className="relative h-11">
@@ -369,7 +372,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
                   onPointerUp={finishSeek}
                   onKeyUp={finishSeek}
                   disabled={!duration}
-                  aria-label="Χρόνος αναπαραγωγής"
+                  aria-label={copy.playbackTime}
                   aria-valuetext={timeLabel}
                   className="player-range absolute inset-0 h-full w-full cursor-pointer appearance-none bg-transparent disabled:cursor-not-allowed disabled:opacity-50"
                 />
@@ -378,25 +381,25 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
           </div>
 
           <div className="hidden text-[10px] text-[var(--dim)] sm:flex items-center gap-4 pt-1">
-            <span>Space: Play/Pause</span>
+            <span>{copy.playShortcut}</span>
             <span>← / →: ±5s</span>
-            <span>M: Mute</span>
-            {captionsSrc ? <span>C: Transcript</span> : null}
+            <span>{copy.muteShortcut}</span>
+            {captionsSrc ? <span>{copy.transcriptShortcut}</span> : null}
           </div>
 
-          {audioError ? <div className="alert alert-error" role="alert"><div><p>Δεν ήταν δυνατή η φόρτωση του audio. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.</p><button type="button" className="text-link mt-1" onClick={() => { setAudioError(false); audioRef.current?.load(); }}>Δοκίμασε ξανά</button></div></div> : null}
+          {audioError ? <div className="alert alert-error" role="alert"><div><p>{copy.error}</p><button type="button" className="text-link mt-1" onClick={() => { setAudioError(false); audioRef.current?.load(); }}>{copy.retry}</button></div></div> : null}
 
           {captionsSrc ? (
             <div className="audio-captions border border-[var(--line)] bg-[var(--panel-2)] p-4 rounded" aria-live="polite" aria-atomic="true">
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-[var(--dim)]">Υπότιτλοι / Live Captions</p>
+                <p className="text-xs font-semibold text-[var(--dim)]">{copy.captions}</p>
                 <button
                   type="button"
                   onClick={() => setShowFullTranscript((prev) => !prev)}
                   className="text-link flex items-center gap-1 text-xs"
                 >
                   <FileText className="h-3.5 w-3.5" />
-                  {showFullTranscript ? "Σύμπτυξη" : "Όλο το κείμενο"}
+                  {showFullTranscript ? copy.collapse : copy.transcript}
                   {showFullTranscript ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
                 </button>
               </div>
@@ -419,7 +422,7 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
                         <span className="font-mono text-xs text-[var(--accent)] shrink-0 pt-0.5">
                           {formatTime(cue.start)}
                         </span>
-                        <span className="text-sm leading-6 whitespace-pre-line flex-1">
+                        <span lang="el" className="text-sm leading-6 whitespace-pre-line flex-1">
                           {cue.text}
                         </span>
                       </button>
@@ -428,8 +431,8 @@ export function EpisodeAudioPlayer({ src, label, availableAt, publishedAt, capti
                 </div>
               ) : (
                 <div className="mt-3 overflow-y-auto pr-2">
-                  <p className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
-                    {activeCaption?.text ?? (captionError ? "Οι υπότιτλοι δεν φορτώθηκαν. Η ακρόαση παραμένει διαθέσιμη." : captionsReady ? "Οι υπότιτλοι εμφανίζονται κατά την ακρόαση." : "Φόρτωση υποτίτλων…")}
+                  <p lang={activeCaption ? "el" : locale} className="whitespace-pre-line text-base leading-7 text-[var(--foreground)]">
+                    {activeCaption?.text ?? (captionError ? copy.captionsError : captionsReady ? copy.captionsReady : copy.captionsLoading)}
                   </p>
                 </div>
               )}

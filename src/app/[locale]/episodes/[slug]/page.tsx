@@ -141,6 +141,7 @@ export default async function EpisodePage({ params }: Props) {
       <JsonLd data={breadcrumbJsonLd} />
       {videoJsonLd ? <JsonLd data={videoJsonLd} /> : null}
       <Breadcrumbs
+        locale={locale}
         items={[
           { href: `/${locale}/episodes`, label: isEn ? "Sessions" : "Επεισόδια" },
           { label: episode.title }
@@ -202,13 +203,14 @@ export default async function EpisodePage({ params }: Props) {
             <div id="session-video">
               {live ? (
                 <VideoEmbed
+                  locale={locale}
                   videoId={episode.youtubeVideoId}
                   title={episode.title}
                   poster={episode.thumbnail}
                 />
               ) : (
                 <div className="grid gap-5 md:grid-cols-[minmax(220px,320px)_1fr] md:items-center">
-                  <PromoTeaser episode={episode} compact />
+                  <PromoTeaser episode={episode} compact locale={locale} />
                   <div className="border-y border-[var(--line)] px-4 py-5 sm:px-5 sm:py-6">
                     <p className="text-xs font-medium text-[var(--warning)]">
                       {isEn ? "Premiere approaching" : "Η πρεμιέρα πλησιάζει"}
@@ -226,15 +228,15 @@ export default async function EpisodePage({ params }: Props) {
                     <div className="mt-5 grid gap-2 sm:grid-cols-2">
                       <UnlockItem
                         icon={<PlaySquare className="h-4 w-4" />}
-                        label={episode.youtubeVideoId ? "Full YouTube episode" : "Video link"}
+                        label={episode.youtubeVideoId ? (isEn ? "Full YouTube episode" : "Ολόκληρο επεισόδιο στο YouTube") : (isEn ? "Video link" : "Σύνδεσμος βίντεο")}
                       />
                       {episode.audio ? (
-                        <UnlockItem icon={<Headphones className="h-4 w-4" />} label="Audio player" />
+                        <UnlockItem icon={<Headphones className="h-4 w-4" />} label={isEn ? "Audio player" : "Ακρόαση επεισοδίου"} />
                       ) : null}
                       {episode.audio ? (
                         <UnlockItem
                           icon={<Captions className="h-4 w-4" />}
-                          label={episode.audio.captions ? (isEn ? "Captions / listen page" : "Captions / listen page") : "Listen page"}
+                          label={episode.audio.captions ? (isEn ? "Greek captions / listen page" : "Υπότιτλοι / σελίδα ακρόασης") : (isEn ? "Listen page" : "Σελίδα ακρόασης")}
                         />
                       ) : null}
                       <UnlockItem
@@ -286,6 +288,7 @@ export default async function EpisodePage({ params }: Props) {
                     {isEn ? "Listen on dedicated page" : "Ακρόαση σε ξεχωριστή σελίδα"}
                   </Link>
                   <EpisodeAudioPlayer
+                    locale={locale}
                     src={audioHref}
                     label={episode.audio.label ?? (isEn ? "Audio File" : "Audio αρχείο")}
                     availableAt={episode.audio.availableAt}
@@ -323,7 +326,7 @@ export default async function EpisodePage({ params }: Props) {
                 <div className="grid gap-5">
                   {episode.instagramEmbeds.map((embed) =>
                     isValidHttpUrl(embed.url) ? (
-                      <InstagramEmbed key={embed.url} url={embed.url} />
+                      <InstagramEmbed key={embed.url} url={embed.url} locale={locale} />
                     ) : null
                   )}
                 </div>
@@ -341,7 +344,7 @@ export default async function EpisodePage({ params }: Props) {
                       : "Στιγμές από τη συζήτηση, το beatmaking και το performance. Πάτησε μια φωτογραφία για μεγέθυνση."
                   }
                 />
-                <EpisodeGallery images={episode.gallery} title={episode.title} />
+                <EpisodeGallery images={episode.gallery} title={episode.title} locale={locale} />
               </section>
             ) : null}
           </div>
@@ -349,7 +352,7 @@ export default async function EpisodePage({ params }: Props) {
           <aside className="episode-sidebar grid min-w-0 content-start gap-8 border-t border-[var(--line)] pt-6 lg:border-t-0 lg:pt-0">
             <section id="session-credits">
               <h2 className="display-font mb-3 text-3xl">{isEn ? "Credits" : "Συντελεστές"}</h2>
-              <CreditsList credits={episode.credits} />
+              <CreditsList credits={episode.credits} locale={locale} />
             </section>
             {episode.gear?.length ? (
               <section>
@@ -365,7 +368,7 @@ export default async function EpisodePage({ params }: Props) {
             {artist ? (
               <section>
                 <h2 className="display-font mb-3 text-3xl">{isEn ? "Featured Artist" : "Ο καλεσμένος"}</h2>
-                <ArtistCard artist={artist} />
+                <ArtistCard artist={artist} locale={locale} />
               </section>
             ) : null}
           </aside>

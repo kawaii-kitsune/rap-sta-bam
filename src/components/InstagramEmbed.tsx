@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-export function InstagramEmbed({ url, captioned = true }: { url: string; captioned?: boolean }) {
+export function InstagramEmbed({ url, captioned = true, locale = "el" }: { url: string; captioned?: boolean; locale?: string }) {
   useEffect(() => {
     window.instgrm?.Embeds?.process();
   }, [url]);
@@ -51,7 +51,7 @@ export function InstagramEmbed({ url, captioned = true }: { url: string; caption
               width: "100%"
             }}
           >
-            View this post on Instagram
+            {locale === "en" ? "View this post on Instagram" : "Δες αυτή τη δημοσίευση στο Instagram"}
           </a>
         </div>
       </blockquote>

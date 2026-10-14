@@ -156,21 +156,21 @@ export function ParticipationForm({ locale: propLocale }: { locale?: string }) {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Field id="artistName" label={locale === "en" ? "Artist Name" : "Καλλιτεχνικό όνομα"} error={errors.artistName} />
-        <Field id="realName" label={locale === "en" ? "Real Name" : "Πραγματικό όνομα"} autoComplete="name" error={errors.realName} />
-        <Field id="email" label="Email" type="email" autoComplete="email" error={errors.email} />
-        <Field id="social" label="Instagram / TikTok" error={errors.social} />
-        <Field id="musicLink" label={locale === "en" ? "Spotify or YouTube Link" : "Spotify ή YouTube link"} required={false} />
-        <Field id="city" label={locale === "en" ? "City" : "Πόλη"} autoComplete="address-level2" error={errors.city} />
+        <Field locale={locale} id="artistName" label={locale === "en" ? "Artist Name" : "Καλλιτεχνικό όνομα"} error={errors.artistName} />
+        <Field locale={locale} id="realName" label={locale === "en" ? "Real Name" : "Πραγματικό όνομα"} autoComplete="name" error={errors.realName} />
+        <Field locale={locale} id="email" label="Email" type="email" autoComplete="email" error={errors.email} />
+        <Field locale={locale} id="social" label="Instagram / TikTok" error={errors.social} />
+        <Field locale={locale} id="musicLink" label={locale === "en" ? "Spotify or YouTube Link" : "Spotify ή YouTube link"} required={false} />
+        <Field locale={locale} id="city" label={locale === "en" ? "City" : "Πόλη"} autoComplete="address-level2" error={errors.city} />
       </div>
 
-      <SelectField id="role" label={locale === "en" ? "Role" : "Ρόλος"} required error={errors.role}>
+      <SelectField locale={locale} id="role" label={locale === "en" ? "Role" : "Ρόλος"} required error={errors.role}>
         <option value="">{locale === "en" ? "Select Role" : "Επίλεξε ρόλο"}</option>
         {roleOptions.map((role) => <option key={role} value={role}>{role}</option>)}
       </SelectField>
 
-      <Textarea id="intro" label={locale === "en" ? "Short Introduction / Bio" : "Σύντομη παρουσίαση"} error={errors.intro} />
-      <Textarea id="motivation" label={locale === "en" ? "Why do you want to join?" : "Γιατί θέλεις να συμμετάσχεις"} error={errors.motivation} />
+      <Textarea locale={locale} id="intro" label={locale === "en" ? "Short Introduction / Bio" : "Σύντομη παρουσίαση"} error={errors.intro} />
+      <Textarea locale={locale} id="motivation" label={locale === "en" ? "Why do you want to join?" : "Γιατί θέλεις να συμμετάσχεις"} error={errors.motivation} />
 
       <label className="flex gap-3 text-sm leading-6 text-[var(--muted)]">
         <input required name="consent" type="checkbox" className="mt-1 h-5 w-5 accent-[var(--accent)]" aria-invalid={Boolean(errors.consent)} aria-describedby={errors.consent ? "consent-error" : undefined} />

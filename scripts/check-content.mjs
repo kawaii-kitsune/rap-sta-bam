@@ -185,6 +185,44 @@ function validateDataset(episodesFile, artistsFile, teamFile) {
 validateDataset("src/content/episodes.json", "src/content/artists.json", "src/content/team.json");
 validateDataset("src/content/episodes.en.json", "src/content/artists.en.json", "src/content/team.en.json");
 
+// Keep media and identity fields aligned when an episode or artist is updated.
+function checkLocaleParity(dataset, fields) {
+  const greek = readJson(`src/content/${dataset}.json`);
+  const english = readJson(`src/content/${dataset}.en.json`);
+  const englishBySlug = new Map(english.map((entry) => [entry.slug, entry]));
+
+  if (greek.length !== english.length) {
+    errors.push(`${dataset}: Greek and English must contain the same entries`);
+  }
+
+  for (const entry of greek) {
+    const translated = englishBySlug.get(entry.slug);
+    if (!translated) {
+      errors.push(`${dataset}: missing English entry for ${entry.slug}`);
+      continue;
+    }
+    for (const field of fields) {
+      if (JSON.stringify(entry[field]) !== JSON.stringify(translated[field])) {
+        errors.push(`${dataset} ${entry.slug}: ${field} differs between Greek and English`);
+      }
+    }
+    for (const field of ["file", "availableAt", "mimeType", "captions", "previewUnlock"]) {
+      if (entry.audio?.[field] !== translated.audio?.[field]) {
+        errors.push(`${dataset} ${entry.slug}: audio.${field} differs between Greek and English`);
+      }
+    }
+  }
+}
+
+checkLocaleParity("episodes", [
+  "number", "artistSlug", "publishedAt", "status", "thumbnail", "gallery",
+  "youtubeVideoId", "youtubeUrl", "spotifyUrl", "instagramUrl", "tiktokUrl", "twitchUrl",
+  "teaserVideo", "teaserPoster", "featured"
+]);
+checkLocaleParity("artists", [
+  "kind", "image", "spotifyUrl", "instagramUrl", "tiktokUrl", "youtubeUrl", "twitchUrl", "featured"
+]);
+
 if (errors.length) {
   console.error("\nContent check failed:");
   errors.forEach((error) => console.error(`- ${error}`));

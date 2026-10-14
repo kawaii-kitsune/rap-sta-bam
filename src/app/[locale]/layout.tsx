@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { defaultLocale, locales } from "@/config/i18n";
 import { siteConfig } from "@/config/site";
+import { createMetadata } from "@/lib/metadata";
 import "../globals.css";
 
 const display = Roboto_Condensed({
@@ -30,33 +31,20 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`
-  },
-  description: siteConfig.description,
-  metadataBase: new URL(siteConfig.baseUrl),
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" }
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
-  },
-  openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
-    locale: "el_GR",
-    siteName: siteConfig.name,
-    type: "website",
-    images: [{ url: siteConfig.defaultOgImage, alt: siteConfig.name }]
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [siteConfig.defaultOgImage]
-  }
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale = defaultLocale } = await params;
+  return {
+    ...createMetadata({ locale }),
+    metadataBase: new URL(siteConfig.baseUrl),
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "32x32" },
+        { url: "/icon-192.png", type: "image/png", sizes: "192x192" }
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
+    }
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -71,14 +59,14 @@ export default async function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWorkSeries",
-    name: siteConfig.name,
+    name: isEn ? "Rap Sta Bam" : siteConfig.name,
     description: isEn
       ? "Independent DIY hip-hop documentary and studio session series from Heraklion, Crete."
       : siteConfig.description,
     inLanguage: locale,
     locationCreated: {
       "@type": "Place",
-      name: siteConfig.location
+      name: isEn ? "Heraklion, Crete" : siteConfig.location
     }
   };
 
